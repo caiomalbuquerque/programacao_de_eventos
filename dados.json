@@ -1,7 +1,7 @@
 {
   "abas": [
     {
-      "nome": "Colegiado UPA/UPAEs - 25/08",
+      "nome": "Colegiado: UPA/UPAEs - 25/08",
       "startTime": "08:00",
       "eventos": [
         {
@@ -113,7 +113,115 @@
           "realEnd": ""
         }
       ]
+    },
+    {
+      "nome": "Colegiado: Hospitais - 26/08",
+      "startTime": "08:00",
+      "eventos": [
+        {
+          "id": 55,
+          "name": "Abertura",
+          "duration": 600,
+          "realEnd": ""
+        },
+        {
+          "id": 56,
+          "name": "NIO",
+          "duration": 600,
+          "realEnd": ""
+        },
+        {
+          "id": 57,
+          "name": "Diretoria de Recursos Humanos",
+          "duration": 1200,
+          "realEnd": ""
+        },
+        {
+          "id": 58,
+          "name": "Diretoria de Atendimento",
+          "duration": 1200,
+          "realEnd": ""
+        },
+        {
+          "id": 60,
+          "name": "Hospital da Criança do Recife",
+          "duration": 2400,
+          "realEnd": ""
+        },
+        {
+          "id": 59,
+          "name": "Compliance + Gerenciamento de Risco",
+          "duration": 1200,
+          "realEnd": ""
+        },
+        {
+          "id": 62,
+          "name": "Hospital Eduardo Campos da Pessoa Idosa",
+          "duration": 2400,
+          "realEnd": ""
+        },
+        {
+          "id": 65,
+          "name": "Hospital Alfa",
+          "duration": 2400,
+          "realEnd": ""
+        },
+        {
+          "id": 68,
+          "name": "Hospital Dom Helder Câmara",
+          "duration": 2400,
+          "realEnd": ""
+        },
+        {
+          "id": 67,
+          "name": "Ensino e Pesquisa",
+          "duration": 1200,
+          "realEnd": ""
+        },
+        {
+          "id": 66,
+          "name": "Almoço",
+          "duration": 2700,
+          "realEnd": ""
+        },
+        {
+          "id": 64,
+          "name": "Tecnologia da Informação",
+          "duration": 1200,
+          "realEnd": ""
+        },
+        {
+          "id": 69,
+          "name": "Superintendência da Qualidade",
+          "duration": 1200,
+          "realEnd": ""
+        },
+        {
+          "id": 71,
+          "name": "Hospital Miguel Arraes",
+          "duration": 2400,
+          "realEnd": ""
+        },
+        {
+          "id": 70,
+          "name": "Superintendência de Administração e Finanças",
+          "duration": 1200,
+          "realEnd": ""
+        },
+        {
+          "id": 73,
+          "name": "Hospital Pelópidas Silveira",
+          "duration": 2400,
+          "realEnd": ""
+        },
+        {
+          "id": 72,
+          "name": "Considerações Finais",
+          "duration": 600,
+          "realEnd": ""
+        }
+      ]
     }
   ],
-  "currentTab": 0
+  "currentTab": 1
 }
