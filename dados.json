@@ -111,6 +111,12 @@
           "name": "Considerações Finais",
           "duration": 600,
           "realEnd": ""
+        },
+        {
+          "id": 74,
+          "name": "Novo evento",
+          "duration": 1800,
+          "realEnd": ""
         }
       ]
     },
@@ -223,5 +229,5 @@
       ]
     }
   ],
-  "currentTab": 1
+  "currentTab": 0
 }
