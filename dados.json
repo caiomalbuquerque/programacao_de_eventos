@@ -17,6 +17,18 @@
           "realEnd": ""
         },
         {
+          "id": 25,
+          "name": "Superintendência de Recursos Humanos",
+          "duration": 1200,
+          "realEnd": ""
+        },
+        {
+          "id": 27,
+          "name": "Superintendência de Atendimento",
+          "duration": 1200,
+          "realEnd": ""
+        },
+        {
           "id": 21,
           "name": "UPA São Lourenço da Mata",
           "duration": 2100,
@@ -24,7 +36,7 @@
         },
         {
           "id": 22,
-          "name": "UPAE Ibura",
+          "name": "UPAE Carpina",
           "duration": 2100,
           "realEnd": ""
         },
@@ -41,21 +53,9 @@
           "realEnd": ""
         },
         {
-          "id": 25,
-          "name": "Superintendência de Recursos Humanos",
-          "duration": 1200,
-          "realEnd": ""
-        },
-        {
           "id": 26,
           "name": "UPAE Salgueiro",
           "duration": 2100,
-          "realEnd": ""
-        },
-        {
-          "id": 27,
-          "name": "Superintendência de Atendimento",
-          "duration": 1200,
           "realEnd": ""
         },
         {
@@ -77,15 +77,15 @@
           "realEnd": ""
         },
         {
-          "id": 31,
-          "name": "Ensino e Pesquisa",
-          "duration": 1200,
+          "id": 32,
+          "name": "UPAE Ibura",
+          "duration": 2100,
           "realEnd": ""
         },
         {
-          "id": 32,
-          "name": "UPAE Carpina",
-          "duration": 2100,
+          "id": 31,
+          "name": "Ensino e Pesquisa",
+          "duration": 1200,
           "realEnd": ""
         },
         {
