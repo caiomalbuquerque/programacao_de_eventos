@@ -300,6 +300,69 @@
         });
     }
 
+    // ===== INTEGRAÇÃO COM GITHUB =====
+    const GITHUB_OWNER = 'caiomalbuquerque';
+    const GITHUB_REPO = 'programacao_de_eventos';
+    const GITHUB_BRANCH = 'main';
+    const GITHUB_FILE_PATH = 'dados.json';
+
+    async function loadDataFromGitHub() {
+        const url = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${GITHUB_FILE_PATH}`;
+        try {
+            const response = await fetch(url + '?t=' + Date.now());
+            if (!response.ok) throw new Error('Arquivo ainda não existe');
+            return await response.json();
+        } catch (e) {
+            console.warn('Não foi possível carregar dados.json do GitHub, usando dados locais/padrão.', e);
+            return null;
+        }
+    }
+
+    async function saveDataToGitHub() {
+        const token = prompt('Cole seu token de acesso do GitHub para salvar:');
+        if (!token) return;
+
+        const apiUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${GITHUB_FILE_PATH}`;
+
+        let sha = undefined;
+        try {
+            const getResp = await fetch(apiUrl + `?ref=${GITHUB_BRANCH}`, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+            if (getResp.ok) {
+                const fileInfo = await getResp.json();
+                sha = fileInfo.sha;
+            }
+        } catch (e) { /* arquivo pode não existir ainda, tudo bem */ }
+
+        const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
+
+        const body = {
+            message: `Atualiza dados - ${new Date().toLocaleString('pt-BR')}`,
+            content: content,
+            branch: GITHUB_BRANCH
+        };
+        if (sha) body.sha = sha;
+
+        try {
+            const putResp = await fetch(apiUrl, {
+                method: 'PUT',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(body)
+            });
+            if (!putResp.ok) {
+                const err = await putResp.json();
+                throw new Error(err.message || 'Erro desconhecido');
+            }
+            alert('Salvo no GitHub com sucesso!');
+        } catch (e) {
+            alert('Erro ao salvar no GitHub: ' + e.message);
+        }
+    }
+
     // ===== CARREGAR DADOS (VERSÃO ASSÍNCRONA) =====
     async function loadData() {
         const remote = await loadDataFromGitHub();
