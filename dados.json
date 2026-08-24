@@ -1,0 +1,119 @@
+{
+  "abas": [
+    {
+      "nome": "Colegiado UPA/UPAEs - 25/08",
+      "startTime": "08:00",
+      "eventos": [
+        {
+          "id": 19,
+          "name": "Abertura",
+          "duration": 600,
+          "realEnd": ""
+        },
+        {
+          "id": 20,
+          "name": "NIO",
+          "duration": 600,
+          "realEnd": ""
+        },
+        {
+          "id": 21,
+          "name": "UPA São Lourenço da Mata",
+          "duration": 2100,
+          "realEnd": ""
+        },
+        {
+          "id": 22,
+          "name": "UPAE Ibura",
+          "duration": 2100,
+          "realEnd": ""
+        },
+        {
+          "id": 23,
+          "name": "Compliance + Gerenciamento de Risco",
+          "duration": 1200,
+          "realEnd": ""
+        },
+        {
+          "id": 24,
+          "name": "UPAE Garanhuns",
+          "duration": 2100,
+          "realEnd": ""
+        },
+        {
+          "id": 25,
+          "name": "Superintendência de Recursos Humanos",
+          "duration": 1200,
+          "realEnd": ""
+        },
+        {
+          "id": 26,
+          "name": "UPAE Salgueiro",
+          "duration": 2100,
+          "realEnd": ""
+        },
+        {
+          "id": 27,
+          "name": "Superintendência de Atendimento",
+          "duration": 1200,
+          "realEnd": ""
+        },
+        {
+          "id": 28,
+          "name": "Tecnologia da Informação",
+          "duration": 1200,
+          "realEnd": ""
+        },
+        {
+          "id": 29,
+          "name": "UPAE Mustardinha",
+          "duration": 2100,
+          "realEnd": ""
+        },
+        {
+          "id": 30,
+          "name": "Almoço",
+          "duration": 2700,
+          "realEnd": ""
+        },
+        {
+          "id": 31,
+          "name": "Ensino e Pesquisa",
+          "duration": 1200,
+          "realEnd": ""
+        },
+        {
+          "id": 32,
+          "name": "UPAE Carpina",
+          "duration": 2100,
+          "realEnd": ""
+        },
+        {
+          "id": 33,
+          "name": "Superintendência da Qualidade",
+          "duration": 1200,
+          "realEnd": ""
+        },
+        {
+          "id": 34,
+          "name": "Superintendência de Administração e Finanças",
+          "duration": 1200,
+          "realEnd": ""
+        },
+        {
+          "id": 35,
+          "name": "UPAE Escada",
+          "duration": 2100,
+          "realEnd": ""
+        },
+        {
+          "id": 36,
+          "name": "Considerações Finais",
+          "duration": 600,
+          "realEnd": ""
+        }
+      ]
+    }
+  ],
+  "currentTab": 0
+}
