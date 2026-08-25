@@ -206,7 +206,7 @@
           "id": 35,
           "name": "UPAE Escada",
           "duration": 2100,
-          "realEnd": ""
+          "realEnd": "15:25:00"
         },
         {
           "id": 36,
@@ -217,5 +217,5 @@
       ]
     }
   ],
-  "currentTab": 0
+  "currentTab": 1
 }
