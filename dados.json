@@ -62,7 +62,7 @@
           "id": 32,
           "name": "UPA São Lourenço da Mata",
           "duration": 2100,
-          "realEnd": ""
+          "realEnd": "11:58:00"
         },
         {
           "id": 30,
@@ -71,15 +71,15 @@
           "realEnd": ""
         },
         {
-          "id": 31,
-          "name": "Ensino e Pesquisa",
-          "duration": 1200,
-          "realEnd": ""
-        },
-        {
           "id": 21,
           "name": "UPAE Ibura",
           "duration": 2100,
+          "realEnd": ""
+        },
+        {
+          "id": 31,
+          "name": "Ensino e Pesquisa",
+          "duration": 1200,
           "realEnd": ""
         },
         {
