@@ -308,6 +308,12 @@
             resize: none;
             overflow: hidden;
             display: block;
+
+            /* Mantém a aparência discreta do modelo anterior */
+            border: 1px solid transparent;
+            background: transparent;
+            padding: 4px;
+            border-radius: 4px;
         }
 
         /* =====================================================
@@ -1297,12 +1303,6 @@ async function loadData() {
 
         data = remote;
 
-        /*
-         * IMPORTANTE:
-         * O currentTab salvo localmente tem prioridade.
-         * Isso permite que a aba atual sobreviva ao refresh.
-         */
-
         const savedTab =
             localStorage.getItem(
                 'programacao_eventos_current_tab'
@@ -1421,11 +1421,6 @@ async function loadData() {
 
     };
 
-    /*
-     * Se não houver uma aba salva,
-     * começa na aba UPA.
-     */
-
     const savedTab =
         localStorage.getItem(
             'programacao_eventos_current_tab'
@@ -1455,30 +1450,6 @@ async function loadData() {
    CÁLCULO DOS EVENTOS
 ============================================================ */
 
-/*
- * REGRA PRINCIPAL:
- *
- * Evento 1:
- * início = horário inicial
- *
- * Evento seguinte:
- *
- * Se o evento anterior possui TÉRMINO REAL:
- *     início = término real anterior
- *
- * Caso contrário:
- *     início = início anterior + duração anterior
- *
- * Assim:
- *
- * Abertura
- * Início 08:00
- * Término 08:13
- *
- * Evento seguinte
- * Início 08:13
- */
-
 function computeEvents(
     eventos,
     startSec
@@ -1501,11 +1472,6 @@ function computeEvents(
         const dur =
             item.duration || 0;
 
-        /*
-         * Horário programado baseado
-         * somente na duração.
-         */
-
         let startProg;
 
         if (i === 0) {
@@ -1524,21 +1490,11 @@ function computeEvents(
             startProg + dur;
 
 
-        /*
-         * Término real digitado pelo usuário.
-         */
-
         const realEndVal =
             toSeconds(
                 item.realEnd
             );
 
-
-        /*
-         * Atraso:
-         *
-         * término real - término programado
-         */
 
         let delay = null;
 
@@ -1550,20 +1506,6 @@ function computeEvents(
 
         }
 
-
-        /*
-         * O INÍCIO REAL é:
-         *
-         * 1º evento:
-         * horário inicial
-         *
-         * Demais:
-         * término real anterior,
-         * caso exista.
-         *
-         * Caso contrário:
-         * término programado anterior.
-         */
 
         let startReal;
 
@@ -1783,6 +1725,10 @@ function render() {
                 <tr class="swipe-row" draggable="true"
                     ondragstart="dragStart(event, ${idx})" ondragover="dragOver(event)" ondrop="drop(event, ${idx})" ondragend="dragEnd(event)"
                     ontouchstart="handleTouchStart(event)" ontouchmove="handleTouchMove(event)" ontouchend="handleTouchEnd(event)">
+
+                    <div class="delete-swipe" onclick="removeEvent(${idx})">
+                        <button>✕</button>
+                    </div>
 
                     <td class="col-index">
                         ${idx + 1}
@@ -2232,11 +2178,6 @@ function switchTab(index) {
     data.currentTab =
         index;
 
-
-    /*
-     * SALVA IMEDIATAMENTE
-     * a aba selecionada.
-     */
 
     localStorage.setItem(
         'programacao_eventos_current_tab',
