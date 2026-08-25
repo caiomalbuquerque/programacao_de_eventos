@@ -29,12 +29,6 @@
           "realEnd": "09:03:00"
         },
         {
-          "id": 21,
-          "name": "UPAE Ibura",
-          "duration": 2100,
-          "realEnd": ""
-        },
-        {
           "id": 23,
           "name": "Compliance + Gerenciamento de Risco",
           "duration": 1200,
@@ -56,6 +50,12 @@
           "id": 28,
           "name": "Tecnologia da Informação",
           "duration": 1200,
+          "realEnd": ""
+        },
+        {
+          "id": 21,
+          "name": "UPAE Ibura",
+          "duration": 2100,
           "realEnd": ""
         },
         {
