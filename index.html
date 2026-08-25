@@ -235,7 +235,6 @@
             border: 1px solid #dbe0e5;
 
             table-layout: fixed;
-            position: relative;
         }
 
         th,
@@ -287,9 +286,42 @@
             width: 105px;
         }
 
+        .col-actions {
+            width: 60px;
+        }
+
         /* =====================================================
-           QUEBRA DE TEXTO DA COLUNA EVENTO
+           CAMPOS EDITÁVEIS E QUEBRA DE TEXTO
         ===================================================== */
+
+        .editable {
+            width: 100%;
+
+            border: 1px solid transparent;
+            background: transparent;
+
+            text-align: center;
+
+            font: inherit;
+
+            padding: 4px;
+
+            border-radius: 4px;
+        }
+
+        .editable:focus {
+            border-color: #2b6ca3;
+            background: #f4faff;
+            outline: none;
+        }
+
+        .editable.duration {
+            width: 70px;
+        }
+
+        .editable.time {
+            width: 100%;
+        }
 
         .event-cell {
             word-wrap: break-word;
@@ -309,7 +341,6 @@
             overflow: hidden;
             display: block;
 
-            /* Mantém a aparência discreta do modelo anterior */
             border: 1px solid transparent;
             background: transparent;
             padding: 4px;
@@ -337,47 +368,12 @@
         }
 
         /* =====================================================
-           DRAG AND DROP E SWIPE
+           DRAG AND DROP
         ===================================================== */
-
-        tr.swipe-row {
-            position: relative;
-            touch-action: pan-y;
-            transition: transform 0.2s ease;
-        }
 
         tr.dragging {
             opacity: 0.5;
             background: #cce5ff;
-        }
-
-        .delete-swipe {
-            position: absolute;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            width: 60px;
-            background: #dc3545;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 10;
-            opacity: 0;
-            transition: opacity 0.2s;
-        }
-
-        .delete-swipe:hover {
-            background: #a71d2a;
-        }
-
-        .delete-swipe button {
-            background: transparent;
-            border: none;
-            color: white;
-            font-size: 20px;
-            font-weight: bold;
-            cursor: pointer;
         }
 
         /* =====================================================
@@ -505,6 +501,10 @@
                 width: 16%;
             }
 
+            .col-actions {
+                width: 45px;
+            }
+
             /* Texto do evento quebra */
 
             .event-cell {
@@ -602,6 +602,10 @@
 
             .col-delay {
                 width: 16%;
+            }
+
+            .col-actions {
+                width: 38px;
             }
 
             .editable.time,
@@ -1691,6 +1695,10 @@ function render() {
                         Atraso
                     </th>
 
+                    <th class="col-actions">
+                        Excluir
+                    </th>
+
                 </tr>
 
             </thead>
@@ -1722,13 +1730,7 @@ function render() {
 
             tableHtml += `
 
-                <tr class="swipe-row" draggable="true"
-                    ondragstart="dragStart(event, ${idx})" ondragover="dragOver(event)" ondrop="drop(event, ${idx})" ondragend="dragEnd(event)"
-                    ontouchstart="handleTouchStart(event)" ontouchmove="handleTouchMove(event)" ontouchend="handleTouchEnd(event)">
-
-                    <div class="delete-swipe" onclick="removeEvent(${idx})">
-                        <button>✕</button>
-                    </div>
+                <tr draggable="true" ondragstart="dragStart(event, ${idx})" ondragover="dragOver(event)" ondrop="drop(event, ${idx})" ondragend="dragEnd(event)">
 
                     <td class="col-index">
                         ${idx + 1}
@@ -1781,6 +1783,19 @@ function render() {
                     <td class="col-delay ${delayClass}">
 
                         ${delayStr}
+
+                    </td>
+
+
+                    <td class="col-actions">
+
+                        <button
+                            class="btn btn-danger"
+                            onclick="removeEvent(${idx})"
+                            title="Excluir linha"
+                        >
+                            ✕
+                        </button>
 
                     </td>
 
@@ -2072,59 +2087,6 @@ function dragEnd(event) {
     draggedRow.classList.remove('dragging');
     draggedRow = null;
     draggedIndex = null;
-}
-
-
-/* ============================================================
-   SWIPE PARA EXCLUIR
-============================================================ */
-
-let startX = 0;
-let startY = 0;
-let currentRow = null;
-
-function handleTouchStart(e) {
-    startX = e.touches[0].clientX;
-    startY = e.touches[0].clientY;
-    currentRow = e.currentTarget;
-}
-
-function handleTouchMove(e) {
-    if (!currentRow) return;
-    const moveX = e.touches[0].clientX;
-    const moveY = e.touches[0].clientY;
-    const diffX = moveX - startX;
-    const diffY = moveY - startY;
-
-    // Se for um movimento predominantemente horizontal
-    if (Math.abs(diffX) > Math.abs(diffY)) {
-        e.preventDefault();
-        if (diffX < 0) {
-            const translateX = Math.max(diffX, -60);
-            currentRow.style.transform = `translateX(${translateX}px)`;
-        } else {
-            const translateX = Math.min(diffX, 0);
-            currentRow.style.transform = `translateX(${translateX}px)`;
-        }
-    }
-}
-
-function handleTouchEnd(e) {
-    if (!currentRow) return;
-    const endX = e.changedTouches[0].clientX;
-    const diffX = endX - startX;
-
-    if (diffX < -30) {
-        currentRow.style.transform = 'translateX(-60px)';
-        // Revela o botão de exclusão
-        const deleteBtn = currentRow.querySelector('.delete-swipe');
-        if (deleteBtn) deleteBtn.style.opacity = 1;
-    } else {
-        currentRow.style.transform = 'translateX(0)';
-        const deleteBtn = currentRow.querySelector('.delete-swipe');
-        if (deleteBtn) deleteBtn.style.opacity = 0;
-    }
-    currentRow = null;
 }
 
 
