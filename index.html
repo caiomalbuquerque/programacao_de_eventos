@@ -215,49 +215,6 @@
         }
 
         /* =====================================================
-           SELETOR DE COLUNAS
-        ===================================================== */
-
-        .column-selector {
-            display: flex;
-            gap: 16px;
-            align-items: center;
-            flex-wrap: wrap;
-
-            margin-bottom: 15px;
-            padding: 12px 15px;
-
-            background: #eef5fb;
-            border: 1px solid #cfe2ff;
-            border-radius: 8px;
-        }
-
-        .column-selector .cs-title {
-            font-weight: 700;
-            color: #163c6d;
-            font-size: 14px;
-        }
-
-        .column-selector label {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-
-            font-weight: 500;
-            font-size: 14px;
-
-            cursor: pointer;
-            color: #163c6d;
-        }
-
-        .column-selector input[type="checkbox"] {
-            cursor: pointer;
-            width: 16px;
-            height: 16px;
-            accent-color: #163c6d;
-        }
-
-        /* =====================================================
            TABELA
         ===================================================== */
 
@@ -278,6 +235,7 @@
             border: 1px solid #dbe0e5;
 
             table-layout: fixed;
+            position: relative;
         }
 
         th,
@@ -329,43 +287,6 @@
             width: 105px;
         }
 
-        .col-actions {
-            width: 60px;
-        }
-
-        /* =====================================================
-           CAMPOS EDITÁVEIS
-        ===================================================== */
-
-        .editable {
-            width: 100%;
-
-            border: 1px solid transparent;
-            background: transparent;
-
-            text-align: center;
-
-            font: inherit;
-
-            padding: 4px;
-
-            border-radius: 4px;
-        }
-
-        .editable:focus {
-            border-color: #2b6ca3;
-            background: #f4faff;
-            outline: none;
-        }
-
-        .editable.duration {
-            width: 70px;
-        }
-
-        .editable.time {
-            width: 100%;
-        }
-
         /* =====================================================
            QUEBRA DE TEXTO DA COLUNA EVENTO
         ===================================================== */
@@ -410,20 +331,47 @@
         }
 
         /* =====================================================
-           DRAG AND DROP
+           DRAG AND DROP E SWIPE
         ===================================================== */
+
+        tr.swipe-row {
+            position: relative;
+            touch-action: pan-y;
+            transition: transform 0.2s ease;
+        }
 
         tr.dragging {
             opacity: 0.5;
             background: #cce5ff;
         }
 
-        /* =====================================================
-           COLUNAS OCULTAS
-        ===================================================== */
+        .delete-swipe {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 60px;
+            background: #dc3545;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
 
-        .col-hidden {
-            display: none !important;
+        .delete-swipe:hover {
+            background: #a71d2a;
+        }
+
+        .delete-swipe button {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
         }
 
         /* =====================================================
@@ -508,25 +456,6 @@
                 min-height: 36px;
             }
 
-            /* Colunas */
-
-            .column-selector {
-                gap: 9px;
-
-                padding: 9px;
-                margin-bottom: 10px;
-
-                font-size: 12px;
-            }
-
-            .column-selector label {
-                font-size: 12px;
-            }
-
-            .column-selector .cs-title {
-                width: 100%;
-            }
-
             /* Tabela */
 
             table {
@@ -568,10 +497,6 @@
 
             .col-delay {
                 width: 16%;
-            }
-
-            .col-actions {
-                width: 45px;
             }
 
             /* Texto do evento quebra */
@@ -671,10 +596,6 @@
 
             .col-delay {
                 width: 16%;
-            }
-
-            .col-actions {
-                width: 38px;
             }
 
             .editable.time,
@@ -783,16 +704,6 @@
             </button>
 
         </div>
-
-
-        <!-- =====================================================
-             SELETOR DE COLUNAS
-        ===================================================== -->
-
-        <div
-            class="column-selector"
-            id="columnSelector"
-        ></div>
 
 
         <!-- =====================================================
@@ -907,53 +818,6 @@ let data = {
 };
 
 let nextId = 1;
-
-
-/* ============================================================
-   COLUNAS
-============================================================ */
-
-const EXPORTABLE_COLUMNS = [
-
-    {
-        key: 'index',
-        label: '#',
-        className: 'col-index'
-    },
-
-    {
-        key: 'event',
-        label: 'Evento',
-        className: 'col-event'
-    },
-
-    {
-        key: 'duration',
-        label: 'Duração (hh:mm)',
-        className: 'col-duration'
-    },
-
-    {
-        key: 'start',
-        label: 'Início',
-        className: 'col-start'
-    },
-
-    {
-        key: 'end',
-        label: 'Término',
-        className: 'col-end'
-    },
-
-    {
-        key: 'delay',
-        label: 'Atraso',
-        className: 'col-delay'
-    }
-
-];
-
-let exportColumns = {};
 
 
 /* ============================================================
@@ -1218,141 +1082,6 @@ function getUPADefaultEvents() {
         }
 
     ];
-}
-
-
-/* ============================================================
-   COLUNAS DE EXPORTAÇÃO
-============================================================ */
-
-function loadExportColumns() {
-
-    const raw = localStorage.getItem(
-        'programacao_eventos_fgh_export_cols'
-    );
-
-    if (raw) {
-
-        try {
-
-            exportColumns = JSON.parse(raw);
-
-            EXPORTABLE_COLUMNS.forEach(c => {
-
-                if (!(c.key in exportColumns)) {
-                    exportColumns[c.key] = true;
-                }
-
-            });
-
-            return;
-
-        } catch (e) {}
-
-    }
-
-    EXPORTABLE_COLUMNS.forEach(c => {
-        exportColumns[c.key] = true;
-    });
-}
-
-
-function saveExportColumns() {
-
-    localStorage.setItem(
-        'programacao_eventos_fgh_export_cols',
-        JSON.stringify(exportColumns)
-    );
-}
-
-
-function renderColumnSelector() {
-
-    const el = document.getElementById(
-        'columnSelector'
-    );
-
-    let html =
-        '<span class="cs-title">Colunas a exportar:</span>';
-
-    EXPORTABLE_COLUMNS.forEach(c => {
-
-        const checked =
-            exportColumns[c.key]
-                ? 'checked'
-                : '';
-
-        html += `
-            <label>
-                <input
-                    type="checkbox"
-                    ${checked}
-                    onchange="onExportColumnToggle('${c.key}', this.checked)"
-                >
-                ${c.label}
-            </label>
-        `;
-    });
-
-    el.innerHTML = html;
-}
-
-
-function onExportColumnToggle(
-    key,
-    checked
-) {
-
-    exportColumns[key] = checked;
-
-    saveExportColumns();
-}
-
-
-function applyExportColumnVisibility(apply) {
-
-    const table =
-        document.querySelector(
-            '#tableContainer table'
-        );
-
-    if (!table) return;
-
-    EXPORTABLE_COLUMNS.forEach(c => {
-
-        const hide =
-            apply &&
-            !exportColumns[c.key];
-
-        const ths =
-            table.querySelectorAll(
-                'th.' + c.className
-            );
-
-        const tds =
-            table.querySelectorAll(
-                'td.' + c.className
-            );
-
-        ths.forEach(th => {
-
-            th.classList.toggle(
-                'col-hidden',
-                hide
-            );
-
-        });
-
-        tds.forEach(td => {
-
-            td.classList.toggle(
-                'col-hidden',
-                hide
-            );
-
-        });
-
-    });
 }
 
 
@@ -2020,10 +1749,6 @@ function render() {
                         Atraso
                     </th>
 
-                    <th class="col-actions">
-                        Ações
-                    </th>
-
                 </tr>
 
             </thead>
@@ -2055,7 +1780,9 @@ function render() {
 
             tableHtml += `
 
-                <tr draggable="true" ondragstart="dragStart(event, ${idx})" ondragover="dragOver(event)" ondrop="drop(event, ${idx})" ondragend="dragEnd(event)">
+                <tr class="swipe-row" draggable="true"
+                    ondragstart="dragStart(event, ${idx})" ondragover="dragOver(event)" ondrop="drop(event, ${idx})" ondragend="dragEnd(event)"
+                    ontouchstart="handleTouchStart(event)" ontouchmove="handleTouchMove(event)" ontouchend="handleTouchEnd(event)">
 
                     <td class="col-index">
                         ${idx + 1}
@@ -2108,19 +1835,6 @@ function render() {
                     <td class="col-delay ${delayClass}">
 
                         ${delayStr}
-
-                    </td>
-
-
-                    <td class="col-actions">
-
-                        <button
-                            class="btn btn-danger"
-                            onclick="removeEvent(${idx})"
-                            title="Excluir linha"
-                        >
-                            ✕
-                        </button>
 
                     </td>
 
@@ -2416,6 +2130,59 @@ function dragEnd(event) {
 
 
 /* ============================================================
+   SWIPE PARA EXCLUIR
+============================================================ */
+
+let startX = 0;
+let startY = 0;
+let currentRow = null;
+
+function handleTouchStart(e) {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    currentRow = e.currentTarget;
+}
+
+function handleTouchMove(e) {
+    if (!currentRow) return;
+    const moveX = e.touches[0].clientX;
+    const moveY = e.touches[0].clientY;
+    const diffX = moveX - startX;
+    const diffY = moveY - startY;
+
+    // Se for um movimento predominantemente horizontal
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+        e.preventDefault();
+        if (diffX < 0) {
+            const translateX = Math.max(diffX, -60);
+            currentRow.style.transform = `translateX(${translateX}px)`;
+        } else {
+            const translateX = Math.min(diffX, 0);
+            currentRow.style.transform = `translateX(${translateX}px)`;
+        }
+    }
+}
+
+function handleTouchEnd(e) {
+    if (!currentRow) return;
+    const endX = e.changedTouches[0].clientX;
+    const diffX = endX - startX;
+
+    if (diffX < -30) {
+        currentRow.style.transform = 'translateX(-60px)';
+        // Revela o botão de exclusão
+        const deleteBtn = currentRow.querySelector('.delete-swipe');
+        if (deleteBtn) deleteBtn.style.opacity = 1;
+    } else {
+        currentRow.style.transform = 'translateX(0)';
+        const deleteBtn = currentRow.querySelector('.delete-swipe');
+        if (deleteBtn) deleteBtn.style.opacity = 0;
+    }
+    currentRow = null;
+}
+
+
+/* ============================================================
    RESTAURAR ABA
 ============================================================ */
 
@@ -2665,10 +2432,6 @@ document.addEventListener(
     async () => {
 
         await loadData();
-
-        loadExportColumns();
-
-        renderColumnSelector();
 
         render();
 
