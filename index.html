@@ -6,8 +6,6 @@
 
     <title>Programação de Eventos FGH</title>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
     <style>
 
         * {
@@ -429,34 +427,6 @@
         }
 
         /* =====================================================
-           EXPORTAÇÃO
-        ===================================================== */
-
-        .exporting .tabs-container,
-        .exporting .toolbar,
-        .exporting .column-selector,
-        .exporting .btn-danger,
-        .exporting .col-actions {
-            display: none !important;
-        }
-
-        @media print {
-
-            .tabs-container,
-            .toolbar,
-            .column-selector,
-            .btn-danger,
-            .col-actions {
-                display: none !important;
-            }
-
-            #export-wrapper {
-                max-width: 100%;
-                padding: 0;
-            }
-        }
-
-        /* =====================================================
            CELULAR
         ===================================================== */
 
@@ -788,9 +758,11 @@
                 ➕ Adicionar evento
             </button>
 
+            <!-- Botões ocultos conforme solicitado -->
             <button
                 class="btn btn-secondary"
                 onclick="resetCurrentTab()"
+                style="display:none;"
             >
                 🔄 Restaurar exemplo
             </button>
@@ -798,22 +770,9 @@
             <button
                 class="btn btn-warning"
                 onclick="resetAllData()"
+                style="display:none;"
             >
                 ⚠️ Resetar tudo
-            </button>
-
-            <button
-                class="btn btn-success"
-                onclick="exportToImage()"
-            >
-                🖼️ Exportar JPEG
-            </button>
-
-            <button
-                class="btn btn-success"
-                onclick="exportToPDF()"
-            >
-                📄 Exportar PDF
             </button>
 
             <button
@@ -2694,145 +2653,6 @@ function resetAllData() {
 
 
     location.reload();
-}
-
-
-/* ============================================================
-   EXPORTAR JPEG
-============================================================ */
-
-function exportToImage() {
-
-    const wrapper =
-        document.getElementById(
-            'export-wrapper'
-        );
-
-
-    document.getElementById(
-        'dynamic-title'
-    ).innerText =
-        data.abas[
-            data.currentTab
-        ].nome;
-
-
-    wrapper.classList.add(
-        'exporting'
-    );
-
-
-    applyExportColumnVisibility(
-        true
-    );
-
-
-    html2canvas(
-        wrapper,
-        {
-            scale: 2,
-            useCORS: true,
-            backgroundColor:
-                '#ffffff'
-        }
-    )
-    .then(canvas => {
-
-        const link =
-            document.createElement(
-                'a'
-            );
-
-
-        link.download =
-            `programacao_${data.abas[data.currentTab].nome}.jpg`;
-
-
-        link.href =
-            canvas.toDataURL(
-                'image/jpeg',
-                0.95
-            );
-
-
-        link.click();
-
-
-        wrapper.classList.remove(
-            'exporting'
-        );
-
-
-        applyExportColumnVisibility(
-            false
-        );
-
-    })
-    .catch(err => {
-
-        alert(
-            'Erro ao gerar imagem: ' +
-            err
-        );
-
-
-        wrapper.classList.remove(
-            'exporting'
-        );
-
-
-        applyExportColumnVisibility(
-            false
-        );
-
-    });
-}
-
-
-/* ============================================================
-   EXPORTAR PDF
-============================================================ */
-
-function exportToPDF() {
-
-    const wrapper =
-        document.getElementById(
-            'export-wrapper'
-        );
-
-
-    document.getElementById(
-        'dynamic-title'
-    ).innerText =
-        data.abas[
-            data.currentTab
-        ].nome;
-
-
-    wrapper.classList.add(
-        'exporting'
-    );
-
-
-    applyExportColumnVisibility(
-        true
-    );
-
-
-    window.print();
-
-
-    setTimeout(() => {
-
-        wrapper.classList.remove(
-            'exporting'
-        );
-
-        applyExportColumnVisibility(
-            false
-        );
-
-    }, 1000);
 }
 
 
