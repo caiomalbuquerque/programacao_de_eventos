@@ -44,7 +44,7 @@
           "id": 26,
           "name": "UPAE Salgueiro",
           "duration": 2100,
-          "realEnd": ""
+          "realEnd": "10:24:00"
         },
         {
           "id": 28,
@@ -53,14 +53,14 @@
           "realEnd": ""
         },
         {
-          "id": 21,
-          "name": "UPAE Ibura",
+          "id": 29,
+          "name": "UPAE Mustardinha",
           "duration": 2100,
           "realEnd": ""
         },
         {
-          "id": 29,
-          "name": "UPAE Mustardinha",
+          "id": 32,
+          "name": "UPA São Lourenço da Mata",
           "duration": 2100,
           "realEnd": ""
         },
@@ -71,8 +71,8 @@
           "realEnd": ""
         },
         {
-          "id": 32,
-          "name": "UPA São Lourenço da Mata",
+          "id": 21,
+          "name": "UPAE Ibura",
           "duration": 2100,
           "realEnd": ""
         },
