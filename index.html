@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Programação de Eventos FGH</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
     <style>
+
         * {
             box-sizing: border-box;
         }
@@ -29,9 +31,10 @@
             border: 1px solid #e6edf5;
         }
 
-        /* =========================
+
+        /* =====================================================
            CABEÇALHO
-        ========================= */
+        ===================================================== */
 
         .header-wrapper {
             margin-bottom: 20px;
@@ -60,6 +63,12 @@
             display: flex;
             flex-wrap: wrap;
             align-items: center;
+            gap: 8px;
+        }
+
+        .tabs-bar {
+            display: flex;
+            flex-wrap: wrap;
             gap: 8px;
         }
 
@@ -109,6 +118,11 @@
             padding: 0;
         }
 
+
+        /* =====================================================
+           BOTÕES
+        ===================================================== */
+
         .btn-success {
             background: #1a9c4a;
             color: white;
@@ -122,36 +136,6 @@
 
         .btn-success:hover {
             background: #13803b;
-        }
-
-        /* =========================
-           FERRAMENTAS
-        ========================= */
-
-        .toolbar {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-            padding: 12px 15px;
-            background: #f8fafc;
-            border: 1px solid #e6edf5;
-            border-radius: 8px;
-        }
-
-        .toolbar label {
-            font-weight: 600;
-            color: #163c6d;
-        }
-
-        .toolbar input[type="time"] {
-            padding: 6px 10px;
-            border: 1px solid #d1d8e2;
-            border-radius: 6px;
-            font-size: 14px;
-            color: #163c6d;
-            background: #ffffff;
         }
 
         .btn {
@@ -201,9 +185,41 @@
             background: #e0a800;
         }
 
-        /* =========================
+
+        /* =====================================================
+           FERRAMENTAS
+        ===================================================== */
+
+        .toolbar {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            padding: 12px 15px;
+            background: #f8fafc;
+            border: 1px solid #e6edf5;
+            border-radius: 8px;
+        }
+
+        .toolbar label {
+            font-weight: 600;
+            color: #163c6d;
+        }
+
+        .toolbar input[type="time"] {
+            padding: 6px 10px;
+            border: 1px solid #d1d8e2;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #163c6d;
+            background: #ffffff;
+        }
+
+
+        /* =====================================================
            SELETOR DE COLUNAS
-        ========================= */
+        ===================================================== */
 
         .column-selector {
             display: flex;
@@ -240,9 +256,18 @@
             accent-color: #163c6d;
         }
 
-        /* =========================
+
+        /* =====================================================
            TABELA
-        ========================= */
+        ===================================================== */
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 8px;
+        }
 
         table {
             width: 100%;
@@ -346,9 +371,10 @@
             color: #163c6d;
         }
 
-        /* =========================
+
+        /* =====================================================
            EXPORTAÇÃO
-        ========================= */
+        ===================================================== */
 
         .exporting .tabs-container,
         .exporting .toolbar,
@@ -359,7 +385,9 @@
             display: none !important;
         }
 
+
         @media print {
+
             .tabs-container,
             .toolbar,
             .column-selector,
@@ -373,28 +401,244 @@
                 max-width: 100%;
                 padding: 0;
             }
+
+            .table-responsive {
+                overflow: visible !important;
+            }
+
+            .table-responsive table {
+                min-width: 0 !important;
+            }
         }
 
+
+        /* =====================================================
+           RESPONSIVIDADE - TABLET
+        ===================================================== */
+
         @media (max-width: 800px) {
+
             table {
                 font-size: 12px;
             }
 
             th,
             td {
-                padding: 4px;
+                padding: 5px;
             }
 
             .editable.duration {
-                width: 50px;
+                width: 55px;
             }
 
             .editable.time {
-                width: 70px;
+                width: 80px;
             }
         }
+
+
+        /* =====================================================
+           RESPONSIVIDADE - CELULAR
+        ===================================================== */
+
+        @media (max-width: 600px) {
+
+            body {
+                margin: 8px;
+                padding: 0;
+            }
+
+            .container {
+                width: 100%;
+                padding: 12px;
+                border-radius: 8px;
+            }
+
+
+            /* CABEÇALHO */
+
+            .title-row {
+                gap: 10px;
+                align-items: center;
+            }
+
+            .logo-img {
+                height: 35px;
+            }
+
+            h1 {
+                font-size: 20px;
+                line-height: 1.15;
+            }
+
+
+            /* ABAS */
+
+            .tabs-container {
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 6px;
+            }
+
+            .tabs-bar {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                gap: 6px;
+            }
+
+            .tab-btn {
+                width: 100%;
+                justify-content: space-between;
+                padding: 10px 12px;
+                font-size: 13px;
+            }
+
+            .tabs-container > .btn-success {
+                width: 100%;
+            }
+
+
+            /* FERRAMENTAS */
+
+            .toolbar {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+                padding: 12px;
+            }
+
+            .toolbar label {
+                grid-column: 1 / -1;
+                font-size: 14px;
+            }
+
+            .toolbar input[type="time"] {
+                grid-column: 1 / -1;
+                width: 100%;
+                height: 40px;
+                font-size: 16px;
+            }
+
+            .toolbar .btn {
+                width: 100%;
+                min-height: 42px;
+                padding: 7px 5px;
+                font-size: 12px;
+            }
+
+
+            /* SELETOR DE COLUNAS */
+
+            .column-selector {
+                gap: 10px;
+                padding: 12px;
+            }
+
+            .column-selector .cs-title {
+                width: 100%;
+                margin-bottom: 2px;
+            }
+
+            .column-selector label {
+                font-size: 13px;
+            }
+
+
+            /* TABELA */
+
+            .table-responsive {
+                width: 100%;
+                overflow-x: auto;
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .table-responsive table {
+                min-width: 760px;
+                font-size: 13px;
+            }
+
+            .table-responsive th,
+            .table-responsive td {
+                padding: 7px 5px;
+            }
+
+            .col-index {
+                width: 35px;
+            }
+
+            .col-event {
+                min-width: 190px;
+            }
+
+            .col-duration {
+                width: 85px;
+            }
+
+            .col-start,
+            .col-end {
+                width: 100px;
+            }
+
+            .col-delay {
+                width: 100px;
+            }
+
+            .col-actions {
+                width: 75px;
+            }
+
+            .editable.time {
+                width: 90px;
+            }
+
+            .editable.duration {
+                width: 65px;
+            }
+
+            .move-btn {
+                font-size: 15px;
+                padding: 0 2px;
+            }
+
+            .btn-danger {
+                padding: 5px 8px;
+            }
+        }
+
+
+        /* =====================================================
+           CELULAR MUITO PEQUENO
+        ===================================================== */
+
+        @media (max-width: 380px) {
+
+            .container {
+                padding: 8px;
+            }
+
+            h1 {
+                font-size: 18px;
+            }
+
+            .toolbar {
+                grid-template-columns: 1fr;
+            }
+
+            .toolbar .btn {
+                grid-column: 1;
+            }
+
+            .column-selector {
+                gap: 8px;
+            }
+        }
+
     </style>
 </head>
+
 
 <body>
 
@@ -402,9 +646,9 @@
 
     <div id="export-wrapper">
 
-        <!-- =========================
+        <!-- =================================================
              CABEÇALHO
-        ========================= -->
+        ================================================= -->
 
         <div class="header-wrapper">
 
@@ -422,9 +666,14 @@
 
             </div>
 
+
             <div class="tabs-container">
 
-                <div id="tabsBar" class="tabs-bar"></div>
+                <div
+                    id="tabsBar"
+                    class="tabs-bar"
+                ></div>
+
 
                 <button
                     class="btn btn-success"
@@ -437,15 +686,17 @@
 
         </div>
 
-        <!-- =========================
+
+        <!-- =================================================
              FERRAMENTAS
-        ========================= -->
+        ================================================= -->
 
         <div class="toolbar">
 
             <label>
                 Início do evento:
             </label>
+
 
             <input
                 type="time"
@@ -454,12 +705,14 @@
                 step="1"
             >
 
+
             <button
                 class="btn btn-primary"
                 onclick="addEvent()"
             >
                 ➕ Adicionar evento
             </button>
+
 
             <button
                 class="btn btn-secondary"
@@ -468,12 +721,14 @@
                 🔄 Restaurar exemplo
             </button>
 
+
             <button
                 class="btn btn-warning"
                 onclick="resetAllData()"
             >
                 ⚠️ Resetar tudo
             </button>
+
 
             <button
                 class="btn btn-success"
@@ -482,12 +737,14 @@
                 🖼️ Exportar JPEG
             </button>
 
+
             <button
                 class="btn btn-success"
                 onclick="exportToPDF()"
             >
                 📄 Exportar PDF
             </button>
+
 
             <button
                 class="btn btn-success"
@@ -498,18 +755,20 @@
 
         </div>
 
-        <!-- =========================
+
+        <!-- =================================================
              SELETOR DE COLUNAS
-        ========================= -->
+        ================================================= -->
 
         <div
             class="column-selector"
             id="columnSelector"
         ></div>
 
-        <!-- =========================
+
+        <!-- =================================================
              TABELA
-        ========================= -->
+        ================================================= -->
 
         <div id="tableContainer"></div>
 
@@ -520,26 +779,37 @@
 
 <script>
 
+
     // =========================================================
     // UTILITÁRIOS DE TEMPO
     // =========================================================
 
     function toSeconds(val) {
 
-        if (!val) return null;
+        if (!val) {
+            return null;
+        }
 
         if (typeof val === 'number') {
             return val;
         }
 
-        const parts = val.split(':').map(Number);
+        const parts =
+            val.split(':').map(Number);
+
+        if (parts.some(isNaN)) {
+            return null;
+        }
 
         if (parts.length === 1) {
             return parts[0] * 3600;
         }
 
         if (parts.length === 2) {
-            return parts[0] * 3600 + parts[1] * 60;
+            return (
+                parts[0] * 3600 +
+                parts[1] * 60
+            );
         }
 
         if (parts.length === 3) {
@@ -556,41 +826,70 @@
 
     function toHHMMSS(sec) {
 
-        if (sec == null || isNaN(sec)) {
+        if (
+            sec == null ||
+            isNaN(sec)
+        ) {
             return '';
         }
 
-        const sign = sec < 0 ? '-' : '';
-        const abs = Math.abs(sec);
+        const sign =
+            sec < 0 ? '-' : '';
 
-        const h = Math.floor(abs / 3600);
+        const abs =
+            Math.abs(sec);
 
-        const m = Math.floor(
-            (abs % 3600) / 60
+        const h =
+            Math.floor(abs / 3600);
+
+        const m =
+            Math.floor(
+                (abs % 3600) / 60
+            );
+
+        const s =
+            Math.floor(abs % 60);
+
+        return (
+            sign +
+            String(h).padStart(2, '0') +
+            ':' +
+            String(m).padStart(2, '0') +
+            ':' +
+            String(s).padStart(2, '0')
         );
-
-        const s = Math.floor(abs % 60);
-
-        return `${sign}${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
     }
 
 
     function toHHMM(sec) {
 
-        if (sec == null || isNaN(sec)) {
+        if (
+            sec == null ||
+            isNaN(sec)
+        ) {
             return '';
         }
 
-        const sign = sec < 0 ? '-' : '';
-        const abs = Math.abs(sec);
+        const sign =
+            sec < 0 ? '-' : '';
 
-        const h = Math.floor(abs / 3600);
+        const abs =
+            Math.abs(sec);
 
-        const m = Math.floor(
-            (abs % 3600) / 60
+        const h =
+            Math.floor(abs / 3600);
+
+        const m =
+            Math.floor(
+                (abs % 3600) / 60
+            );
+
+        return (
+            sign +
+            String(h).padStart(2, '0') +
+            ':' +
+            String(m).padStart(2, '0')
         );
-
-        return `${sign}${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
     }
 
 
@@ -916,28 +1215,39 @@
 
 
     // =========================================================
-    // PERSISTÊNCIA E CONFIGURAÇÃO DE COLUNAS
+    // PERSISTÊNCIA DAS COLUNAS
     // =========================================================
 
     function loadExportColumns() {
 
-        const raw = localStorage.getItem(
-            'programacao_eventos_fgh_export_cols'
-        );
+        const raw =
+            localStorage.getItem(
+                'programacao_eventos_fgh_export_cols'
+            );
+
 
         if (raw) {
 
             try {
 
-                exportColumns = JSON.parse(raw);
+                exportColumns =
+                    JSON.parse(raw);
 
-                EXPORTABLE_COLUMNS.forEach(c => {
 
-                    if (!(c.key in exportColumns)) {
-                        exportColumns[c.key] = true;
+                EXPORTABLE_COLUMNS.forEach(
+                    c => {
+
+                        if (
+                            !(c.key in exportColumns)
+                        ) {
+
+                            exportColumns[c.key] =
+                                true;
+                        }
+
                     }
+                );
 
-                });
 
                 return;
 
@@ -945,9 +1255,15 @@
 
         }
 
-        EXPORTABLE_COLUMNS.forEach(c => {
-            exportColumns[c.key] = true;
-        });
+
+        EXPORTABLE_COLUMNS.forEach(
+            c => {
+
+                exportColumns[c.key] =
+                    true;
+
+            }
+        );
     }
 
 
@@ -962,85 +1278,171 @@
 
     function renderColumnSelector() {
 
-        const el = document.getElementById(
-            'columnSelector'
-        );
+        const el =
+            document.getElementById(
+                'columnSelector'
+            );
+
 
         let html =
             '<span class="cs-title">Colunas a exportar:</span>';
 
-        EXPORTABLE_COLUMNS.forEach(c => {
 
-            const checked =
-                exportColumns[c.key]
-                    ? 'checked'
-                    : '';
+        EXPORTABLE_COLUMNS.forEach(
+            c => {
 
-            html += `
-                <label>
-                    <input
-                        type="checkbox"
-                        ${checked}
-                        onchange="onExportColumnToggle('${c.key}', this.checked)"
-                    >
-                    ${c.label}
-                </label>
-            `;
-        });
+                const checked =
+                    exportColumns[c.key]
+                        ? 'checked'
+                        : '';
 
-        el.innerHTML = html;
+
+                html += `
+                    <label>
+                        <input
+                            type="checkbox"
+                            ${checked}
+                            onchange="onExportColumnToggle('${c.key}', this.checked)"
+                        >
+                        ${c.label}
+                    </label>
+                `;
+
+            }
+        );
+
+
+        el.innerHTML =
+            html;
     }
 
 
-    function onExportColumnToggle(key, checked) {
+    function onExportColumnToggle(
+        key,
+        checked
+    ) {
 
-        exportColumns[key] = checked;
+        exportColumns[key] =
+            checked;
 
         saveExportColumns();
     }
 
 
-    function applyExportColumnVisibility(apply) {
+    function applyExportColumnVisibility(
+        apply
+    ) {
 
-        const table = document.querySelector(
-            '#tableContainer table'
+        const table =
+            document.querySelector(
+                '#tableContainer table'
+            );
+
+
+        if (!table) {
+            return;
+        }
+
+
+        EXPORTABLE_COLUMNS.forEach(
+            c => {
+
+                const hide =
+                    apply &&
+                    !exportColumns[c.key];
+
+
+                const ths =
+                    table.querySelectorAll(
+                        'th.' + c.className
+                    );
+
+
+                const tds =
+                    table.querySelectorAll(
+                        'td.' + c.className
+                    );
+
+
+                ths.forEach(
+                    th => {
+
+                        th.classList.toggle(
+                            'col-hidden',
+                            hide
+                        );
+
+                    }
+                );
+
+
+                tds.forEach(
+                    td => {
+
+                        td.classList.toggle(
+                            'col-hidden',
+                            hide
+                        );
+
+                    }
+                );
+
+            }
         );
+    }
 
-        if (!table) return;
 
-        EXPORTABLE_COLUMNS.forEach(c => {
+    // =========================================================
+    // PERSISTÊNCIA DA ABA ATUAL
+    // =========================================================
 
-            const hide =
-                apply &&
-                !exportColumns[c.key];
+    function saveCurrentTab() {
 
-            const ths = table.querySelectorAll(
-                'th.' + c.className
+        localStorage.setItem(
+            'programacao_eventos_fgh_current_tab',
+            String(data.currentTab)
+        );
+    }
+
+
+    function loadCurrentTab() {
+
+        const savedTab =
+            localStorage.getItem(
+                'programacao_eventos_fgh_current_tab'
             );
 
-            const tds = table.querySelectorAll(
-                'td.' + c.className
+
+        if (
+            savedTab === null
+        ) {
+
+            return;
+        }
+
+
+        const index =
+            parseInt(
+                savedTab,
+                10
             );
 
-            ths.forEach(th => {
 
-                th.classList.toggle(
-                    'col-hidden',
-                    hide
-                );
+        if (
+            !isNaN(index) &&
+            index >= 0 &&
+            index < data.abas.length
+        ) {
 
-            });
+            data.currentTab =
+                index;
 
-            tds.forEach(td => {
+        } else {
 
-                td.classList.toggle(
-                    'col-hidden',
-                    hide
-                );
-
-            });
-
-        });
+            // Se a aba salva não existir mais,
+            // volta para a primeira.
+            data.currentTab = 0;
+        }
     }
 
 
@@ -1048,14 +1450,17 @@
     // INTEGRAÇÃO COM GITHUB
     // =========================================================
 
-    const GITHUB_OWNER = 'caiomalbuquerque';
+    const GITHUB_OWNER =
+        'caiomalbuquerque';
 
     const GITHUB_REPO =
         'programacao_de_eventos';
 
-    const GITHUB_BRANCH = 'main';
+    const GITHUB_BRANCH =
+        'main';
 
-    const GITHUB_FILE_PATH = 'dados.json';
+    const GITHUB_FILE_PATH =
+        'dados.json';
 
 
     async function loadDataFromGitHub() {
@@ -1063,18 +1468,24 @@
         const url =
             `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${GITHUB_FILE_PATH}`;
 
+
         try {
 
             const response =
                 await fetch(
-                    url + '?t=' + Date.now()
+                    url +
+                    '?t=' +
+                    Date.now()
                 );
 
+
             if (!response.ok) {
+
                 throw new Error(
                     'Arquivo ainda não existe'
                 );
             }
+
 
             return await response.json();
 
@@ -1085,6 +1496,7 @@
                 e
             );
 
+
             return null;
         }
     }
@@ -1092,16 +1504,23 @@
 
     async function saveDataToGitHub() {
 
-        const token = prompt(
-            'Cole seu token de acesso do GitHub para salvar:'
-        );
+        const token =
+            prompt(
+                'Cole seu token de acesso do GitHub para salvar:'
+            );
 
-        if (!token) return;
+
+        if (!token) {
+            return;
+        }
+
 
         const apiUrl =
             `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${GITHUB_FILE_PATH}`;
 
-        let sha = undefined;
+
+        let sha;
+
 
         try {
 
@@ -1117,12 +1536,14 @@
                     }
                 );
 
+
             if (getResp.ok) {
 
                 const fileInfo =
                     await getResp.json();
 
-                sha = fileInfo.sha;
+                sha =
+                    fileInfo.sha;
             }
 
         } catch (e) {
@@ -1149,10 +1570,11 @@
             message:
                 `Atualiza dados - ${new Date().toLocaleString('pt-BR')}`,
 
-            content: content,
+            content:
+                content,
 
-            branch: GITHUB_BRANCH
-
+            branch:
+                GITHUB_BRANCH
         };
 
 
@@ -1170,6 +1592,7 @@
                         method: 'PUT',
 
                         headers: {
+
                             Authorization:
                                 `Bearer ${token}`,
 
@@ -1187,6 +1610,7 @@
 
                 const err =
                     await putResp.json();
+
 
                 throw new Error(
                     err.message ||
@@ -1223,14 +1647,19 @@
 
             let maxId = 0;
 
+
             remote.abas.forEach(
                 aba => {
 
                     aba.eventos.forEach(
                         e => {
 
-                            if (e.id > maxId) {
-                                maxId = e.id;
+                            if (
+                                e.id > maxId
+                            ) {
+
+                                maxId =
+                                    e.id;
                             }
 
                         }
@@ -1240,15 +1669,24 @@
             );
 
 
-            nextId = maxId + 1;
+            nextId =
+                maxId + 1;
 
-            data = remote;
+
+            data =
+                remote;
+
 
             cacheDataLocally();
+
 
             return;
         }
 
+
+        // =====================================================
+        // LOCAL STORAGE
+        // =====================================================
 
         const raw =
             localStorage.getItem(
@@ -1263,7 +1701,9 @@
                 const parsed =
                     JSON.parse(raw);
 
+
                 let maxId = 0;
+
 
                 parsed.abas.forEach(
                     aba => {
@@ -1271,8 +1711,12 @@
                         aba.eventos.forEach(
                             e => {
 
-                                if (e.id > maxId) {
-                                    maxId = e.id;
+                                if (
+                                    e.id > maxId
+                                ) {
+
+                                    maxId =
+                                        e.id;
                                 }
 
                             }
@@ -1282,14 +1726,23 @@
                 );
 
 
-                nextId = maxId + 1;
+                nextId =
+                    maxId + 1;
 
-                data = parsed;
+
+                data =
+                    parsed;
+
 
                 return;
 
-            } catch (e) {}
+            } catch (e) {
 
+                console.warn(
+                    'Erro ao carregar dados locais.',
+                    e
+                );
+            }
         }
 
 
@@ -1328,13 +1781,17 @@
 
             ],
 
-            currentTab: 0
+            currentTab:
+                0
         };
 
 
         data.abas[1].eventos.forEach(
             e => {
-                e.id = nextId++;
+
+                e.id =
+                    nextId++;
+
             }
         );
 
@@ -1355,55 +1812,66 @@
     function saveData() {
 
         cacheDataLocally();
+
+        // A aba também fica registrada
+        saveCurrentTab();
     }
 
 
     // =========================================================
-    // CÁLCULOS
+    // CÁLCULO DOS EVENTOS
     // =========================================================
 
     /*
-     * ========================================================
-     * NOVA LÓGICA DE HORÁRIOS
-     * ========================================================
      *
-     * 1. O primeiro evento começa no horário definido
-     *    em "Início do evento".
+     * REGRA PRINCIPAL:
      *
-     * 2. Se o evento anterior tiver um TÉRMINO informado,
-     *    o próximo evento começa EXATAMENTE nesse horário.
+     * Evento 1:
+     *   Início = horário inicial da programação
      *
-     *    Exemplo:
+     * Evento 2 em diante:
      *
-     *    Evento 1
-     *    Início: 08:00
-     *    Término: 08:13
+     *   Se o evento anterior tem Término:
+     *       Início = Término anterior
      *
-     *    Evento 2
-     *    Início: 08:13
+     *   Se não tem Término:
+     *       Início = Início anterior + duração anterior
      *
-     * 3. Se o evento anterior ainda não tiver término,
-     *    o próximo início é calculado pela duração.
      *
-     * 4. O horário programado continua sendo calculado
-     *    separadamente para que o ATRASO continue funcionando.
+     * O término programado continua sendo:
+     *
+     *   Início programado + duração
+     *
+     * O atraso continua sendo:
+     *
+     *   Término real - Término programado
+     *
      */
 
-    function computeEvents(eventos, startSec) {
+    function computeEvents(
+        eventos,
+        startSec
+    ) {
 
         const results = [];
 
 
-        for (let i = 0; i < eventos.length; i++) {
+        for (
+            let i = 0;
+            i < eventos.length;
+            i++
+        ) {
 
-            const item = eventos[i];
+            const item =
+                eventos[i];
+
 
             const dur =
                 item.duration || 0;
 
 
             // =================================================
-            // HORÁRIO PROGRAMADO
+            // INÍCIO PROGRAMADO
             // =================================================
 
             let startProg;
@@ -1411,7 +1879,8 @@
 
             if (i === 0) {
 
-                startProg = startSec;
+                startProg =
+                    startSec;
 
             } else {
 
@@ -1421,15 +1890,18 @@
 
 
             const endProg =
-                startProg + dur;
+                startProg +
+                dur;
 
 
             // =================================================
-            // TÉRMINO REAL DIGITADO
+            // TÉRMINO REAL
             // =================================================
 
             const realEndVal =
-                toSeconds(item.realEnd);
+                toSeconds(
+                    item.realEnd
+                );
 
 
             // =================================================
@@ -1441,8 +1913,8 @@
 
             if (i === 0) {
 
-                // Primeiro evento
-                startReal = startSec;
+                startReal =
+                    startSec;
 
             } else {
 
@@ -1451,11 +1923,10 @@
 
 
                 /*
-                 * AQUI ESTÁ A PRINCIPAL ALTERAÇÃO.
-                 *
-                 * Se o evento anterior possui término,
-                 * o início deste evento será exatamente
-                 * igual ao término anterior.
+                 * Se o evento anterior terminou
+                 * em um horário informado pelo usuário,
+                 * esse horário vira automaticamente
+                 * o início deste evento.
                  */
 
                 if (
@@ -1468,9 +1939,8 @@
                 } else {
 
                     /*
-                     * Caso o evento anterior ainda não
-                     * tenha término digitado, calculamos
-                     * normalmente pela duração.
+                     * Se ainda não temos um término real,
+                     * usamos duração.
                      */
 
                     startReal =
@@ -1487,29 +1957,15 @@
             let delay = null;
 
 
-            if (realEndVal !== null) {
-
-                /*
-                 * O atraso é calculado comparando o término
-                 * real com o término programado.
-                 *
-                 * Exemplo:
-                 *
-                 * Programado: 08:10
-                 * Real:       08:13
-                 *
-                 * Atraso: +00:03
-                 */
+            if (
+                realEndVal !== null
+            ) {
 
                 delay =
                     realEndVal -
                     endProg;
             }
 
-
-            // =================================================
-            // RESULTADO
-            // =================================================
 
             results.push({
 
@@ -1540,6 +1996,41 @@
 
 
     // =========================================================
+    // ESCAPAR HTML
+    // =========================================================
+
+    function escapeHtml(value) {
+
+        if (value == null) {
+            return '';
+        }
+
+
+        return String(value)
+            .replace(
+                /&/g,
+                '&amp;'
+            )
+            .replace(
+                /</g,
+                '&lt;'
+            )
+            .replace(
+                />/g,
+                '&gt;'
+            )
+            .replace(
+                /"/g,
+                '&quot;'
+            )
+            .replace(
+                /'/g,
+                '&#039;'
+            );
+    }
+
+
+    // =========================================================
     // RENDERIZAÇÃO
     // =========================================================
 
@@ -1550,10 +2041,12 @@
                 'tabsBar'
             );
 
+
         const container =
             document.getElementById(
                 'tableContainer'
             );
+
 
         const startInput =
             document.getElementById(
@@ -1584,7 +2077,9 @@
                         onclick="switchTab(${idx})"
                     >
 
-                        ${aba.nome}
+                        <span>
+                            ${escapeHtml(aba.nome)}
+                        </span>
 
                         <span
                             class="tab-actions"
@@ -1592,12 +2087,14 @@
 
                             <button
                                 onclick="event.stopPropagation(); renameTab(${idx})"
+                                title="Renomear"
                             >
                                 ✎
                             </button>
 
                             <button
                                 onclick="event.stopPropagation(); deleteTab(${idx})"
+                                title="Excluir"
                             >
                                 ✕
                             </button>
@@ -1620,20 +2117,26 @@
         // =====================================================
 
         const aba =
-            data.abas[data.currentTab];
+            data.abas[
+                data.currentTab
+            ];
 
 
-        if (!aba) return;
+        if (!aba) {
+            return;
+        }
 
 
         startInput.value =
-            aba.startTime || '08:00';
+            aba.startTime ||
+            '08:00';
 
 
         const startSec =
             toSeconds(
                 startInput.value
-            ) || 8 * 3600;
+            ) ||
+            8 * 3600;
 
 
         const computed =
@@ -1649,45 +2152,48 @@
 
         let tableHtml = `
 
-            <table>
+            <div class="table-responsive">
 
-                <thead>
+                <table>
 
-                    <tr>
+                    <thead>
 
-                        <th class="col-index">
-                            #
-                        </th>
+                        <tr>
 
-                        <th class="col-event">
-                            Evento
-                        </th>
+                            <th class="col-index">
+                                #
+                            </th>
 
-                        <th class="col-duration">
-                            Duração (hh:mm)
-                        </th>
+                            <th class="col-event">
+                                Evento
+                            </th>
 
-                        <th class="col-start">
-                            Início
-                        </th>
+                            <th class="col-duration">
+                                Duração (hh:mm)
+                            </th>
 
-                        <th class="col-end">
-                            Término
-                        </th>
+                            <th class="col-start">
+                                Início
+                            </th>
 
-                        <th class="col-delay">
-                            Atraso
-                        </th>
+                            <th class="col-end">
+                                Término
+                            </th>
 
-                        <th class="col-actions">
-                            Ações
-                        </th>
+                            <th class="col-delay">
+                                Atraso
+                            </th>
 
-                    </tr>
+                            <th class="col-actions">
+                                Ações
+                            </th>
 
-                </thead>
+                        </tr>
 
-                <tbody>
+                    </thead>
+
+                    <tbody>
+
         `;
 
 
@@ -1696,7 +2202,9 @@
 
                 const delayStr =
                     row.delay !== null
-                        ? toHHMMSS(row.delay)
+                        ? toHHMMSS(
+                            row.delay
+                        )
                         : '';
 
 
@@ -1726,7 +2234,7 @@
                                 class="editable"
                                 value="${escapeHtml(row.name)}"
                                 onchange="updateEvent(${idx}, 'name', this.value)"
-                            />
+                            >
 
                         </td>
 
@@ -1738,7 +2246,7 @@
                                 class="editable duration"
                                 value="${toHHMM(row.duration)}"
                                 onchange="updateEvent(${idx}, 'duration', this.value)"
-                            />
+                            >
 
                         </td>
 
@@ -1758,12 +2266,14 @@
                                 value="${row.realEnd || ''}"
                                 placeholder="HH:MM:SS"
                                 onchange="updateEvent(${idx}, 'realEnd', this.value)"
-                            />
+                            >
 
                         </td>
 
 
-                        <td class="col-delay ${delayClass}">
+                        <td
+                            class="col-delay ${delayClass}"
+                        >
 
                             ${delayStr}
 
@@ -1791,6 +2301,7 @@
                             <button
                                 class="btn btn-danger"
                                 onclick="removeEvent(${idx})"
+                                title="Excluir"
                             >
                                 ✕
                             </button>
@@ -1806,9 +2317,11 @@
 
         tableHtml += `
 
-                </tbody>
+                    </tbody>
 
-            </table>
+                </table>
+
+            </div>
 
         `;
 
@@ -1818,25 +2331,6 @@
 
 
         saveData();
-    }
-
-
-    // =========================================================
-    // SEGURANÇA PARA TEXTO DOS EVENTOS
-    // =========================================================
-
-    function escapeHtml(value) {
-
-        if (value == null) {
-            return '';
-        }
-
-        return String(value)
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;')
-            .replace(/'/g, '&#039;');
     }
 
 
@@ -1866,7 +2360,9 @@
         // DURAÇÃO
         // =====================================================
 
-        if (field === 'duration') {
+        if (
+            field === 'duration'
+        ) {
 
             const sec =
                 toSeconds(value);
@@ -1879,7 +2375,8 @@
 
                 aba.eventos[
                     index
-                ].duration = sec;
+                ].duration =
+                    sec;
 
             } else {
 
@@ -1887,9 +2384,10 @@
                     'Duração inválida. Use HH:MM ou HH:MM:SS'
                 );
 
+                render();
+
                 return;
             }
-
         }
 
 
@@ -1907,7 +2405,8 @@
 
                 aba.eventos[
                     index
-                ].realEnd = '';
+                ].realEnd =
+                    '';
 
             } else {
 
@@ -1930,6 +2429,8 @@
                         'Hora inválida. Use HH:MM:SS'
                     );
 
+                    render();
+
                     return;
                 }
             }
@@ -1944,7 +2445,8 @@
 
             aba.eventos[
                 index
-            ][field] = value;
+            ][field] =
+                value;
         }
 
 
@@ -1962,7 +2464,8 @@
             .eventos
             .push({
 
-                id: nextId++,
+                id:
+                    nextId++,
 
                 name:
                     'Novo evento',
@@ -2041,7 +2544,8 @@
 
         if (
             newIndex < 0 ||
-            newIndex >= aba.eventos.length
+            newIndex >=
+                aba.eventos.length
         ) {
 
             return;
@@ -2095,7 +2599,10 @@
 
         aba.eventos.forEach(
             e => {
-                e.id = nextId++;
+
+                e.id =
+                    nextId++;
+
             }
         );
 
@@ -2113,12 +2620,17 @@
         data.currentTab =
             index;
 
+
+        // Salva imediatamente a aba escolhida
+        saveCurrentTab();
+
+
         render();
     }
 
 
     // =========================================================
-    // NOVA ABA
+    // ADICIONAR ABA
     // =========================================================
 
     function addTab() {
@@ -2137,7 +2649,7 @@
 
         const isUpa =
             confirm(
-                'Usar modelo de UPA/UPAEs? (Clique em OK para UPA, Cancelar para Hospitais)'
+                'Usar modelo de UPA/UPAEs? (OK = UPA, Cancelar = Hospitais)'
             );
 
 
@@ -2161,17 +2673,27 @@
         });
 
 
+        const newIndex =
+            data.abas.length - 1;
+
+
         data.abas[
-            data.abas.length - 1
+            newIndex
         ].eventos.forEach(
             e => {
-                e.id = nextId++;
+
+                e.id =
+                    nextId++;
+
             }
         );
 
 
         data.currentTab =
-            data.abas.length - 1;
+            newIndex;
+
+
+        saveCurrentTab();
 
 
         render();
@@ -2199,13 +2721,14 @@
             data.abas[index].nome =
                 newName.trim();
 
+
             render();
         }
     }
 
 
     // =========================================================
-    // DELETAR ABA
+    // EXCLUIR ABA
     // =========================================================
 
     function deleteTab(index) {
@@ -2238,14 +2761,37 @@
         );
 
 
+        /*
+         * Ajusta a aba atual.
+         */
+
         if (
-            data.currentTab >=
-            data.abas.length
+            data.currentTab === index
         ) {
 
-            data.currentTab =
-                data.abas.length - 1;
+            if (
+                index >=
+                data.abas.length
+            ) {
+
+                data.currentTab =
+                    data.abas.length - 1;
+
+            } else {
+
+                data.currentTab =
+                    index;
+            }
+
+        } else if (
+            data.currentTab > index
+        ) {
+
+            data.currentTab--;
         }
+
+
+        saveCurrentTab();
 
 
         render();
@@ -2275,6 +2821,11 @@
 
         localStorage.removeItem(
             'programacao_eventos_fgh_export_cols'
+        );
+
+
+        localStorage.removeItem(
+            'programacao_eventos_fgh_current_tab'
         );
 
 
@@ -2317,56 +2868,64 @@
             {
                 scale: 2,
                 useCORS: true,
-                backgroundColor: '#ffffff'
+                backgroundColor:
+                    '#ffffff'
             }
         )
-        .then(canvas => {
+        .then(
+            canvas => {
 
-            const link =
-                document.createElement('a');
+                const link =
+                    document.createElement(
+                        'a'
+                    );
 
 
-            link.download =
-                `programacao_${data.abas[data.currentTab].nome}.jpg`;
+                link.download =
+                    `programacao_${data.abas[data.currentTab].nome}.jpg`;
 
 
-            link.href =
-                canvas.toDataURL(
-                    'image/jpeg',
-                    0.95
+                link.href =
+                    canvas.toDataURL(
+                        'image/jpeg',
+                        0.95
+                    );
+
+
+                link.click();
+
+
+                wrapper.classList.remove(
+                    'exporting'
                 );
 
 
-            link.click();
+                applyExportColumnVisibility(
+                    false
+                );
+
+            }
+        )
+        .catch(
+            err => {
+
+                alert(
+                    'Erro ao gerar imagem: ' +
+                    err
+                );
 
 
-            wrapper.classList.remove(
-                'exporting'
-            );
+                wrapper.classList.remove(
+                    'exporting'
+                );
 
 
-            applyExportColumnVisibility(
-                false
-            );
+                applyExportColumnVisibility(
+                    false
+                );
 
-        })
-        .catch(err => {
-
-            alert(
-                'Erro ao gerar imagem: ' +
-                err
-            );
-
-
-            wrapper.classList.remove(
-                'exporting'
-            );
-
-
-            applyExportColumnVisibility(
-                false
-            );
-        });
+            }
+        );
     }
 
 
@@ -2422,6 +2981,20 @@
 
 
     // =========================================================
+    // SALVAR ABA ANTES DE SAIR
+    // =========================================================
+
+    window.addEventListener(
+        'beforeunload',
+        function () {
+
+            saveCurrentTab();
+
+        }
+    );
+
+
+    // =========================================================
     // INICIALIZAÇÃO
     // =========================================================
 
@@ -2429,18 +3002,26 @@
         'DOMContentLoaded',
         async () => {
 
+            // Primeiro carrega os dados
             await loadData();
 
 
+            // Depois recupera a última aba utilizada
+            loadCurrentTab();
+
+
+            // Configura as colunas
             loadExportColumns();
 
 
             renderColumnSelector();
 
 
+            // Renderiza a aplicação
             render();
 
 
+            // Alteração do horário inicial
             document
                 .getElementById('startTime')
                 .addEventListener(
@@ -2451,7 +3032,9 @@
                             .startTime =
                             this.value;
 
+
                         render();
+
                     }
                 );
 
