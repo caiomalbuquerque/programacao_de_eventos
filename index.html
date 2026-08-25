@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +30,6 @@
             box-shadow: 0 4px 16px rgba(22, 60, 109, 0.08);
             border: 1px solid #e6edf5;
         }
-
 
         /* =====================================================
            CABEÇALHO
@@ -82,6 +81,7 @@
             font-size: 14px;
             color: #163c6d;
             transition: all 0.2s ease;
+
             display: flex;
             align-items: center;
             gap: 8px;
@@ -102,14 +102,14 @@
             background: #0e2b4f;
         }
 
-        .tab-btn .tab-actions {
+        .tab-actions {
             font-size: 12px;
             display: flex;
             align-items: center;
             gap: 4px;
         }
 
-        .tab-btn .tab-actions button {
+        .tab-actions button {
             background: transparent;
             border: none;
             cursor: pointer;
@@ -117,7 +117,6 @@
             font-weight: bold;
             padding: 0;
         }
-
 
         /* =====================================================
            BOTÕES
@@ -185,7 +184,6 @@
             background: #e0a800;
         }
 
-
         /* =====================================================
            FERRAMENTAS
         ===================================================== */
@@ -196,7 +194,9 @@
             align-items: center;
             margin-bottom: 15px;
             flex-wrap: wrap;
+
             padding: 12px 15px;
+
             background: #f8fafc;
             border: 1px solid #e6edf5;
             border-radius: 8px;
@@ -216,7 +216,6 @@
             background: #ffffff;
         }
 
-
         /* =====================================================
            SELETOR DE COLUNAS
         ===================================================== */
@@ -226,8 +225,10 @@
             gap: 16px;
             align-items: center;
             flex-wrap: wrap;
+
             margin-bottom: 15px;
             padding: 12px 15px;
+
             background: #eef5fb;
             border: 1px solid #cfe2ff;
             border-radius: 8px;
@@ -243,8 +244,10 @@
             display: flex;
             align-items: center;
             gap: 6px;
+
             font-weight: 500;
             font-size: 14px;
+
             cursor: pointer;
             color: #163c6d;
         }
@@ -256,17 +259,13 @@
             accent-color: #163c6d;
         }
 
-
         /* =====================================================
            TABELA
         ===================================================== */
 
-        .table-responsive {
+        .table-wrapper {
             width: 100%;
             overflow-x: auto;
-            overflow-y: hidden;
-            -webkit-overflow-scrolling: touch;
-            border-radius: 8px;
         }
 
         table {
@@ -274,9 +273,13 @@
             border-collapse: collapse;
             font-size: 14px;
             background: white;
+
             border-radius: 8px;
             overflow: hidden;
+
             border: 1px solid #dbe0e5;
+
+            table-layout: fixed;
         }
 
         th,
@@ -302,13 +305,52 @@
             background: #eef5fb;
         }
 
+        /* Larguras das colunas */
+
+        .col-index {
+            width: 45px;
+        }
+
+        .col-event {
+            width: 28%;
+        }
+
+        .col-duration {
+            width: 105px;
+        }
+
+        .col-start {
+            width: 105px;
+        }
+
+        .col-end {
+            width: 110px;
+        }
+
+        .col-delay {
+            width: 105px;
+        }
+
+        .col-actions {
+            width: 100px;
+        }
+
+        /* =====================================================
+           CAMPOS EDITÁVEIS
+        ===================================================== */
+
         .editable {
             width: 100%;
+
             border: 1px solid transparent;
             background: transparent;
+
             text-align: center;
+
             font: inherit;
+
             padding: 4px;
+
             border-radius: 4px;
         }
 
@@ -323,8 +365,31 @@
         }
 
         .editable.time {
-            width: 90px;
+            width: 100%;
         }
+
+        /* =====================================================
+           QUEBRA DE TEXTO DA COLUNA EVENTO
+        ===================================================== */
+
+        .event-cell {
+            word-wrap: break-word;
+            overflow-wrap: anywhere;
+            white-space: normal;
+        }
+
+        .event-input {
+            width: 100%;
+            min-width: 0;
+
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+
+        /* =====================================================
+           CAMPOS CALCULADOS
+        ===================================================== */
 
         .calculated {
             background: transparent;
@@ -342,28 +407,18 @@
             font-weight: 700;
         }
 
-        .col-index {
-            width: 40px;
-        }
-
-        .col-actions {
-            width: 100px;
-        }
-
-        .col-event {
-            min-width: 180px;
-        }
-
-        .col-hidden {
-            display: none !important;
-        }
+        /* =====================================================
+           AÇÕES
+        ===================================================== */
 
         .move-btn {
             background: none;
             border: none;
             cursor: pointer;
+
             font-size: 16px;
             padding: 0 4px;
+
             color: #2b6ca3;
         }
 
@@ -371,6 +426,13 @@
             color: #163c6d;
         }
 
+        /* =====================================================
+           COLUNAS OCULTAS
+        ===================================================== */
+
+        .col-hidden {
+            display: none !important;
+        }
 
         /* =====================================================
            EXPORTAÇÃO
@@ -384,7 +446,6 @@
         .exporting .col-actions {
             display: none !important;
         }
-
 
         @media print {
 
@@ -401,65 +462,28 @@
                 max-width: 100%;
                 padding: 0;
             }
-
-            .table-responsive {
-                overflow: visible !important;
-            }
-
-            .table-responsive table {
-                min-width: 0 !important;
-            }
         }
 
-
         /* =====================================================
-           RESPONSIVIDADE - TABLET
+           CELULAR
         ===================================================== */
 
         @media (max-width: 800px) {
 
-            table {
-                font-size: 12px;
-            }
-
-            th,
-            td {
-                padding: 5px;
-            }
-
-            .editable.duration {
-                width: 55px;
-            }
-
-            .editable.time {
-                width: 80px;
-            }
-        }
-
-
-        /* =====================================================
-           RESPONSIVIDADE - CELULAR
-        ===================================================== */
-
-        @media (max-width: 600px) {
-
             body {
-                margin: 8px;
-                padding: 0;
+                margin: 0;
+                padding: 8px;
             }
 
             .container {
                 width: 100%;
-                padding: 12px;
+                padding: 10px;
                 border-radius: 8px;
             }
 
-
-            /* CABEÇALHO */
-
             .title-row {
-                gap: 10px;
-                align-items: center;
+                gap: 8px;
+                margin-bottom: 10px;
             }
 
             .logo-img {
@@ -467,178 +491,253 @@
             }
 
             h1 {
-                font-size: 20px;
-                line-height: 1.15;
+                font-size: 19px;
+                line-height: 1.2;
             }
 
-
-            /* ABAS */
+            /* Abas */
 
             .tabs-container {
-                display: flex;
-                flex-direction: column;
-                align-items: stretch;
-                gap: 6px;
+                display: block;
             }
 
             .tabs-bar {
                 display: flex;
                 flex-direction: column;
                 width: 100%;
-                gap: 6px;
+                gap: 5px;
+                margin-bottom: 8px;
             }
 
             .tab-btn {
                 width: 100%;
                 justify-content: space-between;
-                padding: 10px 12px;
+                padding: 7px 10px;
                 font-size: 13px;
             }
 
             .tabs-container > .btn-success {
-                width: 100%;
+                width: auto;
+                padding: 7px 12px;
             }
 
-
-            /* FERRAMENTAS */
+            /* Toolbar */
 
             .toolbar {
                 display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 8px;
-                padding: 12px;
+                grid-template-columns: 1fr;
+                gap: 7px;
+
+                padding: 10px;
+                margin-bottom: 10px;
             }
 
             .toolbar label {
-                grid-column: 1 / -1;
                 font-size: 14px;
             }
 
             .toolbar input[type="time"] {
-                grid-column: 1 / -1;
                 width: 100%;
-                height: 40px;
-                font-size: 16px;
+                height: 38px;
             }
 
             .toolbar .btn {
                 width: 100%;
-                min-height: 42px;
-                padding: 7px 5px;
+                min-height: 36px;
+            }
+
+            /* Colunas */
+
+            .column-selector {
+                gap: 9px;
+
+                padding: 9px;
+                margin-bottom: 10px;
+
                 font-size: 12px;
             }
 
-
-            /* SELETOR DE COLUNAS */
-
-            .column-selector {
-                gap: 10px;
-                padding: 12px;
+            .column-selector label {
+                font-size: 12px;
             }
 
             .column-selector .cs-title {
                 width: 100%;
-                margin-bottom: 2px;
             }
 
-            .column-selector label {
-                font-size: 13px;
-            }
+            /* Tabela */
 
-
-            /* TABELA */
-
-            .table-responsive {
+            table {
                 width: 100%;
-                overflow-x: auto;
-                overflow-y: hidden;
-                -webkit-overflow-scrolling: touch;
+                table-layout: fixed;
+                font-size: 11px;
             }
 
-            .table-responsive table {
-                min-width: 760px;
-                font-size: 13px;
+            th,
+            td {
+                padding: 5px 3px;
             }
 
-            .table-responsive th,
-            .table-responsive td {
-                padding: 7px 5px;
-            }
+            /* Coluna índice menor */
 
             .col-index {
-                width: 35px;
+                width: 25px;
             }
+
+            /* EVENTO MAIS ESTREITO */
 
             .col-event {
-                min-width: 190px;
+                width: 25%;
             }
+
+            /* Demais colunas */
 
             .col-duration {
-                width: 85px;
+                width: 14%;
             }
 
-            .col-start,
+            .col-start {
+                width: 15%;
+            }
+
             .col-end {
-                width: 100px;
+                width: 16%;
             }
 
             .col-delay {
-                width: 100px;
+                width: 16%;
             }
 
             .col-actions {
-                width: 75px;
+                width: 55px;
             }
 
+            /* Texto do evento quebra */
+
+            .event-cell {
+                white-space: normal;
+                overflow-wrap: anywhere;
+                word-break: break-word;
+                line-height: 1.2;
+            }
+
+            .event-input {
+                font-size: 11px;
+                padding: 2px;
+
+                white-space: normal;
+                overflow-wrap: anywhere;
+                word-break: break-word;
+            }
+
+            /* Horários */
+
             .editable.time {
-                width: 90px;
+                width: 100%;
+                font-size: 10px;
+                padding: 2px;
             }
 
             .editable.duration {
-                width: 65px;
+                width: 100%;
+                font-size: 10px;
+                padding: 2px;
             }
 
+            /* Botões */
+
             .move-btn {
-                font-size: 15px;
-                padding: 0 2px;
+                font-size: 13px;
+                padding: 0 1px;
             }
 
             .btn-danger {
-                padding: 5px 8px;
+                font-size: 10px;
+                padding: 3px 6px;
+            }
+
+            /* Evita números gigantes */
+
+            .calculated,
+            .atraso,
+            .adiantado {
+                font-size: 10px;
             }
         }
-
 
         /* =====================================================
            CELULAR MUITO PEQUENO
         ===================================================== */
 
-        @media (max-width: 380px) {
+        @media (max-width: 420px) {
+
+            body {
+                padding: 4px;
+            }
 
             .container {
-                padding: 8px;
+                padding: 7px;
             }
 
             h1 {
-                font-size: 18px;
+                font-size: 17px;
             }
 
-            .toolbar {
-                grid-template-columns: 1fr;
+            table {
+                font-size: 10px;
             }
 
-            .toolbar .btn {
-                grid-column: 1;
+            th,
+            td {
+                padding: 4px 2px;
             }
 
-            .column-selector {
-                gap: 8px;
+            .col-index {
+                width: 22px;
+            }
+
+            .col-event {
+                width: 24%;
+            }
+
+            .col-duration {
+                width: 14%;
+            }
+
+            .col-start {
+                width: 16%;
+            }
+
+            .col-end {
+                width: 16%;
+            }
+
+            .col-delay {
+                width: 16%;
+            }
+
+            .col-actions {
+                width: 48px;
+            }
+
+            .editable.time,
+            .editable.duration,
+            .event-input {
+                font-size: 9px;
+            }
+
+            .move-btn {
+                font-size: 11px;
+            }
+
+            .btn-danger {
+                font-size: 9px;
+                padding: 2px 5px;
             }
         }
 
     </style>
 </head>
-
 
 <body>
 
@@ -646,9 +745,9 @@
 
     <div id="export-wrapper">
 
-        <!-- =================================================
+        <!-- =====================================================
              CABEÇALHO
-        ================================================= -->
+        ===================================================== -->
 
         <div class="header-wrapper">
 
@@ -666,14 +765,9 @@
 
             </div>
 
-
             <div class="tabs-container">
 
-                <div
-                    id="tabsBar"
-                    class="tabs-bar"
-                ></div>
-
+                <div id="tabsBar" class="tabs-bar"></div>
 
                 <button
                     class="btn btn-success"
@@ -687,16 +781,15 @@
         </div>
 
 
-        <!-- =================================================
+        <!-- =====================================================
              FERRAMENTAS
-        ================================================= -->
+        ===================================================== -->
 
         <div class="toolbar">
 
             <label>
                 Início do evento:
             </label>
-
 
             <input
                 type="time"
@@ -705,14 +798,12 @@
                 step="1"
             >
 
-
             <button
                 class="btn btn-primary"
                 onclick="addEvent()"
             >
                 ➕ Adicionar evento
             </button>
-
 
             <button
                 class="btn btn-secondary"
@@ -721,14 +812,12 @@
                 🔄 Restaurar exemplo
             </button>
 
-
             <button
                 class="btn btn-warning"
                 onclick="resetAllData()"
             >
                 ⚠️ Resetar tudo
             </button>
-
 
             <button
                 class="btn btn-success"
@@ -737,14 +826,12 @@
                 🖼️ Exportar JPEG
             </button>
 
-
             <button
                 class="btn btn-success"
                 onclick="exportToPDF()"
             >
                 📄 Exportar PDF
             </button>
-
 
             <button
                 class="btn btn-success"
@@ -756,9 +843,9 @@
         </div>
 
 
-        <!-- =================================================
+        <!-- =====================================================
              SELETOR DE COLUNAS
-        ================================================= -->
+        ===================================================== -->
 
         <div
             class="column-selector"
@@ -766,11 +853,14 @@
         ></div>
 
 
-        <!-- =================================================
+        <!-- =====================================================
              TABELA
-        ================================================= -->
+        ===================================================== -->
 
-        <div id="tableContainer"></div>
+        <div
+            id="tableContainer"
+            class="table-wrapper"
+        ></div>
 
     </div>
 
@@ -779,887 +869,816 @@
 
 <script>
 
+/* ============================================================
+   UTILITÁRIOS DE TEMPO
+============================================================ */
 
-    // =========================================================
-    // UTILITÁRIOS DE TEMPO
-    // =========================================================
+function toSeconds(val) {
 
-    function toSeconds(val) {
+    if (!val) return null;
 
-        if (!val) {
-            return null;
-        }
+    if (typeof val === 'number') {
+        return val;
+    }
 
-        if (typeof val === 'number') {
-            return val;
-        }
+    const parts = val.split(':').map(Number);
 
-        const parts =
-            val.split(':').map(Number);
-
-        if (parts.some(isNaN)) {
-            return null;
-        }
-
-        if (parts.length === 1) {
-            return parts[0] * 3600;
-        }
-
-        if (parts.length === 2) {
-            return (
-                parts[0] * 3600 +
-                parts[1] * 60
-            );
-        }
-
-        if (parts.length === 3) {
-            return (
-                parts[0] * 3600 +
-                parts[1] * 60 +
-                parts[2]
-            );
-        }
-
+    if (parts.some(isNaN)) {
         return null;
     }
 
+    if (parts.length === 1) {
+        return parts[0] * 3600;
+    }
 
-    function toHHMMSS(sec) {
+    if (parts.length === 2) {
+        return parts[0] * 3600 + parts[1] * 60;
+    }
 
-        if (
-            sec == null ||
-            isNaN(sec)
-        ) {
-            return '';
-        }
-
-        const sign =
-            sec < 0 ? '-' : '';
-
-        const abs =
-            Math.abs(sec);
-
-        const h =
-            Math.floor(abs / 3600);
-
-        const m =
-            Math.floor(
-                (abs % 3600) / 60
-            );
-
-        const s =
-            Math.floor(abs % 60);
-
+    if (parts.length === 3) {
         return (
-            sign +
-            String(h).padStart(2, '0') +
-            ':' +
-            String(m).padStart(2, '0') +
-            ':' +
-            String(s).padStart(2, '0')
+            parts[0] * 3600 +
+            parts[1] * 60 +
+            parts[2]
         );
     }
 
+    return null;
+}
 
-    function toHHMM(sec) {
 
-        if (
-            sec == null ||
-            isNaN(sec)
-        ) {
-            return '';
-        }
+function toHHMMSS(sec) {
 
-        const sign =
-            sec < 0 ? '-' : '';
-
-        const abs =
-            Math.abs(sec);
-
-        const h =
-            Math.floor(abs / 3600);
-
-        const m =
-            Math.floor(
-                (abs % 3600) / 60
-            );
-
-        return (
-            sign +
-            String(h).padStart(2, '0') +
-            ':' +
-            String(m).padStart(2, '0')
-        );
+    if (
+        sec == null ||
+        isNaN(sec)
+    ) {
+        return '';
     }
 
+    const sign = sec < 0 ? '-' : '';
 
-    // =========================================================
-    // ESTADO GLOBAL
-    // =========================================================
+    const abs = Math.abs(sec);
 
-    let data = {
-        abas: [],
-        currentTab: 0
-    };
+    const h = Math.floor(abs / 3600);
 
-    let nextId = 1;
+    const m = Math.floor(
+        (abs % 3600) / 60
+    );
+
+    const s = Math.floor(abs % 60);
+
+    return `${sign}${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+}
 
 
-    const EXPORTABLE_COLUMNS = [
+function toHHMM(sec) {
+
+    if (
+        sec == null ||
+        isNaN(sec)
+    ) {
+        return '';
+    }
+
+    const sign = sec < 0 ? '-' : '';
+
+    const abs = Math.abs(sec);
+
+    const h = Math.floor(abs / 3600);
+
+    const m = Math.floor(
+        (abs % 3600) / 60
+    );
+
+    return `${sign}${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
+}
+
+
+/* ============================================================
+   ESTADO GLOBAL
+============================================================ */
+
+let data = {
+    abas: [],
+    currentTab: 0
+};
+
+let nextId = 1;
+
+
+/* ============================================================
+   COLUNAS
+============================================================ */
+
+const EXPORTABLE_COLUMNS = [
+
+    {
+        key: 'index',
+        label: '#',
+        className: 'col-index'
+    },
+
+    {
+        key: 'event',
+        label: 'Evento',
+        className: 'col-event'
+    },
+
+    {
+        key: 'duration',
+        label: 'Duração (hh:mm)',
+        className: 'col-duration'
+    },
+
+    {
+        key: 'start',
+        label: 'Início',
+        className: 'col-start'
+    },
+
+    {
+        key: 'end',
+        label: 'Término',
+        className: 'col-end'
+    },
+
+    {
+        key: 'delay',
+        label: 'Atraso',
+        className: 'col-delay'
+    }
+
+];
+
+let exportColumns = {};
+
+
+/* ============================================================
+   EVENTOS PADRÃO
+============================================================ */
+
+function getHospitalDefaultEvents() {
+
+    return [
 
         {
-            key: 'index',
-            label: '#',
-            className: 'col-index'
+            id: nextId++,
+            name: 'Abertura',
+            duration: 600,
+            realEnd: ''
         },
 
         {
-            key: 'event',
-            label: 'Evento',
-            className: 'col-event'
+            id: nextId++,
+            name: 'NIO',
+            duration: 600,
+            realEnd: ''
         },
 
         {
-            key: 'duration',
-            label: 'Duração (hh:mm)',
-            className: 'col-duration'
+            id: nextId++,
+            name: 'Hospital da Criança do Recife',
+            duration: 2400,
+            realEnd: ''
         },
 
         {
-            key: 'start',
-            label: 'Início',
-            className: 'col-start'
+            id: nextId++,
+            name: 'Compliance + Gerenciamento de Risco',
+            duration: 1200,
+            realEnd: ''
         },
 
         {
-            key: 'end',
-            label: 'Término',
-            className: 'col-end'
+            id: nextId++,
+            name: 'Hospital Eduardo Campos da Pessoa Idosa',
+            duration: 2400,
+            realEnd: ''
         },
 
         {
-            key: 'delay',
-            label: 'Atraso',
-            className: 'col-delay'
+            id: nextId++,
+            name: 'Hospital ALFA',
+            duration: 2400,
+            realEnd: ''
+        },
+
+        {
+            id: nextId++,
+            name: 'Superintendência de Recursos Humanos',
+            duration: 1200,
+            realEnd: ''
+        },
+
+        {
+            id: nextId++,
+            name: 'Superintendência de Atendimento',
+            duration: 1200,
+            realEnd: ''
+        },
+
+        {
+            id: nextId++,
+            name: 'Hospital Dom Helder Câmara',
+            duration: 2400,
+            realEnd: ''
+        },
+
+        {
+            id: nextId++,
+            name: 'Ensino e Pesquisa',
+            duration: 1200,
+            realEnd: ''
+        },
+
+        {
+            id: nextId++,
+            name: 'Almoço',
+            duration: 2700,
+            realEnd: ''
+        },
+
+        {
+            id: nextId++,
+            name: 'Tecnologia da Informação',
+            duration: 1200,
+            realEnd: ''
+        },
+
+        {
+            id: nextId++,
+            name: 'Superintendência da Qualidade',
+            duration: 1200,
+            realEnd: ''
+        },
+
+        {
+            id: nextId++,
+            name: 'Hospital Miguel Arraes',
+            duration: 2400,
+            realEnd: ''
+        },
+
+        {
+            id: nextId++,
+            name: 'Superintendência de Administração e Finanças',
+            duration: 1200,
+            realEnd: ''
+        },
+
+        {
+            id: nextId++,
+            name: 'Hospital Pelópidas Silveira',
+            duration: 2400,
+            realEnd: ''
+        },
+
+        {
+            id: nextId++,
+            name: 'Considerações Finais',
+            duration: 600,
+            realEnd: ''
         }
 
     ];
+}
 
 
-    let exportColumns = {};
+function getUPADefaultEvents() {
+
+    return [
+
+        {
+            id: nextId++,
+            name: 'Abertura',
+            duration: 600,
+            realEnd: ''
+        },
+
+        {
+            id: nextId++,
+            name: 'NIO',
+            duration: 600,
+            realEnd: ''
+        },
+
+        {
+            id: nextId++,
+            name: 'UPA São Lourenço da Mata',
+            duration: 2100,
+            realEnd: ''
+        },
+
+        {
+            id: nextId++,
+            name: 'UPAE Ibura',
+            duration: 2100,
+            realEnd: ''
+        },
+
+        {
+            id: nextId++,
+            name: 'Compliance + Gerenciamento de Risco',
+            duration: 1200,
+            realEnd: ''
+        },
+
+        {
+            id: nextId++,
+            name: 'UPAE Garanhuns',
+            duration: 2100,
+            realEnd: ''
+        },
+
+        {
+            id: nextId++,
+            name: 'Superintendência de Recursos Humanos',
+            duration: 1200,
+            realEnd: ''
+        },
+
+        {
+            id: nextId++,
+            name: 'UPAE Salgueiro',
+            duration: 2100,
+            realEnd: ''
+        },
+
+        {
+            id: nextId++,
+            name: 'Superintendência de Atendimento',
+            duration: 1200,
+            realEnd: ''
+        },
+
+        {
+            id: nextId++,
+            name: 'Tecnologia da Informação',
+            duration: 1200,
+            realEnd: ''
+        },
+
+        {
+            id: nextId++,
+            name: 'UPAE Mustardinha',
+            duration: 2100,
+            realEnd: ''
+        },
+
+        {
+            id: nextId++,
+            name: 'Almoço',
+            duration: 2700,
+            realEnd: ''
+        },
+
+        {
+            id: nextId++,
+            name: 'Ensino e Pesquisa',
+            duration: 1200,
+            realEnd: ''
+        },
+
+        {
+            id: nextId++,
+            name: 'UPAE Carpina',
+            duration: 2100,
+            realEnd: ''
+        },
+
+        {
+            id: nextId++,
+            name: 'Superintendência da Qualidade',
+            duration: 1200,
+            realEnd: ''
+        },
+
+        {
+            id: nextId++,
+            name: 'Superintendência de Administração e Finanças',
+            duration: 1200,
+            realEnd: ''
+        },
+
+        {
+            id: nextId++,
+            name: 'UPAE Escada',
+            duration: 2100,
+            realEnd: ''
+        },
+
+        {
+            id: nextId++,
+            name: 'Considerações Finais',
+            duration: 600,
+            realEnd: ''
+        }
+
+    ];
+}
 
 
-    // =========================================================
-    // MODELOS DE EVENTOS
-    // =========================================================
+/* ============================================================
+   COLUNAS DE EXPORTAÇÃO
+============================================================ */
 
-    function getHospitalDefaultEvents() {
+function loadExportColumns() {
 
-        return [
+    const raw = localStorage.getItem(
+        'programacao_eventos_fgh_export_cols'
+    );
 
-            {
-                id: nextId++,
-                name: 'Abertura',
-                duration: 600,
-                realEnd: ''
-            },
+    if (raw) {
 
-            {
-                id: nextId++,
-                name: 'NIO',
-                duration: 600,
-                realEnd: ''
-            },
+        try {
 
-            {
-                id: nextId++,
-                name: 'Hospital da Criança do Recife',
-                duration: 2400,
-                realEnd: ''
-            },
+            exportColumns = JSON.parse(raw);
 
-            {
-                id: nextId++,
-                name: 'Compliance + Gerenciamento de Risco',
-                duration: 1200,
-                realEnd: ''
-            },
+            EXPORTABLE_COLUMNS.forEach(c => {
 
-            {
-                id: nextId++,
-                name: 'Hospital Eduardo Campos da Pessoa Idosa',
-                duration: 2400,
-                realEnd: ''
-            },
+                if (!(c.key in exportColumns)) {
+                    exportColumns[c.key] = true;
+                }
 
-            {
-                id: nextId++,
-                name: 'Hospital ALFA',
-                duration: 2400,
-                realEnd: ''
-            },
+            });
 
-            {
-                id: nextId++,
-                name: 'Superintendência de Recursos Humanos',
-                duration: 1200,
-                realEnd: ''
-            },
+            return;
 
-            {
-                id: nextId++,
-                name: 'Superintendência de Atendimento',
-                duration: 1200,
-                realEnd: ''
-            },
+        } catch (e) {}
 
-            {
-                id: nextId++,
-                name: 'Hospital Dom Helder Câmara',
-                duration: 2400,
-                realEnd: ''
-            },
-
-            {
-                id: nextId++,
-                name: 'Ensino e Pesquisa',
-                duration: 1200,
-                realEnd: ''
-            },
-
-            {
-                id: nextId++,
-                name: 'Almoço',
-                duration: 2700,
-                realEnd: ''
-            },
-
-            {
-                id: nextId++,
-                name: 'Tecnologia da Informação',
-                duration: 1200,
-                realEnd: ''
-            },
-
-            {
-                id: nextId++,
-                name: 'Superintendência da Qualidade',
-                duration: 1200,
-                realEnd: ''
-            },
-
-            {
-                id: nextId++,
-                name: 'Hospital Miguel Arraes',
-                duration: 2400,
-                realEnd: ''
-            },
-
-            {
-                id: nextId++,
-                name: 'Superintendência de Administração e Finanças',
-                duration: 1200,
-                realEnd: ''
-            },
-
-            {
-                id: nextId++,
-                name: 'Hospital Pelópidas Silveira',
-                duration: 2400,
-                realEnd: ''
-            },
-
-            {
-                id: nextId++,
-                name: 'Considerações Finais',
-                duration: 600,
-                realEnd: ''
-            }
-
-        ];
     }
 
-
-    function getUPADefaultEvents() {
-
-        return [
-
-            {
-                id: nextId++,
-                name: 'Abertura',
-                duration: 600,
-                realEnd: ''
-            },
-
-            {
-                id: nextId++,
-                name: 'NIO',
-                duration: 600,
-                realEnd: ''
-            },
-
-            {
-                id: nextId++,
-                name: 'UPA São Lourenço da Mata',
-                duration: 2100,
-                realEnd: ''
-            },
-
-            {
-                id: nextId++,
-                name: 'UPAE Ibura',
-                duration: 2100,
-                realEnd: ''
-            },
-
-            {
-                id: nextId++,
-                name: 'Compliance + Gerenciamento de Risco',
-                duration: 1200,
-                realEnd: ''
-            },
-
-            {
-                id: nextId++,
-                name: 'UPAE Garanhuns',
-                duration: 2100,
-                realEnd: ''
-            },
-
-            {
-                id: nextId++,
-                name: 'Superintendência de Recursos Humanos',
-                duration: 1200,
-                realEnd: ''
-            },
-
-            {
-                id: nextId++,
-                name: 'UPAE Salgueiro',
-                duration: 2100,
-                realEnd: ''
-            },
-
-            {
-                id: nextId++,
-                name: 'Superintendência de Atendimento',
-                duration: 1200,
-                realEnd: ''
-            },
-
-            {
-                id: nextId++,
-                name: 'Tecnologia da Informação',
-                duration: 1200,
-                realEnd: ''
-            },
-
-            {
-                id: nextId++,
-                name: 'UPAE Mustardinha',
-                duration: 2100,
-                realEnd: ''
-            },
-
-            {
-                id: nextId++,
-                name: 'Almoço',
-                duration: 2700,
-                realEnd: ''
-            },
-
-            {
-                id: nextId++,
-                name: 'Ensino e Pesquisa',
-                duration: 1200,
-                realEnd: ''
-            },
-
-            {
-                id: nextId++,
-                name: 'UPAE Carpina',
-                duration: 2100,
-                realEnd: ''
-            },
-
-            {
-                id: nextId++,
-                name: 'Superintendência da Qualidade',
-                duration: 1200,
-                realEnd: ''
-            },
-
-            {
-                id: nextId++,
-                name: 'Superintendência de Administração e Finanças',
-                duration: 1200,
-                realEnd: ''
-            },
-
-            {
-                id: nextId++,
-                name: 'UPAE Escada',
-                duration: 2100,
-                realEnd: ''
-            },
-
-            {
-                id: nextId++,
-                name: 'Considerações Finais',
-                duration: 600,
-                realEnd: ''
-            }
-
-        ];
-    }
+    EXPORTABLE_COLUMNS.forEach(c => {
+        exportColumns[c.key] = true;
+    });
+}
 
 
-    // =========================================================
-    // PERSISTÊNCIA DAS COLUNAS
-    // =========================================================
+function saveExportColumns() {
 
-    function loadExportColumns() {
+    localStorage.setItem(
+        'programacao_eventos_fgh_export_cols',
+        JSON.stringify(exportColumns)
+    );
+}
 
-        const raw =
-            localStorage.getItem(
-                'programacao_eventos_fgh_export_cols'
+
+function renderColumnSelector() {
+
+    const el = document.getElementById(
+        'columnSelector'
+    );
+
+    let html =
+        '<span class="cs-title">Colunas a exportar:</span>';
+
+    EXPORTABLE_COLUMNS.forEach(c => {
+
+        const checked =
+            exportColumns[c.key]
+                ? 'checked'
+                : '';
+
+        html += `
+            <label>
+                <input
+                    type="checkbox"
+                    ${checked}
+                    onchange="onExportColumnToggle('${c.key}', this.checked)"
+                >
+                ${c.label}
+            </label>
+        `;
+    });
+
+    el.innerHTML = html;
+}
+
+
+function onExportColumnToggle(
+    key,
+    checked
+) {
+
+    exportColumns[key] = checked;
+
+    saveExportColumns();
+}
+
+
+function applyExportColumnVisibility(apply) {
+
+    const table =
+        document.querySelector(
+            '#tableContainer table'
+        );
+
+    if (!table) return;
+
+    EXPORTABLE_COLUMNS.forEach(c => {
+
+        const hide =
+            apply &&
+            !exportColumns[c.key];
+
+        const ths =
+            table.querySelectorAll(
+                'th.' + c.className
             );
 
+        const tds =
+            table.querySelectorAll(
+                'td.' + c.className
+            );
 
-        if (raw) {
+        ths.forEach(th => {
 
-            try {
+            th.classList.toggle(
+                'col-hidden',
+                hide
+            );
 
-                exportColumns =
-                    JSON.parse(raw);
+        });
+
+        tds.forEach(td => {
+
+            td.classList.toggle(
+                'col-hidden',
+                hide
+            );
+
+        });
+
+    });
+}
 
 
-                EXPORTABLE_COLUMNS.forEach(
-                    c => {
+/* ============================================================
+   GITHUB
+============================================================ */
 
-                        if (
-                            !(c.key in exportColumns)
-                        ) {
+const GITHUB_OWNER =
+    'caiomalbuquerque';
 
-                            exportColumns[c.key] =
-                                true;
+const GITHUB_REPO =
+    'programacao_de_eventos';
+
+const GITHUB_BRANCH =
+    'main';
+
+const GITHUB_FILE_PATH =
+    'dados.json';
+
+
+async function loadDataFromGitHub() {
+
+    const url =
+        `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${GITHUB_FILE_PATH}`;
+
+    try {
+
+        const response =
+            await fetch(
+                url + '?t=' + Date.now()
+            );
+
+        if (!response.ok) {
+            throw new Error(
+                'Arquivo ainda não existe'
+            );
+        }
+
+        return await response.json();
+
+    } catch (e) {
+
+        console.warn(
+            'Não foi possível carregar dados.json do GitHub.',
+            e
+        );
+
+        return null;
+    }
+}
+
+
+async function saveDataToGitHub() {
+
+    const token = prompt(
+        'Cole seu token de acesso do GitHub para salvar:'
+    );
+
+    if (!token) return;
+
+    const apiUrl =
+        `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${GITHUB_FILE_PATH}`;
+
+    let sha = undefined;
+
+    try {
+
+        const getResp =
+            await fetch(
+                apiUrl +
+                `?ref=${GITHUB_BRANCH}`,
+                {
+                    headers: {
+                        Authorization:
+                            `Bearer ${token}`
+                    }
+                }
+            );
+
+        if (getResp.ok) {
+
+            const fileInfo =
+                await getResp.json();
+
+            sha = fileInfo.sha;
+        }
+
+    } catch (e) {}
+
+    const content =
+        btoa(
+            unescape(
+                encodeURIComponent(
+                    JSON.stringify(
+                        data,
+                        null,
+                        2
+                    )
+                )
+            )
+        );
+
+    const body = {
+
+        message:
+            `Atualiza dados - ${new Date().toLocaleString('pt-BR')}`,
+
+        content: content,
+
+        branch: GITHUB_BRANCH
+
+    };
+
+    if (sha) {
+        body.sha = sha;
+    }
+
+    try {
+
+        const putResp =
+            await fetch(
+                apiUrl,
+                {
+                    method: 'PUT',
+
+                    headers: {
+                        Authorization:
+                            `Bearer ${token}`,
+
+                        'Content-Type':
+                            'application/json'
+                    },
+
+                    body:
+                        JSON.stringify(body)
+                }
+            );
+
+        if (!putResp.ok) {
+
+            const err =
+                await putResp.json();
+
+            throw new Error(
+                err.message ||
+                'Erro desconhecido'
+            );
+        }
+
+        alert(
+            'Salvo no GitHub com sucesso!'
+        );
+
+    } catch (e) {
+
+        alert(
+            'Erro ao salvar no GitHub: ' +
+            e.message
+        );
+
+    }
+}
+
+
+/* ============================================================
+   PERSISTÊNCIA LOCAL
+============================================================ */
+
+function cacheDataLocally() {
+
+    localStorage.setItem(
+        'programacao_eventos_fgh',
+        JSON.stringify(data)
+    );
+}
+
+
+function saveData() {
+    cacheDataLocally();
+}
+
+
+/* ============================================================
+   CARREGAR DADOS
+============================================================ */
+
+async function loadData() {
+
+    const remote =
+        await loadDataFromGitHub();
+
+    if (remote) {
+
+        let maxId = 0;
+
+        remote.abas.forEach(
+            aba => {
+
+                aba.eventos.forEach(
+                    e => {
+
+                        if (e.id > maxId) {
+                            maxId = e.id;
                         }
 
                     }
                 );
 
-
-                return;
-
-            } catch (e) {}
-
-        }
-
-
-        EXPORTABLE_COLUMNS.forEach(
-            c => {
-
-                exportColumns[c.key] =
-                    true;
-
-            }
-        );
-    }
-
-
-    function saveExportColumns() {
-
-        localStorage.setItem(
-            'programacao_eventos_fgh_export_cols',
-            JSON.stringify(exportColumns)
-        );
-    }
-
-
-    function renderColumnSelector() {
-
-        const el =
-            document.getElementById(
-                'columnSelector'
-            );
-
-
-        let html =
-            '<span class="cs-title">Colunas a exportar:</span>';
-
-
-        EXPORTABLE_COLUMNS.forEach(
-            c => {
-
-                const checked =
-                    exportColumns[c.key]
-                        ? 'checked'
-                        : '';
-
-
-                html += `
-                    <label>
-                        <input
-                            type="checkbox"
-                            ${checked}
-                            onchange="onExportColumnToggle('${c.key}', this.checked)"
-                        >
-                        ${c.label}
-                    </label>
-                `;
-
             }
         );
 
+        nextId = maxId + 1;
 
-        el.innerHTML =
-            html;
-    }
+        data = remote;
 
-
-    function onExportColumnToggle(
-        key,
-        checked
-    ) {
-
-        exportColumns[key] =
-            checked;
-
-        saveExportColumns();
-    }
-
-
-    function applyExportColumnVisibility(
-        apply
-    ) {
-
-        const table =
-            document.querySelector(
-                '#tableContainer table'
-            );
-
-
-        if (!table) {
-            return;
-        }
-
-
-        EXPORTABLE_COLUMNS.forEach(
-            c => {
-
-                const hide =
-                    apply &&
-                    !exportColumns[c.key];
-
-
-                const ths =
-                    table.querySelectorAll(
-                        'th.' + c.className
-                    );
-
-
-                const tds =
-                    table.querySelectorAll(
-                        'td.' + c.className
-                    );
-
-
-                ths.forEach(
-                    th => {
-
-                        th.classList.toggle(
-                            'col-hidden',
-                            hide
-                        );
-
-                    }
-                );
-
-
-                tds.forEach(
-                    td => {
-
-                        td.classList.toggle(
-                            'col-hidden',
-                            hide
-                        );
-
-                    }
-                );
-
-            }
-        );
-    }
-
-
-    // =========================================================
-    // PERSISTÊNCIA DA ABA ATUAL
-    // =========================================================
-
-    function saveCurrentTab() {
-
-        localStorage.setItem(
-            'programacao_eventos_fgh_current_tab',
-            String(data.currentTab)
-        );
-    }
-
-
-    function loadCurrentTab() {
+        /*
+         * IMPORTANTE:
+         * O currentTab salvo localmente tem prioridade.
+         * Isso permite que a aba atual sobreviva ao refresh.
+         */
 
         const savedTab =
             localStorage.getItem(
-                'programacao_eventos_fgh_current_tab'
+                'programacao_eventos_current_tab'
             );
 
-
         if (
-            savedTab === null
-        ) {
-
-            return;
-        }
-
-
-        const index =
-            parseInt(
-                savedTab,
-                10
-            );
-
-
-        if (
-            !isNaN(index) &&
-            index >= 0 &&
-            index < data.abas.length
+            savedTab !== null &&
+            data.abas[
+                Number(savedTab)
+            ]
         ) {
 
             data.currentTab =
-                index;
+                Number(savedTab);
 
-        } else {
-
-            // Se a aba salva não existir mais,
-            // volta para a primeira.
-            data.currentTab = 0;
         }
+
+        cacheDataLocally();
+
+        return;
     }
 
 
-    // =========================================================
-    // INTEGRAÇÃO COM GITHUB
-    // =========================================================
+    /* Tenta carregar dados locais */
 
-    const GITHUB_OWNER =
-        'caiomalbuquerque';
+    const raw =
+        localStorage.getItem(
+            'programacao_eventos_fgh'
+        );
 
-    const GITHUB_REPO =
-        'programacao_de_eventos';
-
-    const GITHUB_BRANCH =
-        'main';
-
-    const GITHUB_FILE_PATH =
-        'dados.json';
-
-
-    async function loadDataFromGitHub() {
-
-        const url =
-            `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${GITHUB_FILE_PATH}`;
-
+    if (raw) {
 
         try {
 
-            const response =
-                await fetch(
-                    url +
-                    '?t=' +
-                    Date.now()
-                );
-
-
-            if (!response.ok) {
-
-                throw new Error(
-                    'Arquivo ainda não existe'
-                );
-            }
-
-
-            return await response.json();
-
-        } catch (e) {
-
-            console.warn(
-                'Não foi possível carregar dados.json do GitHub, usando dados locais/padrão.',
-                e
-            );
-
-
-            return null;
-        }
-    }
-
-
-    async function saveDataToGitHub() {
-
-        const token =
-            prompt(
-                'Cole seu token de acesso do GitHub para salvar:'
-            );
-
-
-        if (!token) {
-            return;
-        }
-
-
-        const apiUrl =
-            `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${GITHUB_FILE_PATH}`;
-
-
-        let sha;
-
-
-        try {
-
-            const getResp =
-                await fetch(
-                    apiUrl +
-                    `?ref=${GITHUB_BRANCH}`,
-                    {
-                        headers: {
-                            Authorization:
-                                `Bearer ${token}`
-                        }
-                    }
-                );
-
-
-            if (getResp.ok) {
-
-                const fileInfo =
-                    await getResp.json();
-
-                sha =
-                    fileInfo.sha;
-            }
-
-        } catch (e) {
-            // arquivo pode não existir ainda
-        }
-
-
-        const content =
-            btoa(
-                unescape(
-                    encodeURIComponent(
-                        JSON.stringify(
-                            data,
-                            null,
-                            2
-                        )
-                    )
-                )
-            );
-
-
-        const body = {
-
-            message:
-                `Atualiza dados - ${new Date().toLocaleString('pt-BR')}`,
-
-            content:
-                content,
-
-            branch:
-                GITHUB_BRANCH
-        };
-
-
-        if (sha) {
-            body.sha = sha;
-        }
-
-
-        try {
-
-            const putResp =
-                await fetch(
-                    apiUrl,
-                    {
-                        method: 'PUT',
-
-                        headers: {
-
-                            Authorization:
-                                `Bearer ${token}`,
-
-                            'Content-Type':
-                                'application/json'
-                        },
-
-                        body:
-                            JSON.stringify(body)
-                    }
-                );
-
-
-            if (!putResp.ok) {
-
-                const err =
-                    await putResp.json();
-
-
-                throw new Error(
-                    err.message ||
-                    'Erro desconhecido'
-                );
-            }
-
-
-            alert(
-                'Salvo no GitHub com sucesso!'
-            );
-
-        } catch (e) {
-
-            alert(
-                'Erro ao salvar no GitHub: ' +
-                e.message
-            );
-        }
-    }
-
-
-    // =========================================================
-    // CARREGAR DADOS
-    // =========================================================
-
-    async function loadData() {
-
-        const remote =
-            await loadDataFromGitHub();
-
-
-        if (remote) {
+            const parsed =
+                JSON.parse(raw);
 
             let maxId = 0;
 
-
-            remote.abas.forEach(
+            parsed.abas.forEach(
                 aba => {
 
                     aba.eventos.forEach(
                         e => {
 
-                            if (
-                                e.id > maxId
-                            ) {
-
-                                maxId =
-                                    e.id;
+                            if (e.id > maxId) {
+                                maxId = e.id;
                             }
 
                         }
@@ -1668,1378 +1687,1207 @@
                 }
             );
 
+            nextId = maxId + 1;
 
-            nextId =
-                maxId + 1;
+            data = parsed;
 
-
-            data =
-                remote;
-
-
-            cacheDataLocally();
-
-
-            return;
-        }
-
-
-        // =====================================================
-        // LOCAL STORAGE
-        // =====================================================
-
-        const raw =
-            localStorage.getItem(
-                'programacao_eventos_fgh'
-            );
-
-
-        if (raw) {
-
-            try {
-
-                const parsed =
-                    JSON.parse(raw);
-
-
-                let maxId = 0;
-
-
-                parsed.abas.forEach(
-                    aba => {
-
-                        aba.eventos.forEach(
-                            e => {
-
-                                if (
-                                    e.id > maxId
-                                ) {
-
-                                    maxId =
-                                        e.id;
-                                }
-
-                            }
-                        );
-
-                    }
+            const savedTab =
+                localStorage.getItem(
+                    'programacao_eventos_current_tab'
                 );
-
-
-                nextId =
-                    maxId + 1;
-
-
-                data =
-                    parsed;
-
-
-                return;
-
-            } catch (e) {
-
-                console.warn(
-                    'Erro ao carregar dados locais.',
-                    e
-                );
-            }
-        }
-
-
-        // =====================================================
-        // DADOS PADRÃO
-        // =====================================================
-
-        nextId = 1;
-
-
-        data = {
-
-            abas: [
-
-                {
-                    nome:
-                        'Colegiado - Hospitais (26/08)',
-
-                    startTime:
-                        '08:00',
-
-                    eventos:
-                        getHospitalDefaultEvents()
-                },
-
-                {
-                    nome:
-                        'Colegiado - UPA e UPAEs (28/08)',
-
-                    startTime:
-                        '08:00',
-
-                    eventos:
-                        getUPADefaultEvents()
-                }
-
-            ],
-
-            currentTab:
-                0
-        };
-
-
-        data.abas[1].eventos.forEach(
-            e => {
-
-                e.id =
-                    nextId++;
-
-            }
-        );
-
-
-        cacheDataLocally();
-    }
-
-
-    function cacheDataLocally() {
-
-        localStorage.setItem(
-            'programacao_eventos_fgh',
-            JSON.stringify(data)
-        );
-    }
-
-
-    function saveData() {
-
-        cacheDataLocally();
-
-        // A aba também fica registrada
-        saveCurrentTab();
-    }
-
-
-    // =========================================================
-    // CÁLCULO DOS EVENTOS
-    // =========================================================
-
-    /*
-     *
-     * REGRA PRINCIPAL:
-     *
-     * Evento 1:
-     *   Início = horário inicial da programação
-     *
-     * Evento 2 em diante:
-     *
-     *   Se o evento anterior tem Término:
-     *       Início = Término anterior
-     *
-     *   Se não tem Término:
-     *       Início = Início anterior + duração anterior
-     *
-     *
-     * O término programado continua sendo:
-     *
-     *   Início programado + duração
-     *
-     * O atraso continua sendo:
-     *
-     *   Término real - Término programado
-     *
-     */
-
-    function computeEvents(
-        eventos,
-        startSec
-    ) {
-
-        const results = [];
-
-
-        for (
-            let i = 0;
-            i < eventos.length;
-            i++
-        ) {
-
-            const item =
-                eventos[i];
-
-
-            const dur =
-                item.duration || 0;
-
-
-            // =================================================
-            // INÍCIO PROGRAMADO
-            // =================================================
-
-            let startProg;
-
-
-            if (i === 0) {
-
-                startProg =
-                    startSec;
-
-            } else {
-
-                startProg =
-                    results[i - 1].endProg;
-            }
-
-
-            const endProg =
-                startProg +
-                dur;
-
-
-            // =================================================
-            // TÉRMINO REAL
-            // =================================================
-
-            const realEndVal =
-                toSeconds(
-                    item.realEnd
-                );
-
-
-            // =================================================
-            // INÍCIO REAL
-            // =================================================
-
-            let startReal;
-
-
-            if (i === 0) {
-
-                startReal =
-                    startSec;
-
-            } else {
-
-                const anterior =
-                    results[i - 1];
-
-
-                /*
-                 * Se o evento anterior terminou
-                 * em um horário informado pelo usuário,
-                 * esse horário vira automaticamente
-                 * o início deste evento.
-                 */
-
-                if (
-                    anterior.realEndVal !== null
-                ) {
-
-                    startReal =
-                        anterior.realEndVal;
-
-                } else {
-
-                    /*
-                     * Se ainda não temos um término real,
-                     * usamos duração.
-                     */
-
-                    startReal =
-                        anterior.startReal +
-                        anterior.duration;
-                }
-            }
-
-
-            // =================================================
-            // ATRASO
-            // =================================================
-
-            let delay = null;
-
 
             if (
-                realEndVal !== null
+                savedTab !== null &&
+                data.abas[
+                    Number(savedTab)
+                ]
             ) {
 
-                delay =
-                    realEndVal -
-                    endProg;
+                data.currentTab =
+                    Number(savedTab);
+
             }
 
+            return;
 
-            results.push({
+        } catch (e) {}
+    }
 
-                ...item,
 
-                startProg:
-                    startProg,
+    /* Dados padrão */
 
-                startReal:
-                    startReal,
+    nextId = 1;
 
-                endProg:
-                    endProg,
+    data = {
 
-                realEndVal:
-                    realEndVal,
+        abas: [
 
-                delay:
-                    delay
+            {
+                nome:
+                    'Colegiado - Hospitais (26/08)',
 
-            });
+                startTime:
+                    '08:00',
+
+                eventos:
+                    getHospitalDefaultEvents()
+            },
+
+            {
+                nome:
+                    'Colegiado - UPA e UPAEs (28/08)',
+
+                startTime:
+                    '08:00',
+
+                eventos:
+                    getUPADefaultEvents()
+            }
+
+        ],
+
+        currentTab: 0
+
+    };
+
+    /*
+     * Se não houver uma aba salva,
+     * começa na aba UPA.
+     */
+
+    const savedTab =
+        localStorage.getItem(
+            'programacao_eventos_current_tab'
+        );
+
+    if (
+        savedTab !== null &&
+        data.abas[
+            Number(savedTab)
+        ]
+    ) {
+
+        data.currentTab =
+            Number(savedTab);
+
+    } else {
+
+        data.currentTab = 1;
+
+    }
+
+    cacheDataLocally();
+}
+
+
+/* ============================================================
+   CÁLCULO DOS EVENTOS
+============================================================ */
+
+/*
+ * REGRA PRINCIPAL:
+ *
+ * Evento 1:
+ * início = horário inicial
+ *
+ * Evento seguinte:
+ *
+ * Se o evento anterior possui TÉRMINO REAL:
+ *     início = término real anterior
+ *
+ * Caso contrário:
+ *     início = início anterior + duração anterior
+ *
+ * Assim:
+ *
+ * Abertura
+ * Início 08:00
+ * Término 08:13
+ *
+ * Evento seguinte
+ * Início 08:13
+ */
+
+function computeEvents(
+    eventos,
+    startSec
+) {
+
+    const results = [];
+
+    let currentStart =
+        startSec;
+
+    for (
+        let i = 0;
+        i < eventos.length;
+        i++
+    ) {
+
+        const item =
+            eventos[i];
+
+        const dur =
+            item.duration || 0;
+
+        /*
+         * Horário programado baseado
+         * somente na duração.
+         */
+
+        let startProg;
+
+        if (i === 0) {
+
+            startProg =
+                startSec;
+
+        } else {
+
+            startProg =
+                results[i - 1].endProg;
+
+        }
+
+        const endProg =
+            startProg + dur;
+
+
+        /*
+         * Término real digitado pelo usuário.
+         */
+
+        const realEndVal =
+            toSeconds(
+                item.realEnd
+            );
+
+
+        /*
+         * Atraso:
+         *
+         * término real - término programado
+         */
+
+        let delay = null;
+
+        if (realEndVal !== null) {
+
+            delay =
+                realEndVal -
+                endProg;
 
         }
 
 
-        return results;
-    }
+        /*
+         * O INÍCIO REAL é:
+         *
+         * 1º evento:
+         * horário inicial
+         *
+         * Demais:
+         * término real anterior,
+         * caso exista.
+         *
+         * Caso contrário:
+         * término programado anterior.
+         */
 
+        let startReal;
 
-    // =========================================================
-    // ESCAPAR HTML
-    // =========================================================
+        if (i === 0) {
 
-    function escapeHtml(value) {
+            startReal =
+                startSec;
 
-        if (value == null) {
-            return '';
+        } else {
+
+            const previous =
+                results[i - 1];
+
+            if (
+                previous.realEndVal !== null
+            ) {
+
+                startReal =
+                    previous.realEndVal;
+
+            } else {
+
+                startReal =
+                    previous.endProg;
+
+            }
+
         }
 
 
-        return String(value)
-            .replace(
-                /&/g,
-                '&amp;'
-            )
-            .replace(
-                /</g,
-                '&lt;'
-            )
-            .replace(
-                />/g,
-                '&gt;'
-            )
-            .replace(
-                /"/g,
-                '&quot;'
-            )
-            .replace(
-                /'/g,
-                '&#039;'
-            );
+        results.push({
+
+            ...item,
+
+            startProg,
+            startReal,
+            endProg,
+            realEndVal,
+            delay
+
+        });
+
     }
 
-
-    // =========================================================
-    // RENDERIZAÇÃO
-    // =========================================================
-
-    function render() {
-
-        const tabsBar =
-            document.getElementById(
-                'tabsBar'
-            );
+    return results;
+}
 
 
-        const container =
-            document.getElementById(
-                'tableContainer'
-            );
+/* ============================================================
+   RENDERIZAÇÃO
+============================================================ */
 
+function render() {
 
-        const startInput =
-            document.getElementById(
-                'startTime'
-            );
+    const tabsBar =
+        document.getElementById(
+            'tabsBar'
+        );
 
+    const container =
+        document.getElementById(
+            'tableContainer'
+        );
 
-        // =====================================================
-        // ABAS
-        // =====================================================
-
-        let htmlTabs = '';
-
-
-        data.abas.forEach(
-            (aba, idx) => {
-
-                const active =
-                    idx === data.currentTab
-                        ? 'active'
-                        : '';
-
-
-                htmlTabs += `
-
-                    <div
-                        class="tab-btn ${active}"
-                        onclick="switchTab(${idx})"
-                    >
-
-                        <span>
-                            ${escapeHtml(aba.nome)}
-                        </span>
-
-                        <span
-                            class="tab-actions"
-                        >
-
-                            <button
-                                onclick="event.stopPropagation(); renameTab(${idx})"
-                                title="Renomear"
-                            >
-                                ✎
-                            </button>
-
-                            <button
-                                onclick="event.stopPropagation(); deleteTab(${idx})"
-                                title="Excluir"
-                            >
-                                ✕
-                            </button>
-
-                        </span>
-
-                    </div>
-
-                `;
-            }
+    const startInput =
+        document.getElementById(
+            'startTime'
         );
 
 
-        tabsBar.innerHTML =
-            htmlTabs;
+    /* Abas */
+
+    let htmlTabs = '';
+
+    data.abas.forEach(
+        (aba, idx) => {
+
+            const active =
+                idx === data.currentTab
+                    ? 'active'
+                    : '';
+
+            htmlTabs += `
+
+                <div
+                    class="tab-btn ${active}"
+                    onclick="switchTab(${idx})"
+                >
+
+                    <span>
+                        ${escapeHtml(aba.nome)}
+                    </span>
+
+                    <span class="tab-actions">
+
+                        <button
+                            onclick="event.stopPropagation(); renameTab(${idx})"
+                            title="Renomear"
+                        >
+                            ✎
+                        </button>
+
+                        <button
+                            onclick="event.stopPropagation(); deleteTab(${idx})"
+                            title="Excluir"
+                        >
+                            ✕
+                        </button>
+
+                    </span>
+
+                </div>
+
+            `;
+        }
+    );
+
+    tabsBar.innerHTML =
+        htmlTabs;
 
 
-        // =====================================================
-        // ABA ATUAL
-        // =====================================================
+    const aba =
+        data.abas[
+            data.currentTab
+        ];
 
-        const aba =
-            data.abas[
-                data.currentTab
-            ];
+    if (!aba) return;
 
 
-        if (!aba) {
+    startInput.value =
+        aba.startTime ||
+        '08:00';
+
+
+    const startSec =
+        toSeconds(
+            startInput.value
+        ) ||
+        8 * 3600;
+
+
+    const computed =
+        computeEvents(
+            aba.eventos,
+            startSec
+        );
+
+
+    /* =====================================================
+       TABELA
+    ===================================================== */
+
+    let tableHtml = `
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th class="col-index">
+                        #
+                    </th>
+
+                    <th class="col-event">
+                        Evento
+                    </th>
+
+                    <th class="col-duration">
+                        Duração<br>
+                        (hh:mm)
+                    </th>
+
+                    <th class="col-start">
+                        Início
+                    </th>
+
+                    <th class="col-end">
+                        Término
+                    </th>
+
+                    <th class="col-delay">
+                        Atraso
+                    </th>
+
+                    <th class="col-actions">
+                        Ações
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+    `;
+
+
+    computed.forEach(
+        (row, idx) => {
+
+            const delayStr =
+                row.delay !== null
+                    ? toHHMMSS(
+                        row.delay
+                    )
+                    : '';
+
+
+            const delayClass =
+                row.delay !== null
+                    ? (
+                        row.delay > 0
+                            ? 'atraso'
+                            : 'adiantado'
+                    )
+                    : '';
+
+
+            tableHtml += `
+
+                <tr>
+
+                    <td class="col-index">
+                        ${idx + 1}
+                    </td>
+
+
+                    <td class="col-event event-cell">
+
+                        <input
+                            type="text"
+                            class="editable event-input"
+                            value="${escapeAttribute(row.name)}"
+                            onchange="updateEvent(${idx}, 'name', this.value)"
+                        >
+
+                    </td>
+
+
+                    <td class="col-duration">
+
+                        <input
+                            type="text"
+                            class="editable duration"
+                            value="${toHHMM(row.duration)}"
+                            onchange="updateEvent(${idx}, 'duration', this.value)"
+                        >
+
+                    </td>
+
+
+                    <td class="col-start calculated">
+
+                        ${toHHMMSS(row.startReal)}
+
+                    </td>
+
+
+                    <td class="col-end">
+
+                        <input
+                            type="text"
+                            class="editable time"
+                            value="${escapeAttribute(row.realEnd || '')}"
+                            placeholder="HH:MM:SS"
+                            onchange="updateEvent(${idx}, 'realEnd', this.value)"
+                        >
+
+                    </td>
+
+
+                    <td class="col-delay ${delayClass}">
+
+                        ${delayStr}
+
+                    </td>
+
+
+                    <td class="col-actions">
+
+                        <button
+                            class="move-btn"
+                            onclick="moveEvent(${idx}, -1)"
+                            title="Subir"
+                        >
+                            ⬆
+                        </button>
+
+                        <button
+                            class="move-btn"
+                            onclick="moveEvent(${idx}, 1)"
+                            title="Descer"
+                        >
+                            ⬇
+                        </button>
+
+                        <button
+                            class="btn btn-danger"
+                            onclick="removeEvent(${idx})"
+                        >
+                            ✕
+                        </button>
+
+                    </td>
+
+                </tr>
+
+            `;
+
+        }
+    );
+
+
+    tableHtml += `
+
+            </tbody>
+
+        </table>
+
+    `;
+
+
+    container.innerHTML =
+        tableHtml;
+
+
+    /*
+     * Salva os dados.
+     */
+
+    saveData();
+
+
+    /*
+     * Salva também a aba atualmente selecionada.
+     */
+
+    localStorage.setItem(
+        'programacao_eventos_current_tab',
+        String(data.currentTab)
+    );
+}
+
+
+/* ============================================================
+   SEGURANÇA PARA TEXTO DIGITADO
+============================================================ */
+
+function escapeHtml(text) {
+
+    if (text == null) return '';
+
+    return String(text)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
+
+
+function escapeAttribute(text) {
+
+    return escapeHtml(text);
+}
+
+
+/* ============================================================
+   MANIPULAÇÃO DE EVENTOS
+============================================================ */
+
+function getCurrentAba() {
+
+    return data.abas[
+        data.currentTab
+    ];
+}
+
+
+function updateEvent(
+    index,
+    field,
+    value
+) {
+
+    const aba =
+        getCurrentAba();
+
+
+    if (field === 'duration') {
+
+        const sec =
+            toSeconds(value);
+
+        if (
+            sec !== null &&
+            sec > 0
+        ) {
+
+            aba.eventos[
+                index
+            ].duration = sec;
+
+        } else {
+
+            alert(
+                'Duração inválida. Use HH:MM ou HH:MM:SS'
+            );
+
+            render();
+
             return;
         }
 
-
-        startInput.value =
-            aba.startTime ||
-            '08:00';
-
-
-        const startSec =
-            toSeconds(
-                startInput.value
-            ) ||
-            8 * 3600;
-
-
-        const computed =
-            computeEvents(
-                aba.eventos,
-                startSec
-            );
-
-
-        // =====================================================
-        // TABELA
-        // =====================================================
-
-        let tableHtml = `
-
-            <div class="table-responsive">
-
-                <table>
-
-                    <thead>
-
-                        <tr>
-
-                            <th class="col-index">
-                                #
-                            </th>
-
-                            <th class="col-event">
-                                Evento
-                            </th>
-
-                            <th class="col-duration">
-                                Duração (hh:mm)
-                            </th>
-
-                            <th class="col-start">
-                                Início
-                            </th>
-
-                            <th class="col-end">
-                                Término
-                            </th>
-
-                            <th class="col-delay">
-                                Atraso
-                            </th>
-
-                            <th class="col-actions">
-                                Ações
-                            </th>
-
-                        </tr>
-
-                    </thead>
-
-                    <tbody>
-
-        `;
-
-
-        computed.forEach(
-            (row, idx) => {
-
-                const delayStr =
-                    row.delay !== null
-                        ? toHHMMSS(
-                            row.delay
-                        )
-                        : '';
-
-
-                const delayClass =
-                    row.delay !== null
-                        ? (
-                            row.delay > 0
-                                ? 'atraso'
-                                : 'adiantado'
-                        )
-                        : '';
-
-
-                tableHtml += `
-
-                    <tr>
-
-                        <td class="col-index">
-                            ${idx + 1}
-                        </td>
-
-
-                        <td class="col-event">
-
-                            <input
-                                type="text"
-                                class="editable"
-                                value="${escapeHtml(row.name)}"
-                                onchange="updateEvent(${idx}, 'name', this.value)"
-                            >
-
-                        </td>
-
-
-                        <td class="col-duration">
-
-                            <input
-                                type="text"
-                                class="editable duration"
-                                value="${toHHMM(row.duration)}"
-                                onchange="updateEvent(${idx}, 'duration', this.value)"
-                            >
-
-                        </td>
-
-
-                        <td class="col-start calculated">
-
-                            ${toHHMMSS(row.startReal)}
-
-                        </td>
-
-
-                        <td class="col-end">
-
-                            <input
-                                type="text"
-                                class="editable time"
-                                value="${row.realEnd || ''}"
-                                placeholder="HH:MM:SS"
-                                onchange="updateEvent(${idx}, 'realEnd', this.value)"
-                            >
-
-                        </td>
-
-
-                        <td
-                            class="col-delay ${delayClass}"
-                        >
-
-                            ${delayStr}
-
-                        </td>
-
-
-                        <td class="col-actions">
-
-                            <button
-                                class="move-btn"
-                                onclick="moveEvent(${idx}, -1)"
-                                title="Subir"
-                            >
-                                ⬆
-                            </button>
-
-                            <button
-                                class="move-btn"
-                                onclick="moveEvent(${idx}, 1)"
-                                title="Descer"
-                            >
-                                ⬇
-                            </button>
-
-                            <button
-                                class="btn btn-danger"
-                                onclick="removeEvent(${idx})"
-                                title="Excluir"
-                            >
-                                ✕
-                            </button>
-
-                        </td>
-
-                    </tr>
-
-                `;
-            }
-        );
-
-
-        tableHtml += `
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        `;
-
-
-        container.innerHTML =
-            tableHtml;
-
-
-        saveData();
     }
 
 
-    // =========================================================
-    // MANIPULAÇÃO
-    // =========================================================
-
-    function getCurrentAba() {
-
-        return data.abas[
-            data.currentTab
-        ];
-    }
-
-
-    function updateEvent(
-        index,
-        field,
-        value
-    ) {
-
-        const aba =
-            getCurrentAba();
-
-
-        // =====================================================
-        // DURAÇÃO
-        // =====================================================
+    else if (field === 'realEnd') {
 
         if (
-            field === 'duration'
+            value.trim() === ''
         ) {
+
+            aba.eventos[
+                index
+            ].realEnd = '';
+
+        }
+
+        else {
 
             const sec =
                 toSeconds(value);
 
-
             if (
-                sec !== null &&
-                sec > 0
+                sec !== null
             ) {
 
                 aba.eventos[
                     index
-                ].duration =
-                    sec;
+                ].realEnd =
+                    toHHMMSS(sec);
 
-            } else {
+            }
+
+            else {
 
                 alert(
-                    'Duração inválida. Use HH:MM ou HH:MM:SS'
+                    'Hora inválida. Use HH:MM:SS'
                 );
 
                 render();
 
                 return;
             }
+
         }
 
-
-        // =====================================================
-        // TÉRMINO
-        // =====================================================
-
-        else if (
-            field === 'realEnd'
-        ) {
-
-            if (
-                value.trim() === ''
-            ) {
-
-                aba.eventos[
-                    index
-                ].realEnd =
-                    '';
-
-            } else {
-
-                const sec =
-                    toSeconds(value);
-
-
-                if (
-                    sec !== null
-                ) {
-
-                    aba.eventos[
-                        index
-                    ].realEnd =
-                        toHHMMSS(sec);
-
-                } else {
-
-                    alert(
-                        'Hora inválida. Use HH:MM:SS'
-                    );
-
-                    render();
-
-                    return;
-                }
-            }
-        }
-
-
-        // =====================================================
-        // OUTROS CAMPOS
-        // =====================================================
-
-        else {
-
-            aba.eventos[
-                index
-            ][field] =
-                value;
-        }
-
-
-        render();
     }
 
 
-    // =========================================================
-    // ADICIONAR EVENTO
-    // =========================================================
+    else {
 
-    function addEvent() {
+        aba.eventos[
+            index
+        ][field] =
+            value;
 
-        getCurrentAba()
-            .eventos
-            .push({
-
-                id:
-                    nextId++,
-
-                name:
-                    'Novo evento',
-
-                duration:
-                    1800,
-
-                realEnd:
-                    ''
-
-            });
-
-
-        render();
     }
 
 
-    // =========================================================
-    // REMOVER EVENTO
-    // =========================================================
+    /*
+     * Ao alterar Término,
+     * o render recalcula imediatamente
+     * o Início da próxima linha.
+     */
 
-    function removeEvent(index) {
+    render();
+}
 
-        const aba =
-            getCurrentAba();
 
+/* ============================================================
+   ADICIONAR EVENTO
+============================================================ */
 
-        if (
-            aba.eventos.length <= 1
-        ) {
+function addEvent() {
 
-            alert(
-                'É necessário pelo menos um evento.'
-            );
+    getCurrentAba()
+        .eventos
+        .push({
 
-            return;
-        }
+            id: nextId++,
 
+            name:
+                'Novo evento',
 
-        if (
-            !confirm(
-                'Remover este evento?'
-            )
-        ) {
+            duration:
+                1800,
 
-            return;
-        }
-
-
-        aba.eventos.splice(
-            index,
-            1
-        );
-
-
-        render();
-    }
-
-
-    // =========================================================
-    // MOVER EVENTO
-    // =========================================================
-
-    function moveEvent(
-        index,
-        direction
-    ) {
-
-        const aba =
-            getCurrentAba();
-
-
-        const newIndex =
-            index + direction;
-
-
-        if (
-            newIndex < 0 ||
-            newIndex >=
-                aba.eventos.length
-        ) {
-
-            return;
-        }
-
-
-        [
-            aba.eventos[index],
-            aba.eventos[newIndex]
-        ] = [
-            aba.eventos[newIndex],
-            aba.eventos[index]
-        ];
-
-
-        render();
-    }
-
-
-    // =========================================================
-    // RESTAURAR ABA
-    // =========================================================
-
-    function resetCurrentTab() {
-
-        const aba =
-            getCurrentAba();
-
-
-        if (
-            !confirm(
-                'Recarregar eventos de exemplo?'
-            )
-        ) {
-
-            return;
-        }
-
-
-        const isUpa =
-            aba.nome
-                .toLowerCase()
-                .includes('upa');
-
-
-        aba.eventos =
-            isUpa
-                ? getUPADefaultEvents()
-                : getHospitalDefaultEvents();
-
-
-        aba.eventos.forEach(
-            e => {
-
-                e.id =
-                    nextId++;
-
-            }
-        );
-
-
-        render();
-    }
-
-
-    // =========================================================
-    // TROCAR ABA
-    // =========================================================
-
-    function switchTab(index) {
-
-        data.currentTab =
-            index;
-
-
-        // Salva imediatamente a aba escolhida
-        saveCurrentTab();
-
-
-        render();
-    }
-
-
-    // =========================================================
-    // ADICIONAR ABA
-    // =========================================================
-
-    function addTab() {
-
-        const name =
-            prompt(
-                'Nome da nova aba:',
-                'Novo cronograma'
-            );
-
-
-        if (!name) {
-            return;
-        }
-
-
-        const isUpa =
-            confirm(
-                'Usar modelo de UPA/UPAEs? (OK = UPA, Cancelar = Hospitais)'
-            );
-
-
-        const eventos =
-            isUpa
-                ? getUPADefaultEvents()
-                : getHospitalDefaultEvents();
-
-
-        data.abas.push({
-
-            nome:
-                name,
-
-            startTime:
-                '08:00',
-
-            eventos:
-                eventos
+            realEnd:
+                ''
 
         });
 
+    render();
+}
 
-        const newIndex =
-            data.abas.length - 1;
 
+/* ============================================================
+   REMOVER EVENTO
+============================================================ */
 
-        data.abas[
-            newIndex
-        ].eventos.forEach(
-            e => {
+function removeEvent(index) {
 
-                e.id =
-                    nextId++;
+    const aba =
+        getCurrentAba();
 
-            }
+    if (
+        aba.eventos.length <= 1
+    ) {
+
+        alert(
+            'É necessário pelo menos um evento.'
         );
 
+        return;
+    }
+
+    if (
+        !confirm(
+            'Remover este evento?'
+        )
+    ) {
+        return;
+    }
+
+    aba.eventos.splice(
+        index,
+        1
+    );
+
+    render();
+}
+
+
+/* ============================================================
+   MOVER EVENTO
+============================================================ */
+
+function moveEvent(
+    index,
+    direction
+) {
+
+    const aba =
+        getCurrentAba();
+
+    const newIndex =
+        index + direction;
+
+    if (
+        newIndex < 0 ||
+        newIndex >= aba.eventos.length
+    ) {
+        return;
+    }
+
+    [
+        aba.eventos[index],
+        aba.eventos[newIndex]
+    ] =
+    [
+        aba.eventos[newIndex],
+        aba.eventos[index]
+    ];
+
+    render();
+}
+
+
+/* ============================================================
+   RESTAURAR ABA
+============================================================ */
+
+function resetCurrentTab() {
+
+    const aba =
+        getCurrentAba();
+
+    if (
+        !confirm(
+            'Recarregar eventos de exemplo?'
+        )
+    ) {
+        return;
+    }
+
+    const isUpa =
+        aba.nome
+            .toLowerCase()
+            .includes('upa');
+
+
+    aba.eventos =
+        isUpa
+            ? getUPADefaultEvents()
+            : getHospitalDefaultEvents();
+
+
+    aba.eventos.forEach(
+        e => {
+            e.id =
+                nextId++;
+        }
+    );
+
+
+    render();
+}
+
+
+/* ============================================================
+   TROCAR ABA
+============================================================ */
+
+function switchTab(index) {
+
+    data.currentTab =
+        index;
+
+
+    /*
+     * SALVA IMEDIATAMENTE
+     * a aba selecionada.
+     */
+
+    localStorage.setItem(
+        'programacao_eventos_current_tab',
+        String(index)
+    );
+
+
+    render();
+}
+
+
+/* ============================================================
+   NOVA ABA
+============================================================ */
+
+function addTab() {
+
+    const name =
+        prompt(
+            'Nome da nova aba:',
+            'Novo cronograma'
+        );
+
+    if (!name) return;
+
+
+    const isUpa =
+        confirm(
+            'Usar modelo de UPA/UPAEs? (OK = UPA / Cancelar = Hospitais)'
+        );
+
+
+    const eventos =
+        isUpa
+            ? getUPADefaultEvents()
+            : getHospitalDefaultEvents();
+
+
+    data.abas.push({
+
+        nome: name,
+
+        startTime:
+            '08:00',
+
+        eventos:
+            eventos
+
+    });
+
+
+    data.abas[
+        data.abas.length - 1
+    ].eventos.forEach(
+        e => {
+            e.id =
+                nextId++;
+        }
+    );
+
+
+    data.currentTab =
+        data.abas.length - 1;
+
+
+    localStorage.setItem(
+        'programacao_eventos_current_tab',
+        String(data.currentTab)
+    );
+
+
+    render();
+}
+
+
+/* ============================================================
+   RENOMEAR ABA
+============================================================ */
+
+function renameTab(index) {
+
+    const newName =
+        prompt(
+            'Novo nome da aba:',
+            data.abas[index].nome
+        );
+
+
+    if (
+        newName !== null &&
+        newName.trim() !== ''
+    ) {
+
+        data.abas[index].nome =
+            newName.trim();
+
+        render();
+    }
+}
+
+
+/* ============================================================
+   EXCLUIR ABA
+============================================================ */
+
+function deleteTab(index) {
+
+    if (
+        data.abas.length <= 1
+    ) {
+
+        alert(
+            'Não é possível deletar a única aba.'
+        );
+
+        return;
+    }
+
+
+    if (
+        !confirm(
+            `Remover a aba "${data.abas[index].nome}"?`
+        )
+    ) {
+        return;
+    }
+
+
+    data.abas.splice(
+        index,
+        1
+    );
+
+
+    if (
+        data.currentTab >=
+        data.abas.length
+    ) {
 
         data.currentTab =
-            newIndex;
-
-
-        saveCurrentTab();
-
-
-        render();
+            data.abas.length - 1;
     }
 
 
-    // =========================================================
-    // RENOMEAR ABA
-    // =========================================================
-
-    function renameTab(index) {
-
-        const newName =
-            prompt(
-                'Novo nome da aba:',
-                data.abas[index].nome
-            );
+    localStorage.setItem(
+        'programacao_eventos_current_tab',
+        String(data.currentTab)
+    );
 
 
-        if (
-            newName !== null &&
-            newName.trim() !== ''
-        ) {
-
-            data.abas[index].nome =
-                newName.trim();
+    render();
+}
 
 
-            render();
-        }
+/* ============================================================
+   RESETAR TUDO
+============================================================ */
+
+function resetAllData() {
+
+    if (
+        !confirm(
+            'Isso vai apagar TODOS os seus cronogramas e recarregar os exemplos originais. Continuar?'
+        )
+    ) {
+        return;
     }
 
 
-    // =========================================================
-    // EXCLUIR ABA
-    // =========================================================
+    localStorage.removeItem(
+        'programacao_eventos_fgh'
+    );
 
-    function deleteTab(index) {
+    localStorage.removeItem(
+        'programacao_eventos_fgh_export_cols'
+    );
 
-        if (
-            data.abas.length <= 1
-        ) {
-
-            alert(
-                'Não é possível deletar a única aba.'
-            );
-
-            return;
-        }
+    localStorage.removeItem(
+        'programacao_eventos_current_tab'
+    );
 
 
-        if (
-            !confirm(
-                `Remover a aba "${data.abas[index].nome}"?`
-            )
-        ) {
-
-            return;
-        }
+    location.reload();
+}
 
 
-        data.abas.splice(
-            index,
-            1
-        );
+/* ============================================================
+   EXPORTAR JPEG
+============================================================ */
 
+function exportToImage() {
 
-        /*
-         * Ajusta a aba atual.
-         */
-
-        if (
-            data.currentTab === index
-        ) {
-
-            if (
-                index >=
-                data.abas.length
-            ) {
-
-                data.currentTab =
-                    data.abas.length - 1;
-
-            } else {
-
-                data.currentTab =
-                    index;
-            }
-
-        } else if (
-            data.currentTab > index
-        ) {
-
-            data.currentTab--;
-        }
-
-
-        saveCurrentTab();
-
-
-        render();
-    }
-
-
-    // =========================================================
-    // RESETAR TUDO
-    // =========================================================
-
-    function resetAllData() {
-
-        if (
-            !confirm(
-                'Isso vai apagar TODOS os seus cronogramas e recarregar os exemplos originais. Continuar?'
-            )
-        ) {
-
-            return;
-        }
-
-
-        localStorage.removeItem(
-            'programacao_eventos_fgh'
-        );
-
-
-        localStorage.removeItem(
-            'programacao_eventos_fgh_export_cols'
-        );
-
-
-        localStorage.removeItem(
-            'programacao_eventos_fgh_current_tab'
-        );
-
-
-        location.reload();
-    }
-
-
-    // =========================================================
-    // EXPORTAR JPEG
-    // =========================================================
-
-    function exportToImage() {
-
-        const wrapper =
-            document.getElementById(
-                'export-wrapper'
-            );
-
-
+    const wrapper =
         document.getElementById(
-            'dynamic-title'
-        ).innerText =
-            data.abas[
-                data.currentTab
-            ].nome;
+            'export-wrapper'
+        );
 
 
-        wrapper.classList.add(
+    document.getElementById(
+        'dynamic-title'
+    ).innerText =
+        data.abas[
+            data.currentTab
+        ].nome;
+
+
+    wrapper.classList.add(
+        'exporting'
+    );
+
+
+    applyExportColumnVisibility(
+        true
+    );
+
+
+    html2canvas(
+        wrapper,
+        {
+            scale: 2,
+            useCORS: true,
+            backgroundColor:
+                '#ffffff'
+        }
+    )
+    .then(canvas => {
+
+        const link =
+            document.createElement(
+                'a'
+            );
+
+
+        link.download =
+            `programacao_${data.abas[data.currentTab].nome}.jpg`;
+
+
+        link.href =
+            canvas.toDataURL(
+                'image/jpeg',
+                0.95
+            );
+
+
+        link.click();
+
+
+        wrapper.classList.remove(
             'exporting'
         );
 
 
         applyExportColumnVisibility(
-            true
+            false
+        );
+
+    })
+    .catch(err => {
+
+        alert(
+            'Erro ao gerar imagem: ' +
+            err
         );
 
 
-        html2canvas(
-            wrapper,
-            {
-                scale: 2,
-                useCORS: true,
-                backgroundColor:
-                    '#ffffff'
-            }
-        )
-        .then(
-            canvas => {
-
-                const link =
-                    document.createElement(
-                        'a'
-                    );
-
-
-                link.download =
-                    `programacao_${data.abas[data.currentTab].nome}.jpg`;
-
-
-                link.href =
-                    canvas.toDataURL(
-                        'image/jpeg',
-                        0.95
-                    );
-
-
-                link.click();
-
-
-                wrapper.classList.remove(
-                    'exporting'
-                );
-
-
-                applyExportColumnVisibility(
-                    false
-                );
-
-            }
-        )
-        .catch(
-            err => {
-
-                alert(
-                    'Erro ao gerar imagem: ' +
-                    err
-                );
-
-
-                wrapper.classList.remove(
-                    'exporting'
-                );
-
-
-                applyExportColumnVisibility(
-                    false
-                );
-
-            }
-        );
-    }
-
-
-    // =========================================================
-    // EXPORTAR PDF
-    // =========================================================
-
-    function exportToPDF() {
-
-        const wrapper =
-            document.getElementById(
-                'export-wrapper'
-            );
-
-
-        document.getElementById(
-            'dynamic-title'
-        ).innerText =
-            data.abas[
-                data.currentTab
-            ].nome;
-
-
-        wrapper.classList.add(
+        wrapper.classList.remove(
             'exporting'
         );
 
 
         applyExportColumnVisibility(
-            true
+            false
+        );
+
+    });
+}
+
+
+/* ============================================================
+   EXPORTAR PDF
+============================================================ */
+
+function exportToPDF() {
+
+    const wrapper =
+        document.getElementById(
+            'export-wrapper'
         );
 
 
-        window.print();
+    document.getElementById(
+        'dynamic-title'
+    ).innerText =
+        data.abas[
+            data.currentTab
+        ].nome;
 
 
-        setTimeout(
-            () => {
-
-                wrapper.classList.remove(
-                    'exporting'
-                );
+    wrapper.classList.add(
+        'exporting'
+    );
 
 
-                applyExportColumnVisibility(
-                    false
-                );
+    applyExportColumnVisibility(
+        true
+    );
 
-            },
-            1000
+
+    window.print();
+
+
+    setTimeout(() => {
+
+        wrapper.classList.remove(
+            'exporting'
         );
+
+        applyExportColumnVisibility(
+            false
+        );
+
+    }, 1000);
+}
+
+
+/* ============================================================
+   INICIALIZAÇÃO
+============================================================ */
+
+document.addEventListener(
+    'DOMContentLoaded',
+    async () => {
+
+        await loadData();
+
+        loadExportColumns();
+
+        renderColumnSelector();
+
+        render();
+
+
+        document
+            .getElementById(
+                'startTime'
+            )
+            .addEventListener(
+                'change',
+                function () {
+
+                    getCurrentAba()
+                        .startTime =
+                        this.value;
+
+                    render();
+                }
+            );
+
     }
-
-
-    // =========================================================
-    // SALVAR ABA ANTES DE SAIR
-    // =========================================================
-
-    window.addEventListener(
-        'beforeunload',
-        function () {
-
-            saveCurrentTab();
-
-        }
-    );
-
-
-    // =========================================================
-    // INICIALIZAÇÃO
-    // =========================================================
-
-    document.addEventListener(
-        'DOMContentLoaded',
-        async () => {
-
-            // Primeiro carrega os dados
-            await loadData();
-
-
-            // Depois recupera a última aba utilizada
-            loadCurrentTab();
-
-
-            // Configura as colunas
-            loadExportColumns();
-
-
-            renderColumnSelector();
-
-
-            // Renderiza a aplicação
-            render();
-
-
-            // Alteração do horário inicial
-            document
-                .getElementById('startTime')
-                .addEventListener(
-                    'change',
-                    function () {
-
-                        getCurrentAba()
-                            .startTime =
-                            this.value;
-
-
-                        render();
-
-                    }
-                );
-
-        }
-    );
+);
 
 </script>
 
