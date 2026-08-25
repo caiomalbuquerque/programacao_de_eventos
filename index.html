@@ -4,15 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Programação de Eventos FGH</title>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
     <style>
-        * { box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #f4f7fa;
             margin: 20px;
             color: #333;
         }
+
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -23,28 +29,40 @@
             border: 1px solid #e6edf5;
         }
 
-        /* --- CABEÇALHO --- */
-        .header-wrapper { margin-bottom: 20px; }
+        /* =========================
+           CABEÇALHO
+        ========================= */
+
+        .header-wrapper {
+            margin-bottom: 20px;
+        }
+
         .title-row {
             display: flex;
             align-items: center;
             gap: 15px;
             margin-bottom: 15px;
         }
-        .logo-img { height: 40px; vertical-align: middle; }
+
+        .logo-img {
+            height: 40px;
+            vertical-align: middle;
+        }
+
         h1 {
             margin: 0;
             font-size: 24px;
             font-weight: 700;
             color: #163c6d;
         }
-        
+
         .tabs-container {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             gap: 8px;
         }
+
         .tab-btn {
             padding: 8px 16px;
             background: #f0f4f8;
@@ -59,22 +77,57 @@
             align-items: center;
             gap: 8px;
         }
-        .tab-btn:hover { background: #e2eaf3; border-color: #bdd3e8; }
-        .tab-btn.active { background: #163c6d; color: white; border-color: #163c6d; }
-        .tab-btn.active:hover { background: #0e2b4f; }
+
+        .tab-btn:hover {
+            background: #e2eaf3;
+            border-color: #bdd3e8;
+        }
+
+        .tab-btn.active {
+            background: #163c6d;
+            color: white;
+            border-color: #163c6d;
+        }
+
+        .tab-btn.active:hover {
+            background: #0e2b4f;
+        }
+
         .tab-btn .tab-actions {
             font-size: 12px;
             display: flex;
             align-items: center;
             gap: 4px;
         }
-        .tab-btn .tab-actions button {
-            background: transparent; border: none; cursor: pointer; color: inherit; font-weight: bold; padding: 0;
-        }
-        .btn-success { background: #1a9c4a; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 14px; }
-        .btn-success:hover { background: #13803b; }
 
-        /* --- FERRAMENTAS --- */
+        .tab-btn .tab-actions button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: inherit;
+            font-weight: bold;
+            padding: 0;
+        }
+
+        .btn-success {
+            background: #1a9c4a;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .btn-success:hover {
+            background: #13803b;
+        }
+
+        /* =========================
+           FERRAMENTAS
+        ========================= */
+
         .toolbar {
             display: flex;
             gap: 15px;
@@ -86,501 +139,2326 @@
             border: 1px solid #e6edf5;
             border-radius: 8px;
         }
-        .toolbar label { font-weight: 600; color: #163c6d; }
-        .toolbar input[type="time"] { padding: 6px 10px; border: 1px solid #d1d8e2; border-radius: 6px; font-size: 14px; color: #163c6d; background: #ffffff; }
+
+        .toolbar label {
+            font-weight: 600;
+            color: #163c6d;
+        }
+
+        .toolbar input[type="time"] {
+            padding: 6px 10px;
+            border: 1px solid #d1d8e2;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #163c6d;
+            background: #ffffff;
+        }
+
         .btn {
-            border: none; border-radius: 6px; cursor: pointer; font-weight: 600; transition: 0.2s; padding: 6px 14px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.2s;
+            padding: 6px 14px;
         }
-        .btn-primary { background: #163c6d; color: white; }
-        .btn-primary:hover { background: #0e2b4f; }
-        .btn-secondary { background: #2b6ca3; color: white; }
-        .btn-secondary:hover { background: #1f5280; }
-        .btn-danger { background: #dc3545; color: white; padding: 4px 10px; font-size: 12px; }
-        .btn-danger:hover { background: #a71d2a; }
-        .btn-warning { background: #ffc107; color: #212529; }
-        .btn-warning:hover { background: #e0a800; }
 
-        /* --- SELETOR DE COLUNAS --- */
+        .btn-primary {
+            background: #163c6d;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0e2b4f;
+        }
+
+        .btn-secondary {
+            background: #2b6ca3;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #1f5280;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+            padding: 4px 10px;
+            font-size: 12px;
+        }
+
+        .btn-danger:hover {
+            background: #a71d2a;
+        }
+
+        .btn-warning {
+            background: #ffc107;
+            color: #212529;
+        }
+
+        .btn-warning:hover {
+            background: #e0a800;
+        }
+
+        /* =========================
+           SELETOR DE COLUNAS
+        ========================= */
+
         .column-selector {
-            display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-bottom: 15px;
-            padding: 12px 15px; background: #eef5fb; border: 1px solid #cfe2ff; border-radius: 8px;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+            padding: 12px 15px;
+            background: #eef5fb;
+            border: 1px solid #cfe2ff;
+            border-radius: 8px;
         }
-        .column-selector .cs-title { font-weight: 700; color: #163c6d; font-size: 14px; }
-        .column-selector label { display: flex; align-items: center; gap: 6px; font-weight: 500; font-size: 14px; cursor: pointer; color: #163c6d; }
-        .column-selector input[type="checkbox"] { cursor: pointer; width: 16px; height: 16px; accent-color: #163c6d; }
 
-        /* --- TABELA --- */
-        table { width: 100%; border-collapse: collapse; font-size: 14px; background: white; border-radius: 8px; overflow: hidden; border: 1px solid #dbe0e5; }
-        th, td { border: 1px solid #e6edf5; padding: 8px 6px; text-align: center; vertical-align: middle; }
-        th { background: #e9edf2; color: #163c6d; font-weight: 700; border-bottom: 2px solid #163c6d; }
-        tbody tr:nth-child(even) { background: #f8fbff; }
-        tbody tr:hover { background: #eef5fb; }
-        .editable { width: 100%; border: 1px solid transparent; background: transparent; text-align: center; font: inherit; padding: 4px; border-radius: 4px; }
-        .editable:focus { border-color: #2b6ca3; background: #f4faff; outline: none; }
-        .editable.duration { width: 70px; }
-        .editable.time { width: 90px; }
-        .calculated { background: transparent; color: #444; font-weight: 500; }
-        .atraso { color: #d32f2f; font-weight: 700; }
-        .adiantado { color: #1a9c4a; font-weight: 700; }
-        .col-index { width: 40px; }
-        .col-actions { width: 100px; }
-        .col-event { min-width: 180px; }
-        .col-hidden { display: none !important; }
-        .move-btn { background: none; border: none; cursor: pointer; font-size: 16px; padding: 0 4px; color: #2b6ca3; }
-        .move-btn:hover { color: #163c6d; }
+        .column-selector .cs-title {
+            font-weight: 700;
+            color: #163c6d;
+            font-size: 14px;
+        }
 
-        /* --- EXPORTAÇÃO --- */
-        .exporting .tabs-container, .exporting .toolbar, .exporting .column-selector, .exporting .move-btn, .exporting .btn-danger, .exporting .col-actions { display: none !important; }
+        .column-selector label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            color: #163c6d;
+        }
+
+        .column-selector input[type="checkbox"] {
+            cursor: pointer;
+            width: 16px;
+            height: 16px;
+            accent-color: #163c6d;
+        }
+
+        /* =========================
+           TABELA
+        ========================= */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #dbe0e5;
+        }
+
+        th,
+        td {
+            border: 1px solid #e6edf5;
+            padding: 8px 6px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        th {
+            background: #e9edf2;
+            color: #163c6d;
+            font-weight: 700;
+            border-bottom: 2px solid #163c6d;
+        }
+
+        tbody tr:nth-child(even) {
+            background: #f8fbff;
+        }
+
+        tbody tr:hover {
+            background: #eef5fb;
+        }
+
+        .editable {
+            width: 100%;
+            border: 1px solid transparent;
+            background: transparent;
+            text-align: center;
+            font: inherit;
+            padding: 4px;
+            border-radius: 4px;
+        }
+
+        .editable:focus {
+            border-color: #2b6ca3;
+            background: #f4faff;
+            outline: none;
+        }
+
+        .editable.duration {
+            width: 70px;
+        }
+
+        .editable.time {
+            width: 90px;
+        }
+
+        .calculated {
+            background: transparent;
+            color: #444;
+            font-weight: 500;
+        }
+
+        .atraso {
+            color: #d32f2f;
+            font-weight: 700;
+        }
+
+        .adiantado {
+            color: #1a9c4a;
+            font-weight: 700;
+        }
+
+        .col-index {
+            width: 40px;
+        }
+
+        .col-actions {
+            width: 100px;
+        }
+
+        .col-event {
+            min-width: 180px;
+        }
+
+        .col-hidden {
+            display: none !important;
+        }
+
+        .move-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 0 4px;
+            color: #2b6ca3;
+        }
+
+        .move-btn:hover {
+            color: #163c6d;
+        }
+
+        /* =========================
+           EXPORTAÇÃO
+        ========================= */
+
+        .exporting .tabs-container,
+        .exporting .toolbar,
+        .exporting .column-selector,
+        .exporting .move-btn,
+        .exporting .btn-danger,
+        .exporting .col-actions {
+            display: none !important;
+        }
 
         @media print {
-            .tabs-container, .toolbar, .column-selector, .move-btn, .btn-danger, .col-actions { display: none !important; }
-            #export-wrapper { max-width: 100%; padding: 0; }
+            .tabs-container,
+            .toolbar,
+            .column-selector,
+            .move-btn,
+            .btn-danger,
+            .col-actions {
+                display: none !important;
+            }
+
+            #export-wrapper {
+                max-width: 100%;
+                padding: 0;
+            }
         }
-        @media (max-width: 800px) { table { font-size: 12px; } th, td { padding: 4px; } .editable.duration { width: 50px; } .editable.time { width: 70px; } }
+
+        @media (max-width: 800px) {
+            table {
+                font-size: 12px;
+            }
+
+            th,
+            td {
+                padding: 4px;
+            }
+
+            .editable.duration {
+                width: 50px;
+            }
+
+            .editable.time {
+                width: 70px;
+            }
+        }
     </style>
 </head>
+
 <body>
 
 <div class="container">
+
     <div id="export-wrapper">
-        <!-- CABEÇALHO -->
+
+        <!-- =========================
+             CABEÇALHO
+        ========================= -->
+
         <div class="header-wrapper">
+
             <div class="title-row">
-                <img src="images/logo_fgh.png" alt="Logo FGH" class="logo-img">
-                <h1 id="dynamic-title">Programação de Eventos FGH</h1>
+
+                <img
+                    src="images/logo_fgh.png"
+                    alt="Logo FGH"
+                    class="logo-img"
+                >
+
+                <h1 id="dynamic-title">
+                    Programação de Eventos FGH
+                </h1>
+
             </div>
+
             <div class="tabs-container">
+
                 <div id="tabsBar" class="tabs-bar"></div>
-                <button class="btn btn-success" onclick="addTab()">+ Nova aba</button>
+
+                <button
+                    class="btn btn-success"
+                    onclick="addTab()"
+                >
+                    + Nova aba
+                </button>
+
             </div>
+
         </div>
 
-        <!-- FERRAMENTAS -->
+        <!-- =========================
+             FERRAMENTAS
+        ========================= -->
+
         <div class="toolbar">
-            <label>Início do evento:</label>
-            <input type="time" id="startTime" value="08:00" step="1">
-            <button class="btn btn-primary" onclick="addEvent()">➕ Adicionar evento</button>
-            <button class="btn btn-secondary" onclick="resetCurrentTab()">🔄 Restaurar exemplo</button>
-            <button class="btn btn-warning" onclick="resetAllData()">⚠️ Resetar tudo</button>
-            <button class="btn btn-success" onclick="exportToImage()">🖼️ Exportar JPEG</button>
-            <button class="btn btn-success" onclick="exportToPDF()">📄 Exportar PDF</button>
-            <button class="btn btn-success" onclick="saveDataToGitHub()">💾 Salvar </button>
+
+            <label>
+                Início do evento:
+            </label>
+
+            <input
+                type="time"
+                id="startTime"
+                value="08:00"
+                step="1"
+            >
+
+            <button
+                class="btn btn-primary"
+                onclick="addEvent()"
+            >
+                ➕ Adicionar evento
+            </button>
+
+            <button
+                class="btn btn-secondary"
+                onclick="resetCurrentTab()"
+            >
+                🔄 Restaurar exemplo
+            </button>
+
+            <button
+                class="btn btn-warning"
+                onclick="resetAllData()"
+            >
+                ⚠️ Resetar tudo
+            </button>
+
+            <button
+                class="btn btn-success"
+                onclick="exportToImage()"
+            >
+                🖼️ Exportar JPEG
+            </button>
+
+            <button
+                class="btn btn-success"
+                onclick="exportToPDF()"
+            >
+                📄 Exportar PDF
+            </button>
+
+            <button
+                class="btn btn-success"
+                onclick="saveDataToGitHub()"
+            >
+                💾 Salvar
+            </button>
+
         </div>
 
-        <!-- SELETOR DE COLUNAS -->
-        <div class="column-selector" id="columnSelector">
-            <span class="cs-title">Colunas a exportar:</span>
-        </div>
+        <!-- =========================
+             SELETOR DE COLUNAS
+        ========================= -->
 
-        <!-- TABELA -->
+        <div
+            class="column-selector"
+            id="columnSelector"
+        ></div>
+
+        <!-- =========================
+             TABELA
+        ========================= -->
+
         <div id="tableContainer"></div>
+
     </div>
+
 </div>
 
+
 <script>
-    // ===== UTILITÁRIOS DE TEMPO =====
+
+    // =========================================================
+    // UTILITÁRIOS DE TEMPO
+    // =========================================================
+
     function toSeconds(val) {
+
         if (!val) return null;
-        if (typeof val === 'number') return val;
+
+        if (typeof val === 'number') {
+            return val;
+        }
+
         const parts = val.split(':').map(Number);
-        if (parts.length === 1) return parts[0] * 3600;
-        if (parts.length === 2) return parts[0]*3600 + parts[1]*60;
-        if (parts.length === 3) return parts[0]*3600 + parts[1]*60 + parts[2];
+
+        if (parts.length === 1) {
+            return parts[0] * 3600;
+        }
+
+        if (parts.length === 2) {
+            return parts[0] * 3600 + parts[1] * 60;
+        }
+
+        if (parts.length === 3) {
+            return (
+                parts[0] * 3600 +
+                parts[1] * 60 +
+                parts[2]
+            );
+        }
+
         return null;
     }
+
+
     function toHHMMSS(sec) {
-        if (sec == null || isNaN(sec)) return '';
+
+        if (sec == null || isNaN(sec)) {
+            return '';
+        }
+
         const sign = sec < 0 ? '-' : '';
         const abs = Math.abs(sec);
+
         const h = Math.floor(abs / 3600);
-        const m = Math.floor((abs % 3600) / 60);
+
+        const m = Math.floor(
+            (abs % 3600) / 60
+        );
+
         const s = Math.floor(abs % 60);
+
         return `${sign}${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
     }
+
+
     function toHHMM(sec) {
-        if (sec == null || isNaN(sec)) return '';
+
+        if (sec == null || isNaN(sec)) {
+            return '';
+        }
+
         const sign = sec < 0 ? '-' : '';
         const abs = Math.abs(sec);
+
         const h = Math.floor(abs / 3600);
-        const m = Math.floor((abs % 3600) / 60);
+
+        const m = Math.floor(
+            (abs % 3600) / 60
+        );
+
         return `${sign}${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
     }
 
-    // ===== ESTADO GLOBAL =====
-    let data = { abas: [], currentTab: 0 };
+
+    // =========================================================
+    // ESTADO GLOBAL
+    // =========================================================
+
+    let data = {
+        abas: [],
+        currentTab: 0
+    };
+
     let nextId = 1;
+
+
     const EXPORTABLE_COLUMNS = [
-        { key: 'index', label: '#', className: 'col-index' },
-        { key: 'event', label: 'Evento', className: 'col-event' },
-        { key: 'duration', label: 'Duração (hh:mm)', className: 'col-duration' },
-        { key: 'start', label: 'Início', className: 'col-start' },
-        { key: 'end', label: 'Término', className: 'col-end' },
-        { key: 'delay', label: 'Atraso', className: 'col-delay' }
+
+        {
+            key: 'index',
+            label: '#',
+            className: 'col-index'
+        },
+
+        {
+            key: 'event',
+            label: 'Evento',
+            className: 'col-event'
+        },
+
+        {
+            key: 'duration',
+            label: 'Duração (hh:mm)',
+            className: 'col-duration'
+        },
+
+        {
+            key: 'start',
+            label: 'Início',
+            className: 'col-start'
+        },
+
+        {
+            key: 'end',
+            label: 'Término',
+            className: 'col-end'
+        },
+
+        {
+            key: 'delay',
+            label: 'Atraso',
+            className: 'col-delay'
+        }
+
     ];
+
+
     let exportColumns = {};
 
-    // ===== MODELOS DE EVENTOS =====
+
+    // =========================================================
+    // MODELOS DE EVENTOS
+    // =========================================================
+
     function getHospitalDefaultEvents() {
+
         return [
-            { id: nextId++, name: 'Abertura', duration: 600, realEnd: '' },
-            { id: nextId++, name: 'NIO', duration: 600, realEnd: '' },
-            { id: nextId++, name: 'Hospital da Criança do Recife', duration: 2400, realEnd: '' },
-            { id: nextId++, name: 'Compliance + Gerenciamento de Risco', duration: 1200, realEnd: '' },
-            { id: nextId++, name: 'Hospital Eduardo Campos da Pessoa Idosa', duration: 2400, realEnd: '' },
-            { id: nextId++, name: 'Hospital ALFA', duration: 2400, realEnd: '' },
-            { id: nextId++, name: 'Superintendência de Recursos Humanos', duration: 1200, realEnd: '' },
-            { id: nextId++, name: 'Superintendência de Atendimento', duration: 1200, realEnd: '' },
-            { id: nextId++, name: 'Hospital Dom Helder Câmara', duration: 2400, realEnd: '' },
-            { id: nextId++, name: 'Ensino e Pesquisa', duration: 1200, realEnd: '' },
-            { id: nextId++, name: 'Almoço', duration: 2700, realEnd: '' },
-            { id: nextId++, name: 'Tecnologia da Informação', duration: 1200, realEnd: '' },
-            { id: nextId++, name: 'Superintendência da Qualidade', duration: 1200, realEnd: '' },
-            { id: nextId++, name: 'Hospital Miguel Arraes', duration: 2400, realEnd: '' },
-            { id: nextId++, name: 'Superintendência de Administração e Finanças', duration: 1200, realEnd: '' },
-            { id: nextId++, name: 'Hospital Pelópidas Silveira', duration: 2400, realEnd: '' },
-            { id: nextId++, name: 'Considerações Finais', duration: 600, realEnd: '' }
-        ];
-    }
-    function getUPADefaultEvents() {
-        return [
-            { id: nextId++, name: 'Abertura', duration: 600, realEnd: '' },
-            { id: nextId++, name: 'NIO', duration: 600, realEnd: '' },
-            { id: nextId++, name: 'UPA São Lourenço da Mata', duration: 2100, realEnd: '' },
-            { id: nextId++, name: 'UPAE Ibura', duration: 2100, realEnd: '' },
-            { id: nextId++, name: 'Compliance + Gerenciamento de Risco', duration: 1200, realEnd: '' },
-            { id: nextId++, name: 'UPAE Garanhuns', duration: 2100, realEnd: '' },
-            { id: nextId++, name: 'Superintendência de Recursos Humanos', duration: 1200, realEnd: '' },
-            { id: nextId++, name: 'UPAE Salgueiro', duration: 2100, realEnd: '' },
-            { id: nextId++, name: 'Superintendência de Atendimento', duration: 1200, realEnd: '' },
-            { id: nextId++, name: 'Tecnologia da Informação', duration: 1200, realEnd: '' },
-            { id: nextId++, name: 'UPAE Mustardinha', duration: 2100, realEnd: '' },
-            { id: nextId++, name: 'Almoço', duration: 2700, realEnd: '' },
-            { id: nextId++, name: 'Ensino e Pesquisa', duration: 1200, realEnd: '' },
-            { id: nextId++, name: 'UPAE Carpina', duration: 2100, realEnd: '' },
-            { id: nextId++, name: 'Superintendência da Qualidade', duration: 1200, realEnd: '' },
-            { id: nextId++, name: 'Superintendência de Administração e Finanças', duration: 1200, realEnd: '' },
-            { id: nextId++, name: 'UPAE Escada', duration: 2100, realEnd: '' },
-            { id: nextId++, name: 'Considerações Finais', duration: 600, realEnd: '' }
+
+            {
+                id: nextId++,
+                name: 'Abertura',
+                duration: 600,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'NIO',
+                duration: 600,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'Hospital da Criança do Recife',
+                duration: 2400,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'Compliance + Gerenciamento de Risco',
+                duration: 1200,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'Hospital Eduardo Campos da Pessoa Idosa',
+                duration: 2400,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'Hospital ALFA',
+                duration: 2400,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'Superintendência de Recursos Humanos',
+                duration: 1200,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'Superintendência de Atendimento',
+                duration: 1200,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'Hospital Dom Helder Câmara',
+                duration: 2400,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'Ensino e Pesquisa',
+                duration: 1200,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'Almoço',
+                duration: 2700,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'Tecnologia da Informação',
+                duration: 1200,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'Superintendência da Qualidade',
+                duration: 1200,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'Hospital Miguel Arraes',
+                duration: 2400,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'Superintendência de Administração e Finanças',
+                duration: 1200,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'Hospital Pelópidas Silveira',
+                duration: 2400,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'Considerações Finais',
+                duration: 600,
+                realEnd: ''
+            }
+
         ];
     }
 
-    // ===== PERSISTÊNCIA E CONFIGURAÇÃO DE COLUNAS =====
-    function loadExportColumns() {
-        const raw = localStorage.getItem('programacao_eventos_fgh_export_cols');
-        if (raw) {
-            try {
-                exportColumns = JSON.parse(raw);
-                EXPORTABLE_COLUMNS.forEach(c => { if (!(c.key in exportColumns)) exportColumns[c.key] = true; });
-                return;
-            } catch(e) {}
-        }
-        EXPORTABLE_COLUMNS.forEach(c => { exportColumns[c.key] = true; });
+
+    function getUPADefaultEvents() {
+
+        return [
+
+            {
+                id: nextId++,
+                name: 'Abertura',
+                duration: 600,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'NIO',
+                duration: 600,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'UPA São Lourenço da Mata',
+                duration: 2100,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'UPAE Ibura',
+                duration: 2100,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'Compliance + Gerenciamento de Risco',
+                duration: 1200,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'UPAE Garanhuns',
+                duration: 2100,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'Superintendência de Recursos Humanos',
+                duration: 1200,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'UPAE Salgueiro',
+                duration: 2100,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'Superintendência de Atendimento',
+                duration: 1200,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'Tecnologia da Informação',
+                duration: 1200,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'UPAE Mustardinha',
+                duration: 2100,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'Almoço',
+                duration: 2700,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'Ensino e Pesquisa',
+                duration: 1200,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'UPAE Carpina',
+                duration: 2100,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'Superintendência da Qualidade',
+                duration: 1200,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'Superintendência de Administração e Finanças',
+                duration: 1200,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'UPAE Escada',
+                duration: 2100,
+                realEnd: ''
+            },
+
+            {
+                id: nextId++,
+                name: 'Considerações Finais',
+                duration: 600,
+                realEnd: ''
+            }
+
+        ];
     }
-    function saveExportColumns() { localStorage.setItem('programacao_eventos_fgh_export_cols', JSON.stringify(exportColumns)); }
-    function renderColumnSelector() {
-        const el = document.getElementById('columnSelector');
-        let html = '<span class="cs-title">Colunas a exportar:</span>';
+
+
+    // =========================================================
+    // PERSISTÊNCIA E CONFIGURAÇÃO DE COLUNAS
+    // =========================================================
+
+    function loadExportColumns() {
+
+        const raw = localStorage.getItem(
+            'programacao_eventos_fgh_export_cols'
+        );
+
+        if (raw) {
+
+            try {
+
+                exportColumns = JSON.parse(raw);
+
+                EXPORTABLE_COLUMNS.forEach(c => {
+
+                    if (!(c.key in exportColumns)) {
+                        exportColumns[c.key] = true;
+                    }
+
+                });
+
+                return;
+
+            } catch (e) {}
+
+        }
+
         EXPORTABLE_COLUMNS.forEach(c => {
-            const checked = exportColumns[c.key] ? 'checked' : '';
-            html += `<label><input type="checkbox" ${checked} onchange="onExportColumnToggle('${c.key}', this.checked)"> ${c.label}</label>`;
+            exportColumns[c.key] = true;
         });
+    }
+
+
+    function saveExportColumns() {
+
+        localStorage.setItem(
+            'programacao_eventos_fgh_export_cols',
+            JSON.stringify(exportColumns)
+        );
+    }
+
+
+    function renderColumnSelector() {
+
+        const el = document.getElementById(
+            'columnSelector'
+        );
+
+        let html =
+            '<span class="cs-title">Colunas a exportar:</span>';
+
+        EXPORTABLE_COLUMNS.forEach(c => {
+
+            const checked =
+                exportColumns[c.key]
+                    ? 'checked'
+                    : '';
+
+            html += `
+                <label>
+                    <input
+                        type="checkbox"
+                        ${checked}
+                        onchange="onExportColumnToggle('${c.key}', this.checked)"
+                    >
+                    ${c.label}
+                </label>
+            `;
+        });
+
         el.innerHTML = html;
     }
-    function onExportColumnToggle(key, checked) { exportColumns[key] = checked; saveExportColumns(); }
+
+
+    function onExportColumnToggle(key, checked) {
+
+        exportColumns[key] = checked;
+
+        saveExportColumns();
+    }
+
 
     function applyExportColumnVisibility(apply) {
-        const table = document.querySelector('#tableContainer table');
+
+        const table = document.querySelector(
+            '#tableContainer table'
+        );
+
         if (!table) return;
+
         EXPORTABLE_COLUMNS.forEach(c => {
-            const hide = apply && !exportColumns[c.key];
-            const ths = table.querySelectorAll('th.' + c.className);
-            const tds = table.querySelectorAll('td.' + c.className);
-            ths.forEach(th => th.classList.toggle('col-hidden', hide));
-            tds.forEach(td => td.classList.toggle('col-hidden', hide));
+
+            const hide =
+                apply &&
+                !exportColumns[c.key];
+
+            const ths = table.querySelectorAll(
+                'th.' + c.className
+            );
+
+            const tds = table.querySelectorAll(
+                'td.' + c.className
+            );
+
+            ths.forEach(th => {
+
+                th.classList.toggle(
+                    'col-hidden',
+                    hide
+                );
+
+            });
+
+            tds.forEach(td => {
+
+                td.classList.toggle(
+                    'col-hidden',
+                    hide
+                );
+
+            });
+
         });
     }
 
-    // ===== INTEGRAÇÃO COM GITHUB =====
+
+    // =========================================================
+    // INTEGRAÇÃO COM GITHUB
+    // =========================================================
+
     const GITHUB_OWNER = 'caiomalbuquerque';
-    const GITHUB_REPO = 'programacao_de_eventos';
+
+    const GITHUB_REPO =
+        'programacao_de_eventos';
+
     const GITHUB_BRANCH = 'main';
+
     const GITHUB_FILE_PATH = 'dados.json';
 
+
     async function loadDataFromGitHub() {
-        const url = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${GITHUB_FILE_PATH}`;
+
+        const url =
+            `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${GITHUB_FILE_PATH}`;
+
         try {
-            const response = await fetch(url + '?t=' + Date.now());
-            if (!response.ok) throw new Error('Arquivo ainda não existe');
+
+            const response =
+                await fetch(
+                    url + '?t=' + Date.now()
+                );
+
+            if (!response.ok) {
+                throw new Error(
+                    'Arquivo ainda não existe'
+                );
+            }
+
             return await response.json();
+
         } catch (e) {
-            console.warn('Não foi possível carregar dados.json do GitHub, usando dados locais/padrão.', e);
+
+            console.warn(
+                'Não foi possível carregar dados.json do GitHub, usando dados locais/padrão.',
+                e
+            );
+
             return null;
         }
     }
 
+
     async function saveDataToGitHub() {
-        const token = prompt('Cole seu token de acesso do GitHub para salvar:');
+
+        const token = prompt(
+            'Cole seu token de acesso do GitHub para salvar:'
+        );
+
         if (!token) return;
 
-        const apiUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${GITHUB_FILE_PATH}`;
+        const apiUrl =
+            `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${GITHUB_FILE_PATH}`;
 
         let sha = undefined;
+
         try {
-            const getResp = await fetch(apiUrl + `?ref=${GITHUB_BRANCH}`, {
-                headers: { Authorization: `Bearer ${token}` }
-            });
+
+            const getResp =
+                await fetch(
+                    apiUrl +
+                    `?ref=${GITHUB_BRANCH}`,
+                    {
+                        headers: {
+                            Authorization:
+                                `Bearer ${token}`
+                        }
+                    }
+                );
+
             if (getResp.ok) {
-                const fileInfo = await getResp.json();
+
+                const fileInfo =
+                    await getResp.json();
+
                 sha = fileInfo.sha;
             }
-        } catch (e) { /* arquivo pode não existir ainda, tudo bem */ }
 
-        const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
+        } catch (e) {
+            // arquivo pode não existir ainda
+        }
+
+
+        const content =
+            btoa(
+                unescape(
+                    encodeURIComponent(
+                        JSON.stringify(
+                            data,
+                            null,
+                            2
+                        )
+                    )
+                )
+            );
+
 
         const body = {
-            message: `Atualiza dados - ${new Date().toLocaleString('pt-BR')}`,
+
+            message:
+                `Atualiza dados - ${new Date().toLocaleString('pt-BR')}`,
+
             content: content,
+
             branch: GITHUB_BRANCH
+
         };
-        if (sha) body.sha = sha;
+
+
+        if (sha) {
+            body.sha = sha;
+        }
+
 
         try {
-            const putResp = await fetch(apiUrl, {
-                method: 'PUT',
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(body)
-            });
+
+            const putResp =
+                await fetch(
+                    apiUrl,
+                    {
+                        method: 'PUT',
+
+                        headers: {
+                            Authorization:
+                                `Bearer ${token}`,
+
+                            'Content-Type':
+                                'application/json'
+                        },
+
+                        body:
+                            JSON.stringify(body)
+                    }
+                );
+
+
             if (!putResp.ok) {
-                const err = await putResp.json();
-                throw new Error(err.message || 'Erro desconhecido');
+
+                const err =
+                    await putResp.json();
+
+                throw new Error(
+                    err.message ||
+                    'Erro desconhecido'
+                );
             }
-            alert('Salvo no GitHub com sucesso!');
+
+
+            alert(
+                'Salvo no GitHub com sucesso!'
+            );
+
         } catch (e) {
-            alert('Erro ao salvar no GitHub: ' + e.message);
+
+            alert(
+                'Erro ao salvar no GitHub: ' +
+                e.message
+            );
         }
     }
 
-    // ===== CARREGAR DADOS (VERSÃO ASSÍNCRONA) =====
+
+    // =========================================================
+    // CARREGAR DADOS
+    // =========================================================
+
     async function loadData() {
-        const remote = await loadDataFromGitHub();
+
+        const remote =
+            await loadDataFromGitHub();
+
+
         if (remote) {
+
             let maxId = 0;
-            remote.abas.forEach(aba => aba.eventos.forEach(e => { if (e.id > maxId) maxId = e.id; }));
+
+            remote.abas.forEach(
+                aba => {
+
+                    aba.eventos.forEach(
+                        e => {
+
+                            if (e.id > maxId) {
+                                maxId = e.id;
+                            }
+
+                        }
+                    );
+
+                }
+            );
+
+
             nextId = maxId + 1;
+
             data = remote;
+
             cacheDataLocally();
+
             return;
         }
 
-        // Não achou no GitHub (repositório novo ou sem internet) -> tenta rascunho local
-        const raw = localStorage.getItem('programacao_eventos_fgh');
+
+        const raw =
+            localStorage.getItem(
+                'programacao_eventos_fgh'
+            );
+
+
         if (raw) {
+
             try {
-                const parsed = JSON.parse(raw);
+
+                const parsed =
+                    JSON.parse(raw);
+
                 let maxId = 0;
-                parsed.abas.forEach(aba => aba.eventos.forEach(e => { if (e.id > maxId) maxId = e.id; }));
+
+                parsed.abas.forEach(
+                    aba => {
+
+                        aba.eventos.forEach(
+                            e => {
+
+                                if (e.id > maxId) {
+                                    maxId = e.id;
+                                }
+
+                            }
+                        );
+
+                    }
+                );
+
+
                 nextId = maxId + 1;
+
                 data = parsed;
+
                 return;
+
             } catch (e) {}
+
         }
 
-        // Nenhum dado ainda -> usa os exemplos padrão
+
+        // =====================================================
+        // DADOS PADRÃO
+        // =====================================================
+
         nextId = 1;
+
+
         data = {
+
             abas: [
-                { nome: 'Colegiado - Hospitais (26/08)', startTime: '08:00', eventos: getHospitalDefaultEvents() },
-                { nome: 'Colegiado - UPA e UPAEs (28/08)', startTime: '08:00', eventos: getUPADefaultEvents() }
+
+                {
+                    nome:
+                        'Colegiado - Hospitais (26/08)',
+
+                    startTime:
+                        '08:00',
+
+                    eventos:
+                        getHospitalDefaultEvents()
+                },
+
+                {
+                    nome:
+                        'Colegiado - UPA e UPAEs (28/08)',
+
+                    startTime:
+                        '08:00',
+
+                    eventos:
+                        getUPADefaultEvents()
+                }
+
             ],
+
             currentTab: 0
         };
-        data.abas[1].eventos.forEach(e => { e.id = nextId++; });
+
+
+        data.abas[1].eventos.forEach(
+            e => {
+                e.id = nextId++;
+            }
+        );
+
+
         cacheDataLocally();
     }
 
+
     function cacheDataLocally() {
-        localStorage.setItem('programacao_eventos_fgh', JSON.stringify(data));
+
+        localStorage.setItem(
+            'programacao_eventos_fgh',
+            JSON.stringify(data)
+        );
     }
 
-    function saveData() { cacheDataLocally(); }
 
-    // ===== CÁLCULOS =====
+    function saveData() {
+
+        cacheDataLocally();
+    }
+
+
+    // =========================================================
+    // CÁLCULOS
+    // =========================================================
+
+    /*
+     * ========================================================
+     * NOVA LÓGICA DE HORÁRIOS
+     * ========================================================
+     *
+     * 1. O primeiro evento começa no horário definido
+     *    em "Início do evento".
+     *
+     * 2. Se o evento anterior tiver um TÉRMINO informado,
+     *    o próximo evento começa EXATAMENTE nesse horário.
+     *
+     *    Exemplo:
+     *
+     *    Evento 1
+     *    Início: 08:00
+     *    Término: 08:13
+     *
+     *    Evento 2
+     *    Início: 08:13
+     *
+     * 3. Se o evento anterior ainda não tiver término,
+     *    o próximo início é calculado pela duração.
+     *
+     * 4. O horário programado continua sendo calculado
+     *    separadamente para que o ATRASO continue funcionando.
+     */
+
     function computeEvents(eventos, startSec) {
+
         const results = [];
-        let acumDelay = 0;
+
+
         for (let i = 0; i < eventos.length; i++) {
+
             const item = eventos[i];
-            const dur = item.duration;
+
+            const dur =
+                item.duration || 0;
+
+
+            // =================================================
+            // HORÁRIO PROGRAMADO
+            // =================================================
+
             let startProg;
-            if (i === 0) startProg = startSec;
-            else startProg = results[i-1].endProg;
-            const endProg = startProg + dur;
-            const realEndVal = toSeconds(item.realEnd);
+
+
+            if (i === 0) {
+
+                startProg = startSec;
+
+            } else {
+
+                startProg =
+                    results[i - 1].endProg;
+            }
+
+
+            const endProg =
+                startProg + dur;
+
+
+            // =================================================
+            // TÉRMINO REAL DIGITADO
+            // =================================================
+
+            const realEndVal =
+                toSeconds(item.realEnd);
+
+
+            // =================================================
+            // INÍCIO REAL
+            // =================================================
+
+            let startReal;
+
+
+            if (i === 0) {
+
+                // Primeiro evento
+                startReal = startSec;
+
+            } else {
+
+                const anterior =
+                    results[i - 1];
+
+
+                /*
+                 * AQUI ESTÁ A PRINCIPAL ALTERAÇÃO.
+                 *
+                 * Se o evento anterior possui término,
+                 * o início deste evento será exatamente
+                 * igual ao término anterior.
+                 */
+
+                if (
+                    anterior.realEndVal !== null
+                ) {
+
+                    startReal =
+                        anterior.realEndVal;
+
+                } else {
+
+                    /*
+                     * Caso o evento anterior ainda não
+                     * tenha término digitado, calculamos
+                     * normalmente pela duração.
+                     */
+
+                    startReal =
+                        anterior.startReal +
+                        anterior.duration;
+                }
+            }
+
+
+            // =================================================
+            // ATRASO
+            // =================================================
+
             let delay = null;
-            if (realEndVal !== null) delay = realEndVal - endProg;
-            const startReal = startProg + acumDelay;
-            if (delay !== null) acumDelay += delay;
-            results.push({ ...item, startProg, startReal, endProg, realEndVal, delay, acumDelay });
+
+
+            if (realEndVal !== null) {
+
+                /*
+                 * O atraso é calculado comparando o término
+                 * real com o término programado.
+                 *
+                 * Exemplo:
+                 *
+                 * Programado: 08:10
+                 * Real:       08:13
+                 *
+                 * Atraso: +00:03
+                 */
+
+                delay =
+                    realEndVal -
+                    endProg;
+            }
+
+
+            // =================================================
+            // RESULTADO
+            // =================================================
+
+            results.push({
+
+                ...item,
+
+                startProg:
+                    startProg,
+
+                startReal:
+                    startReal,
+
+                endProg:
+                    endProg,
+
+                realEndVal:
+                    realEndVal,
+
+                delay:
+                    delay
+
+            });
+
         }
+
+
         return results;
     }
 
-    // ===== RENDERIZAÇÃO =====
+
+    // =========================================================
+    // RENDERIZAÇÃO
+    // =========================================================
+
     function render() {
-        const tabsBar = document.getElementById('tabsBar');
-        const container = document.getElementById('tableContainer');
-        const startInput = document.getElementById('startTime');
+
+        const tabsBar =
+            document.getElementById(
+                'tabsBar'
+            );
+
+        const container =
+            document.getElementById(
+                'tableContainer'
+            );
+
+        const startInput =
+            document.getElementById(
+                'startTime'
+            );
+
+
+        // =====================================================
+        // ABAS
+        // =====================================================
 
         let htmlTabs = '';
-        data.abas.forEach((aba, idx) => {
-            const active = idx === data.currentTab ? 'active' : '';
-            htmlTabs += `<div class="tab-btn ${active}" onclick="switchTab(${idx})">${aba.nome}<span class="tab-actions"><button onclick="event.stopPropagation(); renameTab(${idx})">✎</button><button onclick="event.stopPropagation(); deleteTab(${idx})">✕</button></span></div>`;
-        });
-        tabsBar.innerHTML = htmlTabs;
 
-        const aba = data.abas[data.currentTab];
+
+        data.abas.forEach(
+            (aba, idx) => {
+
+                const active =
+                    idx === data.currentTab
+                        ? 'active'
+                        : '';
+
+
+                htmlTabs += `
+
+                    <div
+                        class="tab-btn ${active}"
+                        onclick="switchTab(${idx})"
+                    >
+
+                        ${aba.nome}
+
+                        <span
+                            class="tab-actions"
+                        >
+
+                            <button
+                                onclick="event.stopPropagation(); renameTab(${idx})"
+                            >
+                                ✎
+                            </button>
+
+                            <button
+                                onclick="event.stopPropagation(); deleteTab(${idx})"
+                            >
+                                ✕
+                            </button>
+
+                        </span>
+
+                    </div>
+
+                `;
+            }
+        );
+
+
+        tabsBar.innerHTML =
+            htmlTabs;
+
+
+        // =====================================================
+        // ABA ATUAL
+        // =====================================================
+
+        const aba =
+            data.abas[data.currentTab];
+
+
         if (!aba) return;
 
-        startInput.value = aba.startTime || '08:00';
-        const startSec = toSeconds(startInput.value) || 8*3600;
-        const computed = computeEvents(aba.eventos, startSec);
 
-        let tableHtml = `<table><thead><tr><th class="col-index">#</th><th class="col-event">Evento</th><th class="col-duration">Duração (hh:mm)</th><th class="col-start">Início</th><th class="col-end">Término</th><th class="col-delay">Atraso</th><th class="col-actions">Ações</th></tr></thead><tbody>`;
-        computed.forEach((row, idx) => {
-            const delayStr = row.delay !== null ? toHHMMSS(row.delay) : '';
-            const delayClass = row.delay !== null ? (row.delay > 0 ? 'atraso' : 'adiantado') : '';
-            tableHtml += `<tr><td class="col-index">${idx + 1}</td><td class="col-event"><input type="text" class="editable" value="${row.name}" onchange="updateEvent(${idx}, 'name', this.value)" /></td><td class="col-duration"><input type="text" class="editable duration" value="${toHHMM(row.duration)}" onchange="updateEvent(${idx}, 'duration', this.value)" /></td><td class="col-start calculated">${toHHMMSS(row.startReal)}</td><td class="col-end"><input type="text" class="editable time" value="${row.realEnd || ''}" placeholder="HH:MM:SS" onchange="updateEvent(${idx}, 'realEnd', this.value)" /></td><td class="col-delay ${delayClass}">${delayStr}</td><td class="col-actions"><button class="move-btn" onclick="moveEvent(${idx}, -1)" title="Subir">⬆</button><button class="move-btn" onclick="moveEvent(${idx}, 1)" title="Descer">⬇</button><button class="btn btn-danger" onclick="removeEvent(${idx})">✕</button></td></tr>`;
-        });
-        tableHtml += `</tbody></table>`;
-        container.innerHTML = tableHtml;
+        startInput.value =
+            aba.startTime || '08:00';
+
+
+        const startSec =
+            toSeconds(
+                startInput.value
+            ) || 8 * 3600;
+
+
+        const computed =
+            computeEvents(
+                aba.eventos,
+                startSec
+            );
+
+
+        // =====================================================
+        // TABELA
+        // =====================================================
+
+        let tableHtml = `
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th class="col-index">
+                            #
+                        </th>
+
+                        <th class="col-event">
+                            Evento
+                        </th>
+
+                        <th class="col-duration">
+                            Duração (hh:mm)
+                        </th>
+
+                        <th class="col-start">
+                            Início
+                        </th>
+
+                        <th class="col-end">
+                            Término
+                        </th>
+
+                        <th class="col-delay">
+                            Atraso
+                        </th>
+
+                        <th class="col-actions">
+                            Ações
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+        `;
+
+
+        computed.forEach(
+            (row, idx) => {
+
+                const delayStr =
+                    row.delay !== null
+                        ? toHHMMSS(row.delay)
+                        : '';
+
+
+                const delayClass =
+                    row.delay !== null
+                        ? (
+                            row.delay > 0
+                                ? 'atraso'
+                                : 'adiantado'
+                        )
+                        : '';
+
+
+                tableHtml += `
+
+                    <tr>
+
+                        <td class="col-index">
+                            ${idx + 1}
+                        </td>
+
+
+                        <td class="col-event">
+
+                            <input
+                                type="text"
+                                class="editable"
+                                value="${escapeHtml(row.name)}"
+                                onchange="updateEvent(${idx}, 'name', this.value)"
+                            />
+
+                        </td>
+
+
+                        <td class="col-duration">
+
+                            <input
+                                type="text"
+                                class="editable duration"
+                                value="${toHHMM(row.duration)}"
+                                onchange="updateEvent(${idx}, 'duration', this.value)"
+                            />
+
+                        </td>
+
+
+                        <td class="col-start calculated">
+
+                            ${toHHMMSS(row.startReal)}
+
+                        </td>
+
+
+                        <td class="col-end">
+
+                            <input
+                                type="text"
+                                class="editable time"
+                                value="${row.realEnd || ''}"
+                                placeholder="HH:MM:SS"
+                                onchange="updateEvent(${idx}, 'realEnd', this.value)"
+                            />
+
+                        </td>
+
+
+                        <td class="col-delay ${delayClass}">
+
+                            ${delayStr}
+
+                        </td>
+
+
+                        <td class="col-actions">
+
+                            <button
+                                class="move-btn"
+                                onclick="moveEvent(${idx}, -1)"
+                                title="Subir"
+                            >
+                                ⬆
+                            </button>
+
+                            <button
+                                class="move-btn"
+                                onclick="moveEvent(${idx}, 1)"
+                                title="Descer"
+                            >
+                                ⬇
+                            </button>
+
+                            <button
+                                class="btn btn-danger"
+                                onclick="removeEvent(${idx})"
+                            >
+                                ✕
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                `;
+            }
+        );
+
+
+        tableHtml += `
+
+                </tbody>
+
+            </table>
+
+        `;
+
+
+        container.innerHTML =
+            tableHtml;
+
+
         saveData();
     }
 
-    // ===== MANIPULAÇÃO =====
-    function getCurrentAba() { return data.abas[data.currentTab]; }
 
-    function updateEvent(index, field, value) {
-        const aba = getCurrentAba();
-        if (field === 'duration') {
-            const sec = toSeconds(value);
-            if (sec !== null && sec > 0) aba.eventos[index].duration = sec;
-            else { alert('Duração inválida. Use HH:MM ou HH:MM:SS'); return; }
-        } else if (field === 'realEnd') {
-            if (value.trim() === '') aba.eventos[index].realEnd = '';
-            else {
-                const sec = toSeconds(value);
-                if (sec !== null) aba.eventos[index].realEnd = toHHMMSS(sec);
-                else { alert('Hora inválida. Use HH:MM:SS'); return; }
-            }
-        } else {
-            aba.eventos[index][field] = value;
+    // =========================================================
+    // SEGURANÇA PARA TEXTO DOS EVENTOS
+    // =========================================================
+
+    function escapeHtml(value) {
+
+        if (value == null) {
+            return '';
         }
+
+        return String(value)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+    }
+
+
+    // =========================================================
+    // MANIPULAÇÃO
+    // =========================================================
+
+    function getCurrentAba() {
+
+        return data.abas[
+            data.currentTab
+        ];
+    }
+
+
+    function updateEvent(
+        index,
+        field,
+        value
+    ) {
+
+        const aba =
+            getCurrentAba();
+
+
+        // =====================================================
+        // DURAÇÃO
+        // =====================================================
+
+        if (field === 'duration') {
+
+            const sec =
+                toSeconds(value);
+
+
+            if (
+                sec !== null &&
+                sec > 0
+            ) {
+
+                aba.eventos[
+                    index
+                ].duration = sec;
+
+            } else {
+
+                alert(
+                    'Duração inválida. Use HH:MM ou HH:MM:SS'
+                );
+
+                return;
+            }
+
+        }
+
+
+        // =====================================================
+        // TÉRMINO
+        // =====================================================
+
+        else if (
+            field === 'realEnd'
+        ) {
+
+            if (
+                value.trim() === ''
+            ) {
+
+                aba.eventos[
+                    index
+                ].realEnd = '';
+
+            } else {
+
+                const sec =
+                    toSeconds(value);
+
+
+                if (
+                    sec !== null
+                ) {
+
+                    aba.eventos[
+                        index
+                    ].realEnd =
+                        toHHMMSS(sec);
+
+                } else {
+
+                    alert(
+                        'Hora inválida. Use HH:MM:SS'
+                    );
+
+                    return;
+                }
+            }
+        }
+
+
+        // =====================================================
+        // OUTROS CAMPOS
+        // =====================================================
+
+        else {
+
+            aba.eventos[
+                index
+            ][field] = value;
+        }
+
+
         render();
     }
-    function addEvent() { getCurrentAba().eventos.push({ id: nextId++, name: 'Novo evento', duration: 1800, realEnd: '' }); render(); }
+
+
+    // =========================================================
+    // ADICIONAR EVENTO
+    // =========================================================
+
+    function addEvent() {
+
+        getCurrentAba()
+            .eventos
+            .push({
+
+                id: nextId++,
+
+                name:
+                    'Novo evento',
+
+                duration:
+                    1800,
+
+                realEnd:
+                    ''
+
+            });
+
+
+        render();
+    }
+
+
+    // =========================================================
+    // REMOVER EVENTO
+    // =========================================================
+
     function removeEvent(index) {
-        const aba = getCurrentAba();
-        if (aba.eventos.length <= 1) { alert('É necessário pelo menos um evento.'); return; }
-        if (!confirm('Remover este evento?')) return;
-        aba.eventos.splice(index, 1);
+
+        const aba =
+            getCurrentAba();
+
+
+        if (
+            aba.eventos.length <= 1
+        ) {
+
+            alert(
+                'É necessário pelo menos um evento.'
+            );
+
+            return;
+        }
+
+
+        if (
+            !confirm(
+                'Remover este evento?'
+            )
+        ) {
+
+            return;
+        }
+
+
+        aba.eventos.splice(
+            index,
+            1
+        );
+
+
         render();
     }
-    function moveEvent(index, direction) {
-        const aba = getCurrentAba();
-        const newIndex = index + direction;
-        if (newIndex < 0 || newIndex >= aba.eventos.length) return;
-        [aba.eventos[index], aba.eventos[newIndex]] = [aba.eventos[newIndex], aba.eventos[index]];
+
+
+    // =========================================================
+    // MOVER EVENTO
+    // =========================================================
+
+    function moveEvent(
+        index,
+        direction
+    ) {
+
+        const aba =
+            getCurrentAba();
+
+
+        const newIndex =
+            index + direction;
+
+
+        if (
+            newIndex < 0 ||
+            newIndex >= aba.eventos.length
+        ) {
+
+            return;
+        }
+
+
+        [
+            aba.eventos[index],
+            aba.eventos[newIndex]
+        ] = [
+            aba.eventos[newIndex],
+            aba.eventos[index]
+        ];
+
+
         render();
     }
+
+
+    // =========================================================
+    // RESTAURAR ABA
+    // =========================================================
 
     function resetCurrentTab() {
-        const aba = getCurrentAba();
-        if (!confirm('Recarregar eventos de exemplo?')) return;
-        const isUpa = aba.nome.toLowerCase().includes('upa');
-        aba.eventos = isUpa ? getUPADefaultEvents() : getHospitalDefaultEvents();
-        aba.eventos.forEach(e => { e.id = nextId++; });
+
+        const aba =
+            getCurrentAba();
+
+
+        if (
+            !confirm(
+                'Recarregar eventos de exemplo?'
+            )
+        ) {
+
+            return;
+        }
+
+
+        const isUpa =
+            aba.nome
+                .toLowerCase()
+                .includes('upa');
+
+
+        aba.eventos =
+            isUpa
+                ? getUPADefaultEvents()
+                : getHospitalDefaultEvents();
+
+
+        aba.eventos.forEach(
+            e => {
+                e.id = nextId++;
+            }
+        );
+
+
         render();
     }
 
-    function switchTab(index) { data.currentTab = index; render(); }
+
+    // =========================================================
+    // TROCAR ABA
+    // =========================================================
+
+    function switchTab(index) {
+
+        data.currentTab =
+            index;
+
+        render();
+    }
+
+
+    // =========================================================
+    // NOVA ABA
+    // =========================================================
 
     function addTab() {
-        const name = prompt('Nome da nova aba:', 'Novo cronograma');
-        if (!name) return;
-        const isUpa = confirm('Usar modelo de UPA/UPAEs? (Clique em OK para UPA, Cancelar para Hospitais)');
-        const eventos = isUpa ? getUPADefaultEvents() : getHospitalDefaultEvents();
-        data.abas.push({ nome: name, startTime: '08:00', eventos: eventos });
-        data.abas[data.abas.length-1].eventos.forEach(e => { e.id = nextId++; });
-        data.currentTab = data.abas.length - 1;
+
+        const name =
+            prompt(
+                'Nome da nova aba:',
+                'Novo cronograma'
+            );
+
+
+        if (!name) {
+            return;
+        }
+
+
+        const isUpa =
+            confirm(
+                'Usar modelo de UPA/UPAEs? (Clique em OK para UPA, Cancelar para Hospitais)'
+            );
+
+
+        const eventos =
+            isUpa
+                ? getUPADefaultEvents()
+                : getHospitalDefaultEvents();
+
+
+        data.abas.push({
+
+            nome:
+                name,
+
+            startTime:
+                '08:00',
+
+            eventos:
+                eventos
+
+        });
+
+
+        data.abas[
+            data.abas.length - 1
+        ].eventos.forEach(
+            e => {
+                e.id = nextId++;
+            }
+        );
+
+
+        data.currentTab =
+            data.abas.length - 1;
+
+
         render();
     }
+
+
+    // =========================================================
+    // RENOMEAR ABA
+    // =========================================================
 
     function renameTab(index) {
-        const newName = prompt('Novo nome da aba:', data.abas[index].nome);
-        if (newName !== null && newName.trim() !== '') { data.abas[index].nome = newName.trim(); render(); }
+
+        const newName =
+            prompt(
+                'Novo nome da aba:',
+                data.abas[index].nome
+            );
+
+
+        if (
+            newName !== null &&
+            newName.trim() !== ''
+        ) {
+
+            data.abas[index].nome =
+                newName.trim();
+
+            render();
+        }
     }
+
+
+    // =========================================================
+    // DELETAR ABA
+    // =========================================================
+
     function deleteTab(index) {
-        if (data.abas.length <= 1) { alert('Não é possível deletar a única aba.'); return; }
-        if (!confirm(`Remover a aba "${data.abas[index].nome}"?`)) return;
-        data.abas.splice(index, 1);
-        if (data.currentTab >= data.abas.length) data.currentTab = data.abas.length - 1;
+
+        if (
+            data.abas.length <= 1
+        ) {
+
+            alert(
+                'Não é possível deletar a única aba.'
+            );
+
+            return;
+        }
+
+
+        if (
+            !confirm(
+                `Remover a aba "${data.abas[index].nome}"?`
+            )
+        ) {
+
+            return;
+        }
+
+
+        data.abas.splice(
+            index,
+            1
+        );
+
+
+        if (
+            data.currentTab >=
+            data.abas.length
+        ) {
+
+            data.currentTab =
+                data.abas.length - 1;
+        }
+
+
         render();
     }
 
-    // ===== RESETAR TUDO (força a limpeza e recarrega) =====
+
+    // =========================================================
+    // RESETAR TUDO
+    // =========================================================
+
     function resetAllData() {
-        if (!confirm('Isso vai apagar TODOS os seus cronogramas e recarregar os exemplos originais. Continuar?')) return;
-        localStorage.removeItem('programacao_eventos_fgh');
-        localStorage.removeItem('programacao_eventos_fgh_export_cols');
+
+        if (
+            !confirm(
+                'Isso vai apagar TODOS os seus cronogramas e recarregar os exemplos originais. Continuar?'
+            )
+        ) {
+
+            return;
+        }
+
+
+        localStorage.removeItem(
+            'programacao_eventos_fgh'
+        );
+
+
+        localStorage.removeItem(
+            'programacao_eventos_fgh_export_cols'
+        );
+
+
         location.reload();
     }
 
-    // ===== EXPORTAÇÃO =====
+
+    // =========================================================
+    // EXPORTAR JPEG
+    // =========================================================
+
     function exportToImage() {
-        const wrapper = document.getElementById('export-wrapper');
-        document.getElementById('dynamic-title').innerText = data.abas[data.currentTab].nome;
-        wrapper.classList.add('exporting');
-        applyExportColumnVisibility(true);
-        html2canvas(wrapper, { scale: 2, useCORS: true, backgroundColor: '#ffffff' })
+
+        const wrapper =
+            document.getElementById(
+                'export-wrapper'
+            );
+
+
+        document.getElementById(
+            'dynamic-title'
+        ).innerText =
+            data.abas[
+                data.currentTab
+            ].nome;
+
+
+        wrapper.classList.add(
+            'exporting'
+        );
+
+
+        applyExportColumnVisibility(
+            true
+        );
+
+
+        html2canvas(
+            wrapper,
+            {
+                scale: 2,
+                useCORS: true,
+                backgroundColor: '#ffffff'
+            }
+        )
         .then(canvas => {
-            const link = document.createElement('a');
-            link.download = `programacao_${data.abas[data.currentTab].nome}.jpg`;
-            link.href = canvas.toDataURL('image/jpeg', 0.95);
+
+            const link =
+                document.createElement('a');
+
+
+            link.download =
+                `programacao_${data.abas[data.currentTab].nome}.jpg`;
+
+
+            link.href =
+                canvas.toDataURL(
+                    'image/jpeg',
+                    0.95
+                );
+
+
             link.click();
-            wrapper.classList.remove('exporting');
-            applyExportColumnVisibility(false);
-        }).catch(err => {
-            alert('Erro ao gerar imagem: ' + err);
-            wrapper.classList.remove('exporting');
-            applyExportColumnVisibility(false);
+
+
+            wrapper.classList.remove(
+                'exporting'
+            );
+
+
+            applyExportColumnVisibility(
+                false
+            );
+
+        })
+        .catch(err => {
+
+            alert(
+                'Erro ao gerar imagem: ' +
+                err
+            );
+
+
+            wrapper.classList.remove(
+                'exporting'
+            );
+
+
+            applyExportColumnVisibility(
+                false
+            );
         });
-    }
-    function exportToPDF() {
-        const wrapper = document.getElementById('export-wrapper');
-        document.getElementById('dynamic-title').innerText = data.abas[data.currentTab].nome;
-        wrapper.classList.add('exporting');
-        applyExportColumnVisibility(true);
-        window.print();
-        setTimeout(() => {
-            wrapper.classList.remove('exporting');
-            applyExportColumnVisibility(false);
-        }, 1000);
     }
 
-    // ===== INICIALIZAÇÃO (ASSÍNCRONA) =====
-    document.addEventListener('DOMContentLoaded', async () => {
-        await loadData();
-        loadExportColumns();
-        renderColumnSelector();
-        render();
-        document.getElementById('startTime').addEventListener('change', function() {
-            getCurrentAba().startTime = this.value;
+
+    // =========================================================
+    // EXPORTAR PDF
+    // =========================================================
+
+    function exportToPDF() {
+
+        const wrapper =
+            document.getElementById(
+                'export-wrapper'
+            );
+
+
+        document.getElementById(
+            'dynamic-title'
+        ).innerText =
+            data.abas[
+                data.currentTab
+            ].nome;
+
+
+        wrapper.classList.add(
+            'exporting'
+        );
+
+
+        applyExportColumnVisibility(
+            true
+        );
+
+
+        window.print();
+
+
+        setTimeout(
+            () => {
+
+                wrapper.classList.remove(
+                    'exporting'
+                );
+
+
+                applyExportColumnVisibility(
+                    false
+                );
+
+            },
+            1000
+        );
+    }
+
+
+    // =========================================================
+    // INICIALIZAÇÃO
+    // =========================================================
+
+    document.addEventListener(
+        'DOMContentLoaded',
+        async () => {
+
+            await loadData();
+
+
+            loadExportColumns();
+
+
+            renderColumnSelector();
+
+
             render();
-        });
-    });
+
+
+            document
+                .getElementById('startTime')
+                .addEventListener(
+                    'change',
+                    function () {
+
+                        getCurrentAba()
+                            .startTime =
+                            this.value;
+
+                        render();
+                    }
+                );
+
+        }
+    );
+
 </script>
+
 </body>
 </html>
