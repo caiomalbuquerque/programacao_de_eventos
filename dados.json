@@ -1,114 +1,6 @@
 {
   "abas": [
     {
-      "nome": "Colegiado: UPA/UPAEs - 25/08",
-      "startTime": "08:00",
-      "eventos": [
-        {
-          "id": 19,
-          "name": "Abertura",
-          "duration": 600,
-          "realEnd": "08:13:00"
-        },
-        {
-          "id": 25,
-          "name": "Diretoria de Recursos Humanos",
-          "duration": 1200,
-          "realEnd": "08:22:00"
-        },
-        {
-          "id": 27,
-          "name": "Diretoria de Atendimento",
-          "duration": 1200,
-          "realEnd": "08:38:00"
-        },
-        {
-          "id": 22,
-          "name": "UPAE Carpina",
-          "duration": 2100,
-          "realEnd": "09:03:00"
-        },
-        {
-          "id": 23,
-          "name": "Compliance + Gerenciamento de Risco",
-          "duration": 1200,
-          "realEnd": "09:39:00"
-        },
-        {
-          "id": 24,
-          "name": "UPAE Garanhuns",
-          "duration": 2100,
-          "realEnd": "09:58:00"
-        },
-        {
-          "id": 26,
-          "name": "UPAE Salgueiro",
-          "duration": 2100,
-          "realEnd": "10:21:00"
-        },
-        {
-          "id": 28,
-          "name": "Tecnologia da Informação",
-          "duration": 1200,
-          "realEnd": "11:11:00"
-        },
-        {
-          "id": 29,
-          "name": "UPAE Mustardinha",
-          "duration": 2100,
-          "realEnd": "11:32:00"
-        },
-        {
-          "id": 32,
-          "name": "UPA São Lourenço da Mata",
-          "duration": 2100,
-          "realEnd": "12:00:00"
-        },
-        {
-          "id": 30,
-          "name": "Almoço",
-          "duration": 2700,
-          "realEnd": "12:53:00"
-        },
-        {
-          "id": 21,
-          "name": "UPAE Ibura",
-          "duration": 2100,
-          "realEnd": "13:25:00"
-        },
-        {
-          "id": 31,
-          "name": "Ensino e Pesquisa",
-          "duration": 1200,
-          "realEnd": "13:51:00"
-        },
-        {
-          "id": 33,
-          "name": "Superintendência da Qualidade",
-          "duration": 1200,
-          "realEnd": "14:34:00"
-        },
-        {
-          "id": 34,
-          "name": "Superintendência de Administração e Finanças",
-          "duration": 1200,
-          "realEnd": "15:01:00"
-        },
-        {
-          "id": 35,
-          "name": "UPAE Escada",
-          "duration": 2100,
-          "realEnd": ""
-        },
-        {
-          "id": 36,
-          "name": "Considerações Finais",
-          "duration": 600,
-          "realEnd": ""
-        }
-      ]
-    },
-    {
       "nome": "Colegiado: Hospitais - 26/08",
       "startTime": "08:00",
       "eventos": [
@@ -210,6 +102,114 @@
         },
         {
           "id": 72,
+          "name": "Considerações Finais",
+          "duration": 600,
+          "realEnd": ""
+        }
+      ]
+    },
+    {
+      "nome": "Colegiado: UPA/UPAEs - 25/08",
+      "startTime": "08:00",
+      "eventos": [
+        {
+          "id": 19,
+          "name": "Abertura",
+          "duration": 600,
+          "realEnd": "08:13:00"
+        },
+        {
+          "id": 25,
+          "name": "Diretoria de Recursos Humanos",
+          "duration": 1200,
+          "realEnd": "08:22:00"
+        },
+        {
+          "id": 27,
+          "name": "Diretoria de Atendimento",
+          "duration": 1200,
+          "realEnd": "08:38:00"
+        },
+        {
+          "id": 22,
+          "name": "UPAE Carpina",
+          "duration": 2100,
+          "realEnd": "09:03:00"
+        },
+        {
+          "id": 23,
+          "name": "Compliance + Gerenciamento de Risco",
+          "duration": 1200,
+          "realEnd": "09:39:00"
+        },
+        {
+          "id": 24,
+          "name": "UPAE Garanhuns",
+          "duration": 2100,
+          "realEnd": "09:58:00"
+        },
+        {
+          "id": 26,
+          "name": "UPAE Salgueiro",
+          "duration": 2100,
+          "realEnd": "10:21:00"
+        },
+        {
+          "id": 28,
+          "name": "Tecnologia da Informação",
+          "duration": 1200,
+          "realEnd": "11:11:00"
+        },
+        {
+          "id": 29,
+          "name": "UPAE Mustardinha",
+          "duration": 2100,
+          "realEnd": "11:32:00"
+        },
+        {
+          "id": 32,
+          "name": "UPA São Lourenço da Mata",
+          "duration": 2100,
+          "realEnd": "12:00:00"
+        },
+        {
+          "id": 30,
+          "name": "Almoço",
+          "duration": 2700,
+          "realEnd": "12:53:00"
+        },
+        {
+          "id": 21,
+          "name": "UPAE Ibura",
+          "duration": 2100,
+          "realEnd": "13:25:00"
+        },
+        {
+          "id": 31,
+          "name": "Ensino e Pesquisa",
+          "duration": 1200,
+          "realEnd": "13:51:00"
+        },
+        {
+          "id": 33,
+          "name": "Superintendência da Qualidade",
+          "duration": 1200,
+          "realEnd": "14:34:00"
+        },
+        {
+          "id": 34,
+          "name": "Superintendência de Administração e Finanças",
+          "duration": 1200,
+          "realEnd": "15:01:00"
+        },
+        {
+          "id": 35,
+          "name": "UPAE Escada",
+          "duration": 2100,
+          "realEnd": ""
+        },
+        {
+          "id": 36,
           "name": "Considerações Finais",
           "duration": 600,
           "realEnd": ""
