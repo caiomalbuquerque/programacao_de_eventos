@@ -117,6 +117,16 @@
         }
 
         /* =====================================================
+           ARRASTO DE ABAS
+        ===================================================== */
+
+        .tab-btn.dragging {
+            opacity: 0.5;
+            background: #cce5ff;
+            border-color: #2b6ca3;
+        }
+
+        /* =====================================================
            BOTÕES
         ===================================================== */
 
@@ -368,7 +378,7 @@
         }
 
         /* =====================================================
-           DRAG AND DROP
+           DRAG AND DROP DE LINHAS
         ===================================================== */
 
         tr.dragging {
@@ -1596,6 +1606,11 @@ function render() {
 
                 <div
                     class="tab-btn ${active}"
+                    draggable="true"
+                    ondragstart="tabDragStart(event, ${idx})"
+                    ondragover="tabDragOver(event)"
+                    ondrop="tabDrop(event, ${idx})"
+                    ondragend="tabDragEnd(event)"
                     onclick="switchTab(${idx})"
                 >
 
@@ -2049,7 +2064,7 @@ function removeEvent(index) {
 
 
 /* ============================================================
-   DRAG AND DROP (TROCA DE ORDEM)
+   DRAG AND DROP DE LINHAS
 ============================================================ */
 
 let draggedRow = null;
@@ -2087,6 +2102,60 @@ function dragEnd(event) {
     draggedRow.classList.remove('dragging');
     draggedRow = null;
     draggedIndex = null;
+}
+
+
+/* ============================================================
+   DRAG AND DROP DE ABAS
+============================================================ */
+
+let draggedTabIndex = null;
+let draggedTabRow = null;
+
+function tabDragStart(event, index) {
+    draggedTabRow = event.currentTarget;
+    draggedTabIndex = index;
+    event.dataTransfer.effectAllowed = 'move';
+    event.dataTransfer.setData('text/plain', index);
+    draggedTabRow.classList.add('dragging');
+}
+
+function tabDragOver(event) {
+    event.preventDefault();
+    event.dataTransfer.dropEffect = 'move';
+}
+
+function tabDrop(event, index) {
+    event.preventDefault();
+    if (draggedTabIndex !== null && draggedTabIndex !== index) {
+        
+        // Salva a aba que estava ativa antes da reordenação
+        const activeTabIndex = data.currentTab;
+        
+        // Remove e insere a aba arrastada na nova posição
+        const [movedTab] = data.abas.splice(draggedTabIndex, 1);
+        data.abas.splice(index, 0, movedTab);
+        
+        // Ajusta o índice da aba ativa para continuar seguindo a mesma aba
+        if (draggedTabIndex === activeTabIndex) {
+            data.currentTab = index;
+        } else if (draggedTabIndex < activeTabIndex && index >= activeTabIndex) {
+            data.currentTab = activeTabIndex - 1;
+        } else if (draggedTabIndex > activeTabIndex && index <= activeTabIndex) {
+            data.currentTab = activeTabIndex + 1;
+        }
+        
+        // Salva e renderiza
+        saveData();
+        localStorage.setItem('programacao_eventos_current_tab', String(data.currentTab));
+        render();
+    }
+}
+
+function tabDragEnd(event) {
+    draggedTabRow.classList.remove('dragging');
+    draggedTabRow = null;
+    draggedTabIndex = null;
 }
 
 
