@@ -2,13 +2,13 @@
   "abas": [
     {
       "nome": "Colegiado: Hospitais - 26/08",
-      "startTime": "08:15:00",
+      "startTime": "08:00:00",
       "eventos": [
         {
           "id": 55,
           "name": "Abertura",
           "duration": 600,
-          "realEnd": ""
+          "realEnd": "08:18:00"
         },
         {
           "id": 57,
