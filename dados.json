@@ -2,23 +2,11 @@
   "abas": [
     {
       "nome": "Colegiado: Hospitais - 26/08",
-      "startTime": "08:00",
+      "startTime": "08:15:00",
       "eventos": [
         {
           "id": 55,
           "name": "Abertura",
-          "duration": 600,
-          "realEnd": ""
-        },
-        {
-          "id": 60,
-          "name": "Hospital da Criança do Recife",
-          "duration": 2400,
-          "realEnd": ""
-        },
-        {
-          "id": 56,
-          "name": "NIO",
           "duration": 600,
           "realEnd": ""
         },
@@ -32,6 +20,18 @@
           "id": 58,
           "name": "Diretoria de Atendimento",
           "duration": 1200,
+          "realEnd": ""
+        },
+        {
+          "id": 60,
+          "name": "Hospital da Criança do Recife",
+          "duration": 2400,
+          "realEnd": ""
+        },
+        {
+          "id": 56,
+          "name": "NIO",
+          "duration": 600,
           "realEnd": ""
         },
         {
