@@ -1122,6 +1122,10 @@ const GITHUB_FILE_PATH =
     'dados.json';
 
 
+const CACHE_KEY = 'programacao_eventos_fgh';
+const CACHE_TIME_KEY = 'programacao_eventos_fgh_cache_time';
+const CACHE_DURATION = 5 * 60 * 1000; // 10 minutos
+
 async function loadDataFromGitHub() {
 
     const url =
@@ -1131,7 +1135,7 @@ async function loadDataFromGitHub() {
 
         const response =
             await fetch(
-                url + '?t=' + Date.now()
+                url
             );
 
         if (!response.ok) {
@@ -1251,6 +1255,13 @@ async function saveDataToGitHub() {
             );
         }
 
+        cacheDataLocally();
+
+        localStorage.setItem(
+            CACHE_TIME_KEY,
+            String(Date.now())
+        );
+
         alert(
             'Salvo no GitHub com sucesso!'
         );
@@ -1290,173 +1301,103 @@ function saveData() {
 
 async function loadData() {
 
-    const remote =
-        await loadDataFromGitHub();
+    const raw = localStorage.getItem(CACHE_KEY);
+    const cacheTime = Number(
+        localStorage.getItem(CACHE_TIME_KEY) || 0
+    );
+
+    // Usa o cache por até 10 minutos, sem consultar o GitHub.
+    if (raw && cacheTime && (Date.now() - cacheTime < CACHE_DURATION)) {
+        try {
+            data = JSON.parse(raw);
+            prepararDadosCarregados();
+            return;
+        } catch (e) {
+            console.warn('Cache local inválido.');
+        }
+    }
+
+    // Cache expirado ou inexistente: busca a versão atual no GitHub.
+    const remote = await loadDataFromGitHub();
 
     if (remote) {
+        data = remote;
+        prepararDadosCarregados();
 
-        let maxId = 0;
-
-        remote.abas.forEach(
-            aba => {
-
-                aba.eventos.forEach(
-                    e => {
-
-                        if (e.id > maxId) {
-                            maxId = e.id;
-                        }
-
-                    }
-                );
-
-            }
+        localStorage.setItem(
+            CACHE_TIME_KEY,
+            String(Date.now())
         );
 
-        nextId = maxId + 1;
-
-        data = remote;
-
-        const savedTab =
-            localStorage.getItem(
-                'programacao_eventos_current_tab'
-            );
-
-        if (
-            savedTab !== null &&
-            data.abas[
-                Number(savedTab)
-            ]
-        ) {
-
-            data.currentTab =
-                Number(savedTab);
-
-        }
-
         cacheDataLocally();
-
         return;
     }
 
-
-    /* Tenta carregar dados locais */
-
-    const raw =
-        localStorage.getItem(
-            'programacao_eventos_fgh'
-        );
-
+    // Se o GitHub estiver indisponível, usa o cache antigo.
     if (raw) {
-
         try {
-
-            const parsed =
-                JSON.parse(raw);
-
-            let maxId = 0;
-
-            parsed.abas.forEach(
-                aba => {
-
-                    aba.eventos.forEach(
-                        e => {
-
-                            if (e.id > maxId) {
-                                maxId = e.id;
-                            }
-
-                        }
-                    );
-
-                }
-            );
-
-            nextId = maxId + 1;
-
-            data = parsed;
-
-            const savedTab =
-                localStorage.getItem(
-                    'programacao_eventos_current_tab'
-                );
-
-            if (
-                savedTab !== null &&
-                data.abas[
-                    Number(savedTab)
-                ]
-            ) {
-
-                data.currentTab =
-                    Number(savedTab);
-
-            }
-
+            data = JSON.parse(raw);
+            prepararDadosCarregados();
+            console.warn('GitHub indisponível. Usando cache local antigo.');
             return;
-
-        } catch (e) {}
+        } catch (e) {
+            console.warn('Não foi possível recuperar o cache local.');
+        }
     }
 
-
-    /* Dados padrão */
-
+    // Sem GitHub e sem cache: usa os dados padrão.
     nextId = 1;
 
     data = {
-
         abas: [
-
             {
-                nome:
-                    'Colegiado - Hospitais (26/08)',
-
-                startTime:
-                    '08:00',
-
-                eventos:
-                    getHospitalDefaultEvents()
+                nome: 'Colegiado - Hospitais (26/08)',
+                startTime: '08:00',
+                eventos: getHospitalDefaultEvents()
             },
-
             {
-                nome:
-                    'Colegiado - UPA e UPAEs (28/08)',
-
-                startTime:
-                    '08:00',
-
-                eventos:
-                    getUPADefaultEvents()
+                nome: 'Colegiado - UPA e UPAEs (28/08)',
+                startTime: '08:00',
+                eventos: getUPADefaultEvents()
             }
-
         ],
-
         currentTab: 0
-
     };
 
-    const savedTab =
-        localStorage.getItem(
-            'programacao_eventos_current_tab'
-        );
+    const savedTab = localStorage.getItem(
+        'programacao_eventos_current_tab'
+    );
 
-    if (
-        savedTab !== null &&
-        data.abas[
-            Number(savedTab)
-        ]
-    ) {
-
-        data.currentTab =
-            Number(savedTab);
-
+    if (savedTab !== null && data.abas[Number(savedTab)]) {
+        data.currentTab = Number(savedTab);
     } else {
-
         data.currentTab = 1;
-
     }
 
     cacheDataLocally();
+}
+
+function prepararDadosCarregados() {
+
+    let maxId = 0;
+
+    data.abas.forEach(aba => {
+        aba.eventos.forEach(e => {
+            if (e.id > maxId) {
+                maxId = e.id;
+            }
+        });
+    });
+
+    nextId = maxId + 1;
+
+    const savedTab = localStorage.getItem(
+        'programacao_eventos_current_tab'
+    );
+
+    if (savedTab !== null && data.abas[Number(savedTab)]) {
+        data.currentTab = Number(savedTab);
+    }
 }
 
 
@@ -1707,7 +1648,7 @@ function render() {
                     </th>
 
                     <th class="col-delay">
-                        Atraso
+                        Saldo de Tempo
                     </th>
 
                     <th class="col-actions">
