@@ -1471,22 +1471,13 @@ function computeEvents(
 
         } else {
 
-            const previous =
-                results[i - 1];
-
-            if (
-                previous.realEndVal !== null
-            ) {
-
-                startReal =
-                    previous.realEndVal;
-
-            } else {
-
-                startReal =
-                    previous.endProg;
-
-            }
+            /* 
+             * ALTERAÇÃO SOLICITADA:
+             * O início da linha atual agora é SEMPRE o término programado da linha anterior,
+             * ignorando completamente o campo "Término" (realEnd) para este cálculo.
+             */
+            startReal =
+                results[i - 1].endProg;
 
         }
 
