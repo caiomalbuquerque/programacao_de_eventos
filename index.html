@@ -29,10 +29,6 @@
             border: 1px solid #e6edf5;
         }
 
-        /* =====================================================
-           CABEÇALHO
-        ===================================================== */
-
         .header-wrapper {
             margin-bottom: 20px;
         }
@@ -79,7 +75,6 @@
             font-size: 14px;
             color: #163c6d;
             transition: all 0.2s ease;
-
             display: flex;
             align-items: center;
             gap: 8px;
@@ -116,19 +111,11 @@
             padding: 0;
         }
 
-        /* =====================================================
-           ARRASTO DE ABAS
-        ===================================================== */
-
         .tab-btn.dragging {
             opacity: 0.5;
             background: #cce5ff;
             border-color: #2b6ca3;
         }
-
-        /* =====================================================
-           BOTÕES
-        ===================================================== */
 
         .btn-success {
             background: #1a9c4a;
@@ -192,19 +179,13 @@
             background: #e0a800;
         }
 
-        /* =====================================================
-           FERRAMENTAS
-        ===================================================== */
-
         .toolbar {
             display: flex;
             gap: 15px;
             align-items: center;
             margin-bottom: 15px;
             flex-wrap: wrap;
-
             padding: 12px 15px;
-
             background: #f8fafc;
             border: 1px solid #e6edf5;
             border-radius: 8px;
@@ -224,10 +205,6 @@
             background: #ffffff;
         }
 
-        /* =====================================================
-           TABELA
-        ===================================================== */
-
         .table-wrapper {
             width: 100%;
             overflow-x: auto;
@@ -238,12 +215,9 @@
             border-collapse: collapse;
             font-size: 14px;
             background: white;
-
             border-radius: 8px;
             overflow: hidden;
-
             border: 1px solid #dbe0e5;
-
             table-layout: fixed;
         }
 
@@ -270,52 +244,21 @@
             background: #eef5fb;
         }
 
-        /* Larguras das colunas */
-
-        .col-index {
-            width: 45px;
-        }
-
-        .col-event {
-            width: 28%;
-        }
-
-        .col-duration {
-            width: 105px;
-        }
-
-        .col-start {
-            width: 105px;
-        }
-
-        .col-end {
-            width: 110px;
-        }
-
-        .col-delay {
-            width: 105px;
-        }
-
-        .col-actions {
-            width: 60px;
-        }
-
-        /* =====================================================
-           CAMPOS EDITÁVEIS E QUEBRA DE TEXTO
-        ===================================================== */
+        .col-index { width: 45px; }
+        .col-event { width: 28%; }
+        .col-duration { width: 105px; }
+        .col-start { width: 105px; }
+        .col-end { width: 110px; }
+        .col-delay { width: 105px; }
+        .col-actions { width: 60px; }
 
         .editable {
             width: 100%;
-
             border: 1px solid transparent;
             background: transparent;
-
             text-align: center;
-
             font: inherit;
-
             padding: 4px;
-
             border-radius: 4px;
         }
 
@@ -325,13 +268,8 @@
             outline: none;
         }
 
-        .editable.duration {
-            width: 70px;
-        }
-
-        .editable.time {
-            width: 100%;
-        }
+        .editable.duration { width: 70px; }
+        .editable.time { width: 100%; }
 
         .event-cell {
             word-wrap: break-word;
@@ -342,24 +280,17 @@
         .event-input {
             width: 100%;
             min-width: 0;
-
             white-space: normal;
             overflow-wrap: anywhere;
             word-break: break-word;
-
             resize: none;
             overflow: hidden;
             display: block;
-
             border: 1px solid transparent;
             background: transparent;
             padding: 4px;
             border-radius: 4px;
         }
-
-        /* =====================================================
-           CAMPOS CALCULADOS
-        ===================================================== */
 
         .calculated {
             background: transparent;
@@ -367,267 +298,57 @@
             font-weight: 500;
         }
 
-        .atraso {
-            color: #d32f2f;
-            font-weight: 700;
-        }
+        .atraso { color: #d32f2f; font-weight: 700; }
+        .adiantado { color: #1a9c4a; font-weight: 700; }
 
-        .adiantado {
-            color: #1a9c4a;
-            font-weight: 700;
-        }
-
-        /* =====================================================
-           DRAG AND DROP DE LINHAS
-        ===================================================== */
-
-        tr.dragging {
-            opacity: 0.5;
-            background: #cce5ff;
-        }
-
-        /* =====================================================
-           CELULAR
-        ===================================================== */
+        tr.dragging { opacity: 0.5; background: #cce5ff; }
 
         @media (max-width: 800px) {
-
-            body {
-                margin: 0;
-                padding: 8px;
-            }
-
-            .container {
-                width: 100%;
-                padding: 10px;
-                border-radius: 8px;
-            }
-
-            .title-row {
-                gap: 8px;
-                margin-bottom: 10px;
-            }
-
-            .logo-img {
-                height: 35px;
-            }
-
-            h1 {
-                font-size: 19px;
-                line-height: 1.2;
-            }
-
-            /* Abas */
-
-            .tabs-container {
-                display: block;
-            }
-
-            .tabs-bar {
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-                gap: 5px;
-                margin-bottom: 8px;
-            }
-
-            .tab-btn {
-                width: 100%;
-                justify-content: space-between;
-                padding: 7px 10px;
-                font-size: 13px;
-            }
-
-            .tabs-container > .btn-success {
-                width: auto;
-                padding: 7px 12px;
-            }
-
-            /* Toolbar */
-
-            .toolbar {
-                display: grid;
-                grid-template-columns: 1fr;
-                gap: 7px;
-
-                padding: 10px;
-                margin-bottom: 10px;
-            }
-
-            .toolbar label {
-                font-size: 14px;
-            }
-
-            .toolbar input[type="time"] {
-                width: 100%;
-                height: 38px;
-            }
-
-            .toolbar .btn {
-                width: 100%;
-                min-height: 36px;
-            }
-
-            /* Tabela */
-
-            table {
-                width: 100%;
-                table-layout: fixed;
-                font-size: 11px;
-            }
-
-            th,
-            td {
-                padding: 5px 3px;
-            }
-
-            /* Coluna índice menor */
-
-            .col-index {
-                width: 25px;
-            }
-
-            /* EVENTO MAIS ESTREITO */
-
-            .col-event {
-                width: 25%;
-            }
-
-            /* Demais colunas */
-
-            .col-duration {
-                width: 14%;
-            }
-
-            .col-start {
-                width: 15%;
-            }
-
-            .col-end {
-                width: 16%;
-            }
-
-            .col-delay {
-                width: 16%;
-            }
-
-            .col-actions {
-                width: 45px;
-            }
-
-            /* Texto do evento quebra */
-
-            .event-cell {
-                white-space: normal;
-                overflow-wrap: anywhere;
-                word-break: break-word;
-                line-height: 1.2;
-            }
-
-            .event-input {
-                font-size: 11px;
-                padding: 2px;
-
-                white-space: normal;
-                overflow-wrap: anywhere;
-                word-break: break-word;
-            }
-
-            /* Horários */
-
-            .editable.time {
-                width: 100%;
-                font-size: 10px;
-                padding: 2px;
-            }
-
-            .editable.duration {
-                width: 100%;
-                font-size: 10px;
-                padding: 2px;
-            }
-
-            /* Botões */
-
-            .btn-danger {
-                font-size: 10px;
-                padding: 3px 6px;
-            }
-
-            /* Evita números gigantes */
-
-            .calculated,
-            .atraso,
-            .adiantado {
-                font-size: 10px;
-            }
+            body { margin: 0; padding: 8px; }
+            .container { width: 100%; padding: 10px; border-radius: 8px; }
+            .title-row { gap: 8px; margin-bottom: 10px; }
+            .logo-img { height: 35px; }
+            h1 { font-size: 19px; line-height: 1.2; }
+            .tabs-container { display: block; }
+            .tabs-bar { display: flex; flex-direction: column; width: 100%; gap: 5px; margin-bottom: 8px; }
+            .tab-btn { width: 100%; justify-content: space-between; padding: 7px 10px; font-size: 13px; }
+            .tabs-container > .btn-success { width: auto; padding: 7px 12px; }
+            .toolbar { display: grid; grid-template-columns: 1fr; gap: 7px; padding: 10px; margin-bottom: 10px; }
+            .toolbar label { font-size: 14px; }
+            .toolbar input[type="time"] { width: 100%; height: 38px; }
+            .toolbar .btn { width: 100%; min-height: 36px; }
+            table { width: 100%; table-layout: fixed; font-size: 11px; }
+            th, td { padding: 5px 3px; }
+            .col-index { width: 25px; }
+            .col-event { width: 25%; }
+            .col-duration { width: 14%; }
+            .col-start { width: 15%; }
+            .col-end { width: 16%; }
+            .col-delay { width: 16%; }
+            .col-actions { width: 45px; }
+            .event-cell { line-height: 1.2; }
+            .event-input { font-size: 11px; padding: 2px; }
+            .editable.time { width: 100%; font-size: 10px; padding: 2px; }
+            .editable.duration { width: 100%; font-size: 10px; padding: 2px; }
+            .btn-danger { font-size: 10px; padding: 3px 6px; }
+            .calculated, .atraso, .adiantado { font-size: 10px; }
         }
 
-        /* =====================================================
-           CELULAR MUITO PEQUENO
-        ===================================================== */
-
         @media (max-width: 420px) {
-
-            body {
-                padding: 4px;
-            }
-
-            .container {
-                padding: 7px;
-            }
-
-            h1 {
-                font-size: 17px;
-            }
-
-            table {
-                font-size: 10px;
-            }
-
-            th,
-            td {
-                padding: 4px 2px;
-            }
-
-            .col-index {
-                width: 22px;
-            }
-
-            .col-event {
-                width: 24%;
-            }
-
-            .col-duration {
-                width: 14%;
-            }
-
-            .col-start {
-                width: 16%;
-            }
-
-            .col-end {
-                width: 16%;
-            }
-
-            .col-delay {
-                width: 16%;
-            }
-
-            .col-actions {
-                width: 38px;
-            }
-
-            .editable.time,
-            .editable.duration,
-            .event-input {
-                font-size: 9px;
-            }
-
-            .btn-danger {
-                font-size: 9px;
-                padding: 2px 5px;
-            }
+            body { padding: 4px; }
+            .container { padding: 7px; }
+            h1 { font-size: 17px; }
+            table { font-size: 10px; }
+            th, td { padding: 4px 2px; }
+            .col-index { width: 22px; }
+            .col-event { width: 24%; }
+            .col-duration { width: 14%; }
+            .col-start { width: 16%; }
+            .col-end { width: 16%; }
+            .col-delay { width: 16%; }
+            .col-actions { width: 38px; }
+            .editable.time, .editable.duration, .event-input { font-size: 9px; }
+            .btn-danger { font-size: 9px; padding: 2px 5px; }
         }
 
     </style>
@@ -636,826 +357,245 @@
 <body>
 
 <div class="container">
-
     <div id="export-wrapper">
-
-        <!-- =====================================================
-             CABEÇALHO
-        ===================================================== -->
-
         <div class="header-wrapper">
-
             <div class="title-row">
-
-                <img
-                    src="images/logo_fgh.png"
-                    alt="Logo FGH"
-                    class="logo-img"
-                >
-
-                <h1 id="dynamic-title">
-                    Programação de Eventos FGH
-                </h1>
-
+                <img src="images/logo_fgh.png" alt="Logo FGH" class="logo-img">
+                <h1 id="dynamic-title">Programação de Eventos FGH</h1>
             </div>
 
             <div class="tabs-container">
-
                 <div id="tabsBar" class="tabs-bar"></div>
-
-                <button
-                    class="btn btn-success"
-                    onclick="addTab()"
-                >
-                    + Nova aba
-                </button>
-
+                <button class="btn btn-success" onclick="addTab()">+ Nova aba</button>
             </div>
-
         </div>
-
-
-        <!-- =====================================================
-             FERRAMENTAS
-        ===================================================== -->
 
         <div class="toolbar">
+            <label>Início do evento:</label>
+            <input type="time" id="startTime" value="08:00" step="1">
+            <button class="btn btn-primary" onclick="addEvent()">➕ Adicionar evento</button>
 
-            <label>
-                Início do evento:
-            </label>
-
-            <input
-                type="time"
-                id="startTime"
-                value="08:00"
-                step="1"
-            >
-
-            <button
-                class="btn btn-primary"
-                onclick="addEvent()"
-            >
-                ➕ Adicionar evento
-            </button>
-
-            <!-- Botões ocultos conforme solicitado -->
-            <button
-                class="btn btn-secondary"
-                onclick="resetCurrentTab()"
-                style="display:none;"
-            >
-                🔄 Restaurar exemplo
-            </button>
-
-            <button
-                class="btn btn-warning"
-                onclick="resetAllData()"
-                style="display:none;"
-            >
-                ⚠️ Resetar tudo
-            </button>
-
-            <button
-                class="btn btn-success"
-                onclick="saveDataToGitHub()"
-            >
-                💾 Salvar
-            </button>
-
+            <button class="btn btn-secondary" onclick="resetCurrentTab()" style="display:none;">🔄 Restaurar exemplo</button>
+            <button class="btn btn-warning" onclick="resetAllData()" style="display:none;">⚠️ Resetar tudo</button>
+            <button class="btn btn-success" onclick="saveDataToGitHub()">💾 Salvar</button>
         </div>
 
-
-        <!-- =====================================================
-             TABELA
-        ===================================================== -->
-
-        <div
-            id="tableContainer"
-            class="table-wrapper"
-        ></div>
-
+        <div id="tableContainer" class="table-wrapper"></div>
     </div>
-
 </div>
-
 
 <script>
 
-/* ============================================================
-   UTILITÁRIOS DE TEMPO
-============================================================ */
-
 function toSeconds(val) {
-
     if (!val) return null;
-
-    if (typeof val === 'number') {
-        return val;
-    }
-
+    if (typeof val === 'number') return val;
     const parts = val.split(':').map(Number);
-
-    if (parts.some(isNaN)) {
-        return null;
-    }
-
-    if (parts.length === 1) {
-        return parts[0] * 3600;
-    }
-
-    if (parts.length === 2) {
-        return parts[0] * 3600 + parts[1] * 60;
-    }
-
-    if (parts.length === 3) {
-        return (
-            parts[0] * 3600 +
-            parts[1] * 60 +
-            parts[2]
-        );
-    }
-
+    if (parts.some(isNaN)) return null;
+    if (parts.length === 1) return parts[0] * 3600;
+    if (parts.length === 2) return parts[0] * 3600 + parts[1] * 60;
+    if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
     return null;
 }
 
-
 function toHHMMSS(sec) {
-
-    if (
-        sec == null ||
-        isNaN(sec)
-    ) {
-        return '';
-    }
-
+    if (sec == null || isNaN(sec)) return '';
     const sign = sec < 0 ? '-' : '';
-
     const abs = Math.abs(sec);
-
     const h = Math.floor(abs / 3600);
-
-    const m = Math.floor(
-        (abs % 3600) / 60
-    );
-
+    const m = Math.floor((abs % 3600) / 60);
     const s = Math.floor(abs % 60);
-
     return `${sign}${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
 }
 
-
 function toHHMM(sec) {
-
-    if (
-        sec == null ||
-        isNaN(sec)
-    ) {
-        return '';
-    }
-
+    if (sec == null || isNaN(sec)) return '';
     const sign = sec < 0 ? '-' : '';
-
     const abs = Math.abs(sec);
-
     const h = Math.floor(abs / 3600);
-
-    const m = Math.floor(
-        (abs % 3600) / 60
-    );
-
+    const m = Math.floor((abs % 3600) / 60);
     return `${sign}${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
 }
 
-
-/* ============================================================
-   ESTADO GLOBAL
-============================================================ */
-
-let data = {
-    abas: [],
-    currentTab: 0
-};
-
+let data = { abas: [], currentTab: 0 };
 let nextId = 1;
 
-
-/* ============================================================
-   EVENTOS PADRÃO
-============================================================ */
-
 function getHospitalDefaultEvents() {
-
     return [
-
-        {
-            id: nextId++,
-            name: 'Abertura',
-            duration: 600,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'NIO',
-            duration: 600,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'Hospital da Criança do Recife',
-            duration: 2400,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'Compliance + Gerenciamento de Risco',
-            duration: 1200,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'Hospital Eduardo Campos da Pessoa Idosa',
-            duration: 2400,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'Hospital ALFA',
-            duration: 2400,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'Superintendência de Recursos Humanos',
-            duration: 1200,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'Superintendência de Atendimento',
-            duration: 1200,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'Hospital Dom Helder Câmara',
-            duration: 2400,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'Ensino e Pesquisa',
-            duration: 1200,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'Almoço',
-            duration: 2700,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'Tecnologia da Informação',
-            duration: 1200,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'Superintendência da Qualidade',
-            duration: 1200,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'Hospital Miguel Arraes',
-            duration: 2400,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'Superintendência de Administração e Finanças',
-            duration: 1200,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'Hospital Pelópidas Silveira',
-            duration: 2400,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'Considerações Finais',
-            duration: 600,
-            realEnd: ''
-        }
-
+        { id: nextId++, name: 'Abertura', duration: 600, realEnd: '' },
+        { id: nextId++, name: 'NIO', duration: 600, realEnd: '' },
+        { id: nextId++, name: 'Hospital da Criança do Recife', duration: 2400, realEnd: '' },
+        { id: nextId++, name: 'Compliance + Gerenciamento de Risco', duration: 1200, realEnd: '' },
+        { id: nextId++, name: 'Hospital Eduardo Campos da Pessoa Idosa', duration: 2400, realEnd: '' },
+        { id: nextId++, name: 'Hospital ALFA', duration: 2400, realEnd: '' },
+        { id: nextId++, name: 'Superintendência de Recursos Humanos', duration: 1200, realEnd: '' },
+        { id: nextId++, name: 'Superintendência de Atendimento', duration: 1200, realEnd: '' },
+        { id: nextId++, name: 'Hospital Dom Helder Câmara', duration: 2400, realEnd: '' },
+        { id: nextId++, name: 'Ensino e Pesquisa', duration: 1200, realEnd: '' },
+        { id: nextId++, name: 'Almoço', duration: 2700, realEnd: '' },
+        { id: nextId++, name: 'Tecnologia da Informação', duration: 1200, realEnd: '' },
+        { id: nextId++, name: 'Superintendência da Qualidade', duration: 1200, realEnd: '' },
+        { id: nextId++, name: 'Hospital Miguel Arraes', duration: 2400, realEnd: '' },
+        { id: nextId++, name: 'Superintendência de Administração e Finanças', duration: 1200, realEnd: '' },
+        { id: nextId++, name: 'Hospital Pelópidas Silveira', duration: 2400, realEnd: '' },
+        { id: nextId++, name: 'Considerações Finais', duration: 600, realEnd: '' }
     ];
 }
-
 
 function getUPADefaultEvents() {
-
     return [
-
-        {
-            id: nextId++,
-            name: 'Abertura',
-            duration: 600,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'NIO',
-            duration: 600,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'UPA São Lourenço da Mata',
-            duration: 2100,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'UPAE Ibura',
-            duration: 2100,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'Compliance + Gerenciamento de Risco',
-            duration: 1200,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'UPAE Garanhuns',
-            duration: 2100,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'Superintendência de Recursos Humanos',
-            duration: 1200,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'UPAE Salgueiro',
-            duration: 2100,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'Superintendência de Atendimento',
-            duration: 1200,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'Tecnologia da Informação',
-            duration: 1200,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'UPAE Mustardinha',
-            duration: 2100,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'Almoço',
-            duration: 2700,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'Ensino e Pesquisa',
-            duration: 1200,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'UPAE Carpina',
-            duration: 2100,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'Superintendência da Qualidade',
-            duration: 1200,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'Superintendência de Administração e Finanças',
-            duration: 1200,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'UPAE Escada',
-            duration: 2100,
-            realEnd: ''
-        },
-
-        {
-            id: nextId++,
-            name: 'Considerações Finais',
-            duration: 600,
-            realEnd: ''
-        }
-
+        { id: nextId++, name: 'Abertura', duration: 600, realEnd: '' },
+        { id: nextId++, name: 'NIO', duration: 600, realEnd: '' },
+        { id: nextId++, name: 'UPA São Lourenço da Mata', duration: 2100, realEnd: '' },
+        { id: nextId++, name: 'UPAE Ibura', duration: 2100, realEnd: '' },
+        { id: nextId++, name: 'Compliance + Gerenciamento de Risco', duration: 1200, realEnd: '' },
+        { id: nextId++, name: 'UPAE Garanhuns', duration: 2100, realEnd: '' },
+        { id: nextId++, name: 'Superintendência de Recursos Humanos', duration: 1200, realEnd: '' },
+        { id: nextId++, name: 'UPAE Salgueiro', duration: 2100, realEnd: '' },
+        { id: nextId++, name: 'Superintendência de Atendimento', duration: 1200, realEnd: '' },
+        { id: nextId++, name: 'Tecnologia da Informação', duration: 1200, realEnd: '' },
+        { id: nextId++, name: 'UPAE Mustardinha', duration: 2100, realEnd: '' },
+        { id: nextId++, name: 'Almoço', duration: 2700, realEnd: '' },
+        { id: nextId++, name: 'Ensino e Pesquisa', duration: 1200, realEnd: '' },
+        { id: nextId++, name: 'UPAE Carpina', duration: 2100, realEnd: '' },
+        { id: nextId++, name: 'Superintendência da Qualidade', duration: 1200, realEnd: '' },
+        { id: nextId++, name: 'Superintendência de Administração e Finanças', duration: 1200, realEnd: '' },
+        { id: nextId++, name: 'UPAE Escada', duration: 2100, realEnd: '' },
+        { id: nextId++, name: 'Considerações Finais', duration: 600, realEnd: '' }
     ];
 }
 
-
-/* ============================================================
-   GITHUB
-============================================================ */
-
-const GITHUB_OWNER =
-    'caiomalbuquerque';
-
-const GITHUB_REPO =
-    'programacao_de_eventos';
-
-const GITHUB_BRANCH =
-    'main';
-
-const GITHUB_FILE_PATH =
-    'dados.json';
-
+const GITHUB_OWNER = 'caiomalbuquerque';
+const GITHUB_REPO = 'programacao_de_eventos';
+const GITHUB_BRANCH = 'main';
+const GITHUB_FILE_PATH = 'dados.json';
 
 const CACHE_KEY = 'programacao_eventos_fgh';
 const CACHE_TIME_KEY = 'programacao_eventos_fgh_cache_time';
-const CACHE_DURATION = 5 * 60 * 1000; // 10 minutos
+const CACHE_DURATION = 5 * 60 * 1000;
 
 async function loadDataFromGitHub() {
-
-    const url =
-        `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${GITHUB_FILE_PATH}`;
-
+    const url = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${GITHUB_FILE_PATH}`;
     try {
-
-        const response =
-            await fetch(
-                url
-            );
-
-        if (!response.ok) {
-            throw new Error(
-                'Arquivo ainda não existe'
-            );
-        }
-
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('Arquivo ainda não existe');
         return await response.json();
-
     } catch (e) {
-
-        console.warn(
-            'Não foi possível carregar dados.json do GitHub.',
-            e
-        );
-
+        console.warn('Não foi possível carregar dados.json do GitHub.', e);
         return null;
     }
 }
 
-
 async function saveDataToGitHub() {
-
-    const token = prompt(
-        'Cole seu token de acesso do GitHub para salvar:'
-    );
-
+    const token = prompt('Cole seu token de acesso do GitHub para salvar:');
     if (!token) return;
 
-    const apiUrl =
-        `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${GITHUB_FILE_PATH}`;
-
+    const apiUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${GITHUB_FILE_PATH}`;
     let sha = undefined;
 
     try {
-
-        const getResp =
-            await fetch(
-                apiUrl +
-                `?ref=${GITHUB_BRANCH}`,
-                {
-                    headers: {
-                        Authorization:
-                            `Bearer ${token}`
-                    }
-                }
-            );
-
+        const getResp = await fetch(apiUrl + `?ref=${GITHUB_BRANCH}`, { headers: { Authorization: `Bearer ${token}` } });
         if (getResp.ok) {
-
-            const fileInfo =
-                await getResp.json();
-
+            const fileInfo = await getResp.json();
             sha = fileInfo.sha;
         }
-
     } catch (e) {}
 
-    const content =
-        btoa(
-            unescape(
-                encodeURIComponent(
-                    JSON.stringify(
-                        data,
-                        null,
-                        2
-                    )
-                )
-            )
-        );
-
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
     const body = {
-
-        message:
-            `Atualiza dados - ${new Date().toLocaleString('pt-BR')}`,
-
+        message: `Atualiza dados - ${new Date().toLocaleString('pt-BR')}`,
         content: content,
-
         branch: GITHUB_BRANCH
-
     };
-
-    if (sha) {
-        body.sha = sha;
-    }
+    if (sha) body.sha = sha;
 
     try {
-
-        const putResp =
-            await fetch(
-                apiUrl,
-                {
-                    method: 'PUT',
-
-                    headers: {
-                        Authorization:
-                            `Bearer ${token}`,
-
-                        'Content-Type':
-                            'application/json'
-                    },
-
-                    body:
-                        JSON.stringify(body)
-                }
-            );
+        const putResp = await fetch(apiUrl, {
+            method: 'PUT',
+            headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify(body)
+        });
 
         if (!putResp.ok) {
-
-            const err =
-                await putResp.json();
-
-            throw new Error(
-                err.message ||
-                'Erro desconhecido'
-            );
+            const err = await putResp.json();
+            throw new Error(err.message || 'Erro desconhecido');
         }
 
         cacheDataLocally();
-
-        localStorage.setItem(
-            CACHE_TIME_KEY,
-            String(Date.now())
-        );
-
-        alert(
-            'Salvo no GitHub com sucesso!'
-        );
-
+        localStorage.setItem(CACHE_TIME_KEY, String(Date.now()));
+        alert('Salvo no GitHub com sucesso!');
     } catch (e) {
-
-        alert(
-            'Erro ao salvar no GitHub: ' +
-            e.message
-        );
-
+        alert('Erro ao salvar no GitHub: ' + e.message);
     }
 }
-
-
-/* ============================================================
-   PERSISTÊNCIA LOCAL
-============================================================ */
 
 function cacheDataLocally() {
-
-    localStorage.setItem(
-        'programacao_eventos_fgh',
-        JSON.stringify(data)
-    );
+    localStorage.setItem('programacao_eventos_fgh', JSON.stringify(data));
 }
 
-
-function saveData() {
-    cacheDataLocally();
-}
-
-
-/* ============================================================
-   CARREGAR DADOS
-============================================================ */
+function saveData() { cacheDataLocally(); }
 
 async function loadData() {
-
     const raw = localStorage.getItem(CACHE_KEY);
-    const cacheTime = Number(
-        localStorage.getItem(CACHE_TIME_KEY) || 0
-    );
+    const cacheTime = Number(localStorage.getItem(CACHE_TIME_KEY) || 0);
 
-    // Usa o cache por até 10 minutos, sem consultar o GitHub.
     if (raw && cacheTime && (Date.now() - cacheTime < CACHE_DURATION)) {
-        try {
-            data = JSON.parse(raw);
-            prepararDadosCarregados();
-            return;
-        } catch (e) {
-            console.warn('Cache local inválido.');
-        }
+        try { data = JSON.parse(raw); prepararDadosCarregados(); return; } catch (e) { console.warn('Cache local inválido.'); }
     }
 
-    // Cache expirado ou inexistente: busca a versão atual no GitHub.
     const remote = await loadDataFromGitHub();
-
     if (remote) {
         data = remote;
         prepararDadosCarregados();
-
-        localStorage.setItem(
-            CACHE_TIME_KEY,
-            String(Date.now())
-        );
-
+        localStorage.setItem(CACHE_TIME_KEY, String(Date.now()));
         cacheDataLocally();
         return;
     }
 
-    // Se o GitHub estiver indisponível, usa o cache antigo.
     if (raw) {
-        try {
-            data = JSON.parse(raw);
-            prepararDadosCarregados();
-            console.warn('GitHub indisponível. Usando cache local antigo.');
-            return;
-        } catch (e) {
-            console.warn('Não foi possível recuperar o cache local.');
-        }
+        try { data = JSON.parse(raw); prepararDadosCarregados(); console.warn('GitHub indisponível. Usando cache local antigo.'); return; } catch (e) {}
     }
 
-    // Sem GitHub e sem cache: usa os dados padrão.
     nextId = 1;
+    data = { abas: [
+        { nome: 'Colegiado - Hospitais (26/08)', startTime: '08:00', eventos: getHospitalDefaultEvents() },
+        { nome: 'Colegiado - UPA e UPAEs (28/08)', startTime: '08:00', eventos: getUPADefaultEvents() }
+    ], currentTab: 0 };
 
-    data = {
-        abas: [
-            {
-                nome: 'Colegiado - Hospitais (26/08)',
-                startTime: '08:00',
-                eventos: getHospitalDefaultEvents()
-            },
-            {
-                nome: 'Colegiado - UPA e UPAEs (28/08)',
-                startTime: '08:00',
-                eventos: getUPADefaultEvents()
-            }
-        ],
-        currentTab: 0
-    };
-
-    const savedTab = localStorage.getItem(
-        'programacao_eventos_current_tab'
-    );
-
-    if (savedTab !== null && data.abas[Number(savedTab)]) {
-        data.currentTab = Number(savedTab);
-    } else {
-        data.currentTab = 1;
-    }
-
+    const savedTab = localStorage.getItem('programacao_eventos_current_tab');
+    if (savedTab !== null && data.abas[Number(savedTab)]) data.currentTab = Number(savedTab);
+    else data.currentTab = 1;
+    
     cacheDataLocally();
 }
 
 function prepararDadosCarregados() {
-
     let maxId = 0;
-
-    data.abas.forEach(aba => {
-        aba.eventos.forEach(e => {
-            if (e.id > maxId) {
-                maxId = e.id;
-            }
-        });
-    });
-
+    data.abas.forEach(aba => { aba.eventos.forEach(e => { if (e.id > maxId) maxId = e.id; }); });
     nextId = maxId + 1;
 
-    const savedTab = localStorage.getItem(
-        'programacao_eventos_current_tab'
-    );
-
-    if (savedTab !== null && data.abas[Number(savedTab)]) {
-        data.currentTab = Number(savedTab);
-    }
+    const savedTab = localStorage.getItem('programacao_eventos_current_tab');
+    if (savedTab !== null && data.abas[Number(savedTab)]) data.currentTab = Number(savedTab);
 }
 
-
 /* ============================================================
-   CÁLCULO DOS EVENTOS (COM CASCATA DE ATRASO)
+   CÁLCULO DOS EVENTOS (CORRIGIDO: CASCATA DE ATRASO)
 ============================================================ */
 
-function computeEvents(
-    eventos,
-    startSec
-) {
-
+function computeEvents(eventos, startSec) {
     const results = [];
 
-    for (
-        let i = 0;
-        i < eventos.length;
-        i++
-    ) {
+    for (let i = 0; i < eventos.length; i++) {
+        const item = eventos[i];
+        const dur = item.duration || 0;
 
-        const item =
-            eventos[i];
-
-        const dur =
-            item.duration || 0;
-
-        /* 1. Cálculo do Início Programado (baseado na duração pura) */
-        let startProg;
-        if (i === 0) {
-            startProg = startSec;
-        } else {
-            startProg = results[i - 1].endProg;
-        }
-
-        const endProg = startProg + dur;
-
-        /* 2. Cálculo do Término Real Digitado */
-        const realEndVal = toSeconds(item.realEnd);
-
-        /* 3. Cálculo do Atraso (Diferença entre o real e o programado) */
-        let delay = null;
-        if (realEndVal !== null) {
-            delay = realEndVal - endProg;
-        }
-
-        /* 4. Cálculo do Início Real (A LÓGICA DA CASCATA) */
         let startReal;
-
         if (i === 0) {
             startReal = startSec;
         } else {
             const previous = results[i - 1];
-
-            /*
-             * REGRA SOLICITADA:
-             * O Início da linha atual é o Término Real da linha anterior.
-             * Se o Término Real anterior estiver vazio, usa o Término Programado.
-             */
+            
+            // Se a linha anterior tem término real digitado, usa ele. 
+            // Se não, usa o término programado (que já carrega os atrasos anteriores).
             if (previous.realEndVal !== null) {
                 startReal = previous.realEndVal;
             } else {
@@ -1463,9 +603,19 @@ function computeEvents(
             }
         }
 
+        // O término programado é calculado a partir do INÍCIO REAL, 
+        // fazendo com que o atraso da linha anterior seja somado à duração atual.
+        const endProg = startReal + dur;
+
+        const realEndVal = toSeconds(item.realEnd);
+
+        let delay = null;
+        if (realEndVal !== null) {
+            delay = realEndVal - endProg;
+        }
+
         results.push({
             ...item,
-            startProg,
             startReal,
             endProg,
             realEndVal,
@@ -1476,309 +626,87 @@ function computeEvents(
     return results;
 }
 
-
 /* ============================================================
    RENDERIZAÇÃO
 ============================================================ */
 
 function render() {
-
-    const tabsBar =
-        document.getElementById(
-            'tabsBar'
-        );
-
-    const container =
-        document.getElementById(
-            'tableContainer'
-        );
-
-    const startInput =
-        document.getElementById(
-            'startTime'
-        );
-
-
-    /* Abas */
+    const tabsBar = document.getElementById('tabsBar');
+    const container = document.getElementById('tableContainer');
+    const startInput = document.getElementById('startTime');
 
     let htmlTabs = '';
+    data.abas.forEach((aba, idx) => {
+        const active = idx === data.currentTab ? 'active' : '';
+        htmlTabs += `
+            <div class="tab-btn ${active}" draggable="true"
+                ondragstart="tabDragStart(event, ${idx})" ondragover="tabDragOver(event)" ondrop="tabDrop(event, ${idx})" ondragend="tabDragEnd(event)"
+                onclick="switchTab(${idx})">
+                <span>${escapeHtml(aba.nome)}</span>
+                <span class="tab-actions">
+                    <button onclick="event.stopPropagation(); renameTab(${idx})" title="Renomear">✎</button>
+                    <button onclick="event.stopPropagation(); deleteTab(${idx})" title="Excluir">✕</button>
+                </span>
+            </div>`;
+    });
+    tabsBar.innerHTML = htmlTabs;
 
-    data.abas.forEach(
-        (aba, idx) => {
-
-            const active =
-                idx === data.currentTab
-                    ? 'active'
-                    : '';
-
-            htmlTabs += `
-
-                <div
-                    class="tab-btn ${active}"
-                    draggable="true"
-                    ondragstart="tabDragStart(event, ${idx})"
-                    ondragover="tabDragOver(event)"
-                    ondrop="tabDrop(event, ${idx})"
-                    ondragend="tabDragEnd(event)"
-                    onclick="switchTab(${idx})"
-                >
-
-                    <span>
-                        ${escapeHtml(aba.nome)}
-                    </span>
-
-                    <span class="tab-actions">
-
-                        <button
-                            onclick="event.stopPropagation(); renameTab(${idx})"
-                            title="Renomear"
-                        >
-                            ✎
-                        </button>
-
-                        <button
-                            onclick="event.stopPropagation(); deleteTab(${idx})"
-                            title="Excluir"
-                        >
-                            ✕
-                        </button>
-
-                    </span>
-
-                </div>
-
-            `;
-        }
-    );
-
-    tabsBar.innerHTML =
-        htmlTabs;
-
-
-    const aba =
-        data.abas[
-            data.currentTab
-        ];
-
+    const aba = data.abas[data.currentTab];
     if (!aba) return;
 
-
-    startInput.value =
-        aba.startTime ||
-        '08:00';
-
-
-    const startSec =
-        toSeconds(
-            startInput.value
-        ) ||
-        8 * 3600;
-
-
-    const computed =
-        computeEvents(
-            aba.eventos,
-            startSec
-        );
-
-
-    /* =====================================================
-       TABELA
-    ===================================================== */
+    startInput.value = aba.startTime || '08:00';
+    const startSec = toSeconds(startInput.value) || 8 * 3600;
+    const computed = computeEvents(aba.eventos, startSec);
 
     let tableHtml = `
-
         <table>
-
             <thead>
-
                 <tr>
-
-                    <th class="col-index">
-                        #
-                    </th>
-
-                    <th class="col-event">
-                        Evento
-                    </th>
-
-                    <th class="col-duration">
-                        Duração<br>
-                        (hh:mm)
-                    </th>
-
-                    <th class="col-start">
-                        Início
-                    </th>
-
-                    <th class="col-end">
-                        Término
-                    </th>
-
-                    <th class="col-delay">
-                        Saldo de Tempo
-                    </th>
-
-                    <th class="col-actions">
-                        Excluir
-                    </th>
-
+                    <th class="col-index">#</th>
+                    <th class="col-event">Evento</th>
+                    <th class="col-duration">Duração<br>(hh:mm)</th>
+                    <th class="col-start">Início</th>
+                    <th class="col-end">Término</th>
+                    <th class="col-delay">Saldo de Tempo</th>
+                    <th class="col-actions">Excluir</th>
                 </tr>
-
             </thead>
+            <tbody>`;
 
-            <tbody>
-    `;
+    computed.forEach((row, idx) => {
+        const delayStr = row.delay !== null ? toHHMMSS(row.delay) : '';
+        const delayClass = row.delay !== null ? (row.delay > 0 ? 'atraso' : 'adiantado') : '';
 
-
-    computed.forEach(
-        (row, idx) => {
-
-            const delayStr =
-                row.delay !== null
-                    ? toHHMMSS(
-                        row.delay
-                    )
-                    : '';
-
-
-            const delayClass =
-                row.delay !== null
-                    ? (
-                        row.delay > 0
-                            ? 'atraso'
-                            : 'adiantado'
-                    )
-                    : '';
-
-
-            tableHtml += `
-
-                <tr draggable="true" ondragstart="dragStart(event, ${idx})" ondragover="dragOver(event)" ondrop="drop(event, ${idx})" ondragend="dragEnd(event)">
-
-                    <td class="col-index">
-                        ${idx + 1}
-                    </td>
-
-
-                    <td class="col-event event-cell">
-
-                        <textarea
-                            class="editable event-input"
-                            oninput="autoResizeTextarea(this)"
-                            onchange="updateEvent(${idx}, 'name', this.value)"
-                        >${escapeHtml(row.name)}</textarea>
-
-                    </td>
-
-
-                    <td class="col-duration">
-
-                        <input
-                            type="text"
-                            class="editable duration"
-                            value="${toHHMM(row.duration)}"
-                            onchange="updateEvent(${idx}, 'duration', this.value)"
-                        >
-
-                    </td>
-
-
-                    <td class="col-start calculated">
-
-                        ${toHHMMSS(row.startReal)}
-
-                    </td>
-
-
-                    <td class="col-end">
-
-                        <input
-                            type="text"
-                            class="editable time"
-                            value="${escapeAttribute(row.realEnd || '')}"
-                            placeholder="HH:MM:SS"
-                            onchange="updateEvent(${idx}, 'realEnd', this.value)"
-                        >
-
-                    </td>
-
-
-                    <td class="col-delay ${delayClass}">
-
-                        ${delayStr}
-
-                    </td>
-
-
-                    <td class="col-actions">
-
-                        <button
-                            class="btn btn-danger"
-                            onclick="removeEvent(${idx})"
-                            title="Excluir linha"
-                        >
-                            ✕
-                        </button>
-
-                    </td>
-
-                </tr>
-
-            `;
-
-        }
-    );
-
-
-    tableHtml += `
-
-            </tbody>
-
-        </table>
-
-    `;
-
-
-    container.innerHTML =
-        tableHtml;
-
-
-    /*
-     * Ajusta a altura dos campos de texto da coluna Evento
-     * para que todo o conteúdo fique visível.
-     */
-    container.querySelectorAll('textarea.event-input').forEach(textarea => {
-        autoResizeTextarea(textarea);
+        tableHtml += `
+            <tr draggable="true" ondragstart="dragStart(event, ${idx})" ondragover="dragOver(event)" ondrop="drop(event, ${idx})" ondragend="dragEnd(event)">
+                <td class="col-index">${idx + 1}</td>
+                <td class="col-event event-cell">
+                    <textarea class="editable event-input" oninput="autoResizeTextarea(this)" onchange="updateEvent(${idx}, 'name', this.value)">${escapeHtml(row.name)}</textarea>
+                </td>
+                <td class="col-duration">
+                    <input type="text" class="editable duration" value="${toHHMM(row.duration)}" onchange="updateEvent(${idx}, 'duration', this.value)">
+                </td>
+                <td class="col-start calculated">${toHHMMSS(row.startReal)}</td>
+                <td class="col-end">
+                    <input type="text" class="editable time" value="${escapeAttribute(row.realEnd || '')}" placeholder="HH:MM:SS" onchange="updateEvent(${idx}, 'realEnd', this.value)">
+                </td>
+                <td class="col-delay ${delayClass}">${delayStr}</td>
+                <td class="col-actions">
+                    <button class="btn btn-danger" onclick="removeEvent(${idx})" title="Excluir linha">✕</button>
+                </td>
+            </tr>`;
     });
 
+    tableHtml += `</tbody></table>`;
+    container.innerHTML = tableHtml;
 
-    /*
-     * Salva os dados.
-     */
-
+    container.querySelectorAll('textarea.event-input').forEach(textarea => autoResizeTextarea(textarea));
     saveData();
-
-
-    /*
-     * Salva também a aba atualmente selecionada.
-     */
-
-    localStorage.setItem(
-        'programacao_eventos_current_tab',
-        String(data.currentTab)
-    );
+    localStorage.setItem('programacao_eventos_current_tab', String(data.currentTab));
 }
 
-
-/* ============================================================
-   SEGURANÇA PARA TEXTO DIGITADO
-============================================================ */
-
 function escapeHtml(text) {
-
     if (text == null) return '';
-
     return String(text)
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
@@ -1787,194 +715,52 @@ function escapeHtml(text) {
         .replace(/'/g, '&#039;');
 }
 
+function escapeAttribute(text) { return escapeHtml(text); }
 
-function escapeAttribute(text) {
+function getCurrentAba() { return data.abas[data.currentTab]; }
 
-    return escapeHtml(text);
-}
-
-
-/* ============================================================
-   MANIPULAÇÃO DE EVENTOS
-============================================================ */
-
-function getCurrentAba() {
-
-    return data.abas[
-        data.currentTab
-    ];
-}
-
-
-function updateEvent(
-    index,
-    field,
-    value
-) {
-
-    const aba =
-        getCurrentAba();
-
+function updateEvent(index, field, value) {
+    const aba = getCurrentAba();
 
     if (field === 'duration') {
-
-        const sec =
-            toSeconds(value);
-
-        if (
-            sec !== null &&
-            sec > 0
-        ) {
-
-            aba.eventos[
-                index
-            ].duration = sec;
-
+        const sec = toSeconds(value);
+        if (sec !== null && sec > 0) {
+            aba.eventos[index].duration = sec;
         } else {
-
-            alert(
-                'Duração inválida. Use HH:MM ou HH:MM:SS'
-            );
-
-            render();
-
-            return;
+            alert('Duração inválida. Use HH:MM ou HH:MM:SS');
+            render(); return;
         }
-
-    }
-
-
-    else if (field === 'realEnd') {
-
-        if (
-            value.trim() === ''
-        ) {
-
-            aba.eventos[
-                index
-            ].realEnd = '';
-
-        }
-
-        else {
-
-            const sec =
-                toSeconds(value);
-
-            if (
-                sec !== null
-            ) {
-
-                aba.eventos[
-                    index
-                ].realEnd =
-                    toHHMMSS(sec);
-
+    } else if (field === 'realEnd') {
+        if (value.trim() === '') {
+            aba.eventos[index].realEnd = '';
+        } else {
+            const sec = toSeconds(value);
+            if (sec !== null) {
+                aba.eventos[index].realEnd = toHHMMSS(sec);
+            } else {
+                alert('Hora inválida. Use HH:MM:SS');
+                render(); return;
             }
-
-            else {
-
-                alert(
-                    'Hora inválida. Use HH:MM:SS'
-                );
-
-                render();
-
-                return;
-            }
-
         }
-
+    } else {
+        aba.eventos[index][field] = value;
     }
-
-
-    else {
-
-        aba.eventos[
-            index
-        ][field] =
-            value;
-
-    }
-
-
-    /*
-     * Ao alterar Término,
-     * o render recalcula imediatamente
-     * o Início da próxima linha.
-     */
 
     render();
 }
-
-
-/* ============================================================
-   ADICIONAR EVENTO
-============================================================ */
 
 function addEvent() {
-
-    getCurrentAba()
-        .eventos
-        .push({
-
-            id: nextId++,
-
-            name:
-                'Novo evento',
-
-            duration:
-                1800,
-
-            realEnd:
-                ''
-
-        });
-
+    getCurrentAba().eventos.push({ id: nextId++, name: 'Novo evento', duration: 1800, realEnd: '' });
     render();
 }
-
-
-/* ============================================================
-   REMOVER EVENTO
-============================================================ */
 
 function removeEvent(index) {
-
-    const aba =
-        getCurrentAba();
-
-    if (
-        aba.eventos.length <= 1
-    ) {
-
-        alert(
-            'É necessário pelo menos um evento.'
-        );
-
-        return;
-    }
-
-    if (
-        !confirm(
-            'Remover este evento?'
-        )
-    ) {
-        return;
-    }
-
-    aba.eventos.splice(
-        index,
-        1
-    );
-
+    const aba = getCurrentAba();
+    if (aba.eventos.length <= 1) { alert('É necessário pelo menos um evento.'); return; }
+    if (!confirm('Remover este evento?')) return;
+    aba.eventos.splice(index, 1);
     render();
 }
-
-
-/* ============================================================
-   DRAG AND DROP DE LINHAS
-============================================================ */
 
 let draggedRow = null;
 let draggedIndex = null;
@@ -1992,10 +778,7 @@ function dragStart(event, index) {
     draggedRow.classList.add('dragging');
 }
 
-function dragOver(event) {
-    event.preventDefault();
-    event.dataTransfer.dropEffect = 'move';
-}
+function dragOver(event) { event.preventDefault(); event.dataTransfer.dropEffect = 'move'; }
 
 function drop(event, index) {
     event.preventDefault();
@@ -2009,14 +792,8 @@ function drop(event, index) {
 
 function dragEnd(event) {
     draggedRow.classList.remove('dragging');
-    draggedRow = null;
-    draggedIndex = null;
+    draggedRow = null; draggedIndex = null;
 }
-
-
-/* ============================================================
-   DRAG AND DROP DE ABAS
-============================================================ */
 
 let draggedTabIndex = null;
 let draggedTabRow = null;
@@ -2029,32 +806,19 @@ function tabDragStart(event, index) {
     draggedTabRow.classList.add('dragging');
 }
 
-function tabDragOver(event) {
-    event.preventDefault();
-    event.dataTransfer.dropEffect = 'move';
-}
+function tabDragOver(event) { event.preventDefault(); event.dataTransfer.dropEffect = 'move'; }
 
 function tabDrop(event, index) {
     event.preventDefault();
     if (draggedTabIndex !== null && draggedTabIndex !== index) {
-        
-        // Salva a aba que estava ativa antes da reordenação
         const activeTabIndex = data.currentTab;
-        
-        // Remove e insere a aba arrastada na nova posição
         const [movedTab] = data.abas.splice(draggedTabIndex, 1);
         data.abas.splice(index, 0, movedTab);
         
-        // Ajusta o índice da aba ativa para continuar seguindo a mesma aba
-        if (draggedTabIndex === activeTabIndex) {
-            data.currentTab = index;
-        } else if (draggedTabIndex < activeTabIndex && index >= activeTabIndex) {
-            data.currentTab = activeTabIndex - 1;
-        } else if (draggedTabIndex > activeTabIndex && index <= activeTabIndex) {
-            data.currentTab = activeTabIndex + 1;
-        }
-        
-        // Salva e renderiza
+        if (draggedTabIndex === activeTabIndex) data.currentTab = index;
+        else if (draggedTabIndex < activeTabIndex && index >= activeTabIndex) data.currentTab = activeTabIndex - 1;
+        else if (draggedTabIndex > activeTabIndex && index <= activeTabIndex) data.currentTab = activeTabIndex + 1;
+
         saveData();
         localStorage.setItem('programacao_eventos_current_tab', String(data.currentTab));
         render();
@@ -2063,278 +827,69 @@ function tabDrop(event, index) {
 
 function tabDragEnd(event) {
     draggedTabRow.classList.remove('dragging');
-    draggedTabRow = null;
-    draggedTabIndex = null;
+    draggedTabRow = null; draggedTabIndex = null;
 }
-
-
-/* ============================================================
-   RESTAURAR ABA
-============================================================ */
 
 function resetCurrentTab() {
-
-    const aba =
-        getCurrentAba();
-
-    if (
-        !confirm(
-            'Recarregar eventos de exemplo?'
-        )
-    ) {
-        return;
-    }
-
-    const isUpa =
-        aba.nome
-            .toLowerCase()
-            .includes('upa');
-
-
-    aba.eventos =
-        isUpa
-            ? getUPADefaultEvents()
-            : getHospitalDefaultEvents();
-
-
-    aba.eventos.forEach(
-        e => {
-            e.id =
-                nextId++;
-        }
-    );
-
-
+    const aba = getCurrentAba();
+    if (!confirm('Recarregar eventos de exemplo?')) return;
+    const isUpa = aba.nome.toLowerCase().includes('upa');
+    aba.eventos = isUpa ? getUPADefaultEvents() : getHospitalDefaultEvents();
+    aba.eventos.forEach(e => { e.id = nextId++; });
     render();
 }
-
-
-/* ============================================================
-   TROCAR ABA
-============================================================ */
 
 function switchTab(index) {
-
-    data.currentTab =
-        index;
-
-
-    localStorage.setItem(
-        'programacao_eventos_current_tab',
-        String(index)
-    );
-
-
+    data.currentTab = index;
+    localStorage.setItem('programacao_eventos_current_tab', String(index));
     render();
 }
-
-
-/* ============================================================
-   NOVA ABA
-============================================================ */
 
 function addTab() {
-
-    const name =
-        prompt(
-            'Nome da nova aba:',
-            'Novo cronograma'
-        );
-
+    const name = prompt('Nome da nova aba:', 'Novo cronograma');
     if (!name) return;
-
-
-    const isUpa =
-        confirm(
-            'Usar modelo de UPA/UPAEs? (OK = UPA / Cancelar = Hospitais)'
-        );
-
-
-    const eventos =
-        isUpa
-            ? getUPADefaultEvents()
-            : getHospitalDefaultEvents();
-
-
-    data.abas.push({
-
-        nome: name,
-
-        startTime:
-            '08:00',
-
-        eventos:
-            eventos
-
-    });
-
-
-    data.abas[
-        data.abas.length - 1
-    ].eventos.forEach(
-        e => {
-            e.id =
-                nextId++;
-        }
-    );
-
-
-    data.currentTab =
-        data.abas.length - 1;
-
-
-    localStorage.setItem(
-        'programacao_eventos_current_tab',
-        String(data.currentTab)
-    );
-
-
+    const isUpa = confirm('Usar modelo de UPA/UPAEs? (OK = UPA / Cancelar = Hospitais)');
+    const eventos = isUpa ? getUPADefaultEvents() : getHospitalDefaultEvents();
+    data.abas.push({ nome: name, startTime: '08:00', eventos: eventos });
+    data.abas[data.abas.length - 1].eventos.forEach(e => { e.id = nextId++; });
+    data.currentTab = data.abas.length - 1;
+    localStorage.setItem('programacao_eventos_current_tab', String(data.currentTab));
     render();
 }
 
-
-/* ============================================================
-   RENOMEAR ABA
-============================================================ */
-
 function renameTab(index) {
-
-    const newName =
-        prompt(
-            'Novo nome da aba:',
-            data.abas[index].nome
-        );
-
-
-    if (
-        newName !== null &&
-        newName.trim() !== ''
-    ) {
-
-        data.abas[index].nome =
-            newName.trim();
-
+    const newName = prompt('Novo nome da aba:', data.abas[index].nome);
+    if (newName !== null && newName.trim() !== '') {
+        data.abas[index].nome = newName.trim();
         render();
     }
 }
 
-
-/* ============================================================
-   EXCLUIR ABA
-============================================================ */
-
 function deleteTab(index) {
-
-    if (
-        data.abas.length <= 1
-    ) {
-
-        alert(
-            'Não é possível deletar a única aba.'
-        );
-
-        return;
-    }
-
-
-    if (
-        !confirm(
-            `Remover a aba "${data.abas[index].nome}"?`
-        )
-    ) {
-        return;
-    }
-
-
-    data.abas.splice(
-        index,
-        1
-    );
-
-
-    if (
-        data.currentTab >=
-        data.abas.length
-    ) {
-
-        data.currentTab =
-            data.abas.length - 1;
-    }
-
-
-    localStorage.setItem(
-        'programacao_eventos_current_tab',
-        String(data.currentTab)
-    );
-
-
+    if (data.abas.length <= 1) { alert('Não é possível deletar a única aba.'); return; }
+    if (!confirm(`Remover a aba "${data.abas[index].nome}"?`)) return;
+    data.abas.splice(index, 1);
+    if (data.currentTab >= data.abas.length) data.currentTab = data.abas.length - 1;
+    localStorage.setItem('programacao_eventos_current_tab', String(data.currentTab));
     render();
 }
 
-
-/* ============================================================
-   RESETAR TUDO
-============================================================ */
-
 function resetAllData() {
-
-    if (
-        !confirm(
-            'Isso vai apagar TODOS os seus cronogramas e recarregar os exemplos originais. Continuar?'
-        )
-    ) {
-        return;
-    }
-
-
-    localStorage.removeItem(
-        'programacao_eventos_fgh'
-    );
-
-    localStorage.removeItem(
-        'programacao_eventos_fgh_export_cols'
-    );
-
-    localStorage.removeItem(
-        'programacao_eventos_current_tab'
-    );
-
-
+    if (!confirm('Isso vai apagar TODOS os seus cronogramas e recarregar os exemplos originais. Continuar?')) return;
+    localStorage.removeItem('programacao_eventos_fgh');
+    localStorage.removeItem('programacao_eventos_fgh_export_cols');
+    localStorage.removeItem('programacao_eventos_current_tab');
     location.reload();
 }
 
-
-/* ============================================================
-   INICIALIZAÇÃO
-============================================================ */
-
-document.addEventListener(
-    'DOMContentLoaded',
-    async () => {
-
-        await loadData();
-
+document.addEventListener('DOMContentLoaded', async () => {
+    await loadData();
+    render();
+    document.getElementById('startTime').addEventListener('change', function () {
+        getCurrentAba().startTime = this.value;
         render();
-
-
-        document
-            .getElementById(
-                'startTime'
-            )
-            .addEventListener(
-                'change',
-                function () {
-
-                    getCurrentAba()
-                        .startTime =
-                        this.value;
-
-                    render();
-                }
-            );
-
-    }
-);
+    });
+});
 
 </script>
 
