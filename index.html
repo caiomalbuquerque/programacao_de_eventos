@@ -1402,7 +1402,7 @@ function prepararDadosCarregados() {
 
 
 /* ============================================================
-   CÁLCULO DOS EVENTOS
+   CÁLCULO DOS EVENTOS (COM CASCATA DE ATRASO)
 ============================================================ */
 
 function computeEvents(
@@ -1411,9 +1411,6 @@ function computeEvents(
 ) {
 
     const results = [];
-
-    let currentStart =
-        startSec;
 
     for (
         let i = 0;
@@ -1427,73 +1424,53 @@ function computeEvents(
         const dur =
             item.duration || 0;
 
+        /* 1. Cálculo do Início Programado (baseado na duração pura) */
         let startProg;
-
         if (i === 0) {
-
-            startProg =
-                startSec;
-
+            startProg = startSec;
         } else {
-
-            startProg =
-                results[i - 1].endProg;
-
+            startProg = results[i - 1].endProg;
         }
 
-        const endProg =
-            startProg + dur;
+        const endProg = startProg + dur;
 
+        /* 2. Cálculo do Término Real Digitado */
+        const realEndVal = toSeconds(item.realEnd);
 
-        const realEndVal =
-            toSeconds(
-                item.realEnd
-            );
-
-
+        /* 3. Cálculo do Atraso (Diferença entre o real e o programado) */
         let delay = null;
-
         if (realEndVal !== null) {
-
-            delay =
-                realEndVal -
-                endProg;
-
+            delay = realEndVal - endProg;
         }
 
-
+        /* 4. Cálculo do Início Real (A LÓGICA DA CASCATA) */
         let startReal;
 
         if (i === 0) {
-
-            startReal =
-                startSec;
-
+            startReal = startSec;
         } else {
+            const previous = results[i - 1];
 
-            /* 
-             * ALTERAÇÃO SOLICITADA:
-             * O início da linha atual agora é SEMPRE o término programado da linha anterior,
-             * ignorando completamente o campo "Término" (realEnd) para este cálculo.
+            /*
+             * REGRA SOLICITADA:
+             * O Início da linha atual é o Término Real da linha anterior.
+             * Se o Término Real anterior estiver vazio, usa o Término Programado.
              */
-            startReal =
-                results[i - 1].endProg;
-
+            if (previous.realEndVal !== null) {
+                startReal = previous.realEndVal;
+            } else {
+                startReal = previous.endProg;
+            }
         }
 
-
         results.push({
-
             ...item,
-
             startProg,
             startReal,
             endProg,
             realEndVal,
             delay
-
         });
-
     }
 
     return results;
