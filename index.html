@@ -7,353 +7,73 @@
     <title>Programação de Eventos FGH</title>
 
     <style>
+        * { box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f7fa; margin: 20px; color: #333; }
+        .container { max-width: 1400px; margin: 0 auto; background: #ffffff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 16px rgba(22, 60, 109, 0.08); border: 1px solid #e6edf5; }
 
-        * {
-            box-sizing: border-box;
-        }
+        .header-wrapper { margin-bottom: 20px; }
+        .title-row { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+        .logo-img { height: 40px; vertical-align: middle; }
+        h1 { margin: 0; font-size: 24px; font-weight: 700; color: #163c6d; }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f4f7fa;
-            margin: 20px;
-            color: #333;
-        }
+        .tabs-container { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+        .tabs-bar { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tab-btn { padding: 8px 16px; background: #f0f4f8; border: 1px solid #dbe0e5; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 14px; color: #163c6d; transition: all 0.2s ease; display: flex; align-items: center; gap: 8px; }
+        .tab-btn:hover { background: #e2eaf3; border-color: #bdd3e8; }
+        .tab-btn.active { background: #163c6d; color: white; border-color: #163c6d; }
+        .tab-btn.active:hover { background: #0e2b4f; }
+        .tab-actions { font-size: 12px; display: flex; align-items: center; gap: 4px; }
+        .tab-actions button { background: transparent; border: none; cursor: pointer; color: inherit; font-weight: bold; padding: 0; }
+        .tab-btn.dragging { opacity: 0.5; background: #cce5ff; border-color: #2b6ca3; }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 16px rgba(22, 60, 109, 0.08);
-            border: 1px solid #e6edf5;
-        }
+        .btn-success { background: #1a9c4a; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 14px; }
+        .btn-success:hover { background: #13803b; }
+        .btn { border: none; border-radius: 6px; cursor: pointer; font-weight: 600; transition: 0.2s; padding: 6px 14px; }
+        .btn-primary { background: #163c6d; color: white; }
+        .btn-primary:hover { background: #0e2b4f; }
+        .btn-secondary { background: #2b6ca3; color: white; }
+        .btn-secondary:hover { background: #1f5280; }
+        .btn-danger { background: #dc3545; color: white; padding: 4px 10px; font-size: 12px; }
+        .btn-danger:hover { background: #a71d2a; }
+        .btn-warning { background: #ffc107; color: #212529; }
+        .btn-warning:hover { background: #e0a800; }
 
-        .header-wrapper {
-            margin-bottom: 20px;
-        }
+        .toolbar { display: flex; gap: 15px; align-items: center; margin-bottom: 15px; flex-wrap: wrap; padding: 12px 15px; background: #f8fafc; border: 1px solid #e6edf5; border-radius: 8px; }
+        .toolbar label { font-weight: 600; color: #163c6d; }
+        .toolbar input[type="time"] { padding: 6px 10px; border: 1px solid #d1d8e2; border-radius: 6px; font-size: 14px; color: #163c6d; background: #ffffff; }
 
-        .title-row {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
+        .table-wrapper { width: 100%; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: 14px; background: white; border-radius: 8px; overflow: hidden; border: 1px solid #dbe0e5; table-layout: fixed; }
+        th, td { border: 1px solid #e6edf5; padding: 8px 6px; text-align: center; vertical-align: middle; }
+        th { background: #e9edf2; color: #163c6d; font-weight: 700; border-bottom: 2px solid #163c6d; }
+        tbody tr:nth-child(even) { background: #f8fbff; }
+        tbody tr:hover { background: #eef5fb; }
 
-        .logo-img {
-            height: 40px;
-            vertical-align: middle;
-        }
+        .col-index { width: 45px; } .col-event { width: 28%; } .col-duration { width: 105px; } .col-start { width: 105px; } .col-end { width: 110px; } .col-delay { width: 105px; } .col-actions { width: 60px; }
 
-        h1 {
-            margin: 0;
-            font-size: 24px;
-            font-weight: 700;
-            color: #163c6d;
-        }
+        .editable { width: 100%; border: 1px solid transparent; background: transparent; text-align: center; font: inherit; padding: 4px; border-radius: 4px; }
+        .editable:focus { border-color: #2b6ca3; background: #f4faff; outline: none; }
+        .editable.duration { width: 70px; } .editable.time { width: 100%; }
 
-        .tabs-container {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 8px;
-        }
+        .event-cell { word-wrap: break-word; overflow-wrap: anywhere; white-space: normal; }
+        .event-input { width: 100%; min-width: 0; white-space: normal; overflow-wrap: anywhere; word-break: break-word; resize: none; overflow: hidden; display: block; border: 1px solid transparent; background: transparent; padding: 4px; border-radius: 4px; }
 
-        .tabs-bar {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .tab-btn {
-            padding: 8px 16px;
-            background: #f0f4f8;
-            border: 1px solid #dbe0e5;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 14px;
-            color: #163c6d;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .tab-btn:hover {
-            background: #e2eaf3;
-            border-color: #bdd3e8;
-        }
-
-        .tab-btn.active {
-            background: #163c6d;
-            color: white;
-            border-color: #163c6d;
-        }
-
-        .tab-btn.active:hover {
-            background: #0e2b4f;
-        }
-
-        .tab-actions {
-            font-size: 12px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .tab-actions button {
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            color: inherit;
-            font-weight: bold;
-            padding: 0;
-        }
-
-        .tab-btn.dragging {
-            opacity: 0.5;
-            background: #cce5ff;
-            border-color: #2b6ca3;
-        }
-
-        .btn-success {
-            background: #1a9c4a;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .btn-success:hover {
-            background: #13803b;
-        }
-
-        .btn {
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: 0.2s;
-            padding: 6px 14px;
-        }
-
-        .btn-primary {
-            background: #163c6d;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #0e2b4f;
-        }
-
-        .btn-secondary {
-            background: #2b6ca3;
-            color: white;
-        }
-
-        .btn-secondary:hover {
-            background: #1f5280;
-        }
-
-        .btn-danger {
-            background: #dc3545;
-            color: white;
-            padding: 4px 10px;
-            font-size: 12px;
-        }
-
-        .btn-danger:hover {
-            background: #a71d2a;
-        }
-
-        .btn-warning {
-            background: #ffc107;
-            color: #212529;
-        }
-
-        .btn-warning:hover {
-            background: #e0a800;
-        }
-
-        .toolbar {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-            padding: 12px 15px;
-            background: #f8fafc;
-            border: 1px solid #e6edf5;
-            border-radius: 8px;
-        }
-
-        .toolbar label {
-            font-weight: 600;
-            color: #163c6d;
-        }
-
-        .toolbar input[type="time"] {
-            padding: 6px 10px;
-            border: 1px solid #d1d8e2;
-            border-radius: 6px;
-            font-size: 14px;
-            color: #163c6d;
-            background: #ffffff;
-        }
-
-        .table-wrapper {
-            width: 100%;
-            overflow-x: auto;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 14px;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid #dbe0e5;
-            table-layout: fixed;
-        }
-
-        th,
-        td {
-            border: 1px solid #e6edf5;
-            padding: 8px 6px;
-            text-align: center;
-            vertical-align: middle;
-        }
-
-        th {
-            background: #e9edf2;
-            color: #163c6d;
-            font-weight: 700;
-            border-bottom: 2px solid #163c6d;
-        }
-
-        tbody tr:nth-child(even) {
-            background: #f8fbff;
-        }
-
-        tbody tr:hover {
-            background: #eef5fb;
-        }
-
-        .col-index { width: 45px; }
-        .col-event { width: 28%; }
-        .col-duration { width: 105px; }
-        .col-start { width: 105px; }
-        .col-end { width: 110px; }
-        .col-delay { width: 105px; }
-        .col-actions { width: 60px; }
-
-        .editable {
-            width: 100%;
-            border: 1px solid transparent;
-            background: transparent;
-            text-align: center;
-            font: inherit;
-            padding: 4px;
-            border-radius: 4px;
-        }
-
-        .editable:focus {
-            border-color: #2b6ca3;
-            background: #f4faff;
-            outline: none;
-        }
-
-        .editable.duration { width: 70px; }
-        .editable.time { width: 100%; }
-
-        .event-cell {
-            word-wrap: break-word;
-            overflow-wrap: anywhere;
-            white-space: normal;
-        }
-
-        .event-input {
-            width: 100%;
-            min-width: 0;
-            white-space: normal;
-            overflow-wrap: anywhere;
-            word-break: break-word;
-            resize: none;
-            overflow: hidden;
-            display: block;
-            border: 1px solid transparent;
-            background: transparent;
-            padding: 4px;
-            border-radius: 4px;
-        }
-
-        .calculated {
-            background: transparent;
-            color: #444;
-            font-weight: 500;
-        }
-
-        .atraso { color: #d32f2f; font-weight: 700; }
-        .adiantado { color: #1a9c4a; font-weight: 700; }
-
+        .calculated { background: transparent; color: #444; font-weight: 500; }
+        .atraso { color: #d32f2f; font-weight: 700; } .adiantado { color: #1a9c4a; font-weight: 700; }
         tr.dragging { opacity: 0.5; background: #cce5ff; }
 
         @media (max-width: 800px) {
-            body { margin: 0; padding: 8px; }
-            .container { width: 100%; padding: 10px; border-radius: 8px; }
-            .title-row { gap: 8px; margin-bottom: 10px; }
-            .logo-img { height: 35px; }
-            h1 { font-size: 19px; line-height: 1.2; }
-            .tabs-container { display: block; }
-            .tabs-bar { display: flex; flex-direction: column; width: 100%; gap: 5px; margin-bottom: 8px; }
-            .tab-btn { width: 100%; justify-content: space-between; padding: 7px 10px; font-size: 13px; }
-            .tabs-container > .btn-success { width: auto; padding: 7px 12px; }
-            .toolbar { display: grid; grid-template-columns: 1fr; gap: 7px; padding: 10px; margin-bottom: 10px; }
-            .toolbar label { font-size: 14px; }
-            .toolbar input[type="time"] { width: 100%; height: 38px; }
-            .toolbar .btn { width: 100%; min-height: 36px; }
-            table { width: 100%; table-layout: fixed; font-size: 11px; }
-            th, td { padding: 5px 3px; }
-            .col-index { width: 25px; }
-            .col-event { width: 25%; }
-            .col-duration { width: 14%; }
-            .col-start { width: 15%; }
-            .col-end { width: 16%; }
-            .col-delay { width: 16%; }
-            .col-actions { width: 45px; }
-            .event-cell { line-height: 1.2; }
-            .event-input { font-size: 11px; padding: 2px; }
-            .editable.time { width: 100%; font-size: 10px; padding: 2px; }
-            .editable.duration { width: 100%; font-size: 10px; padding: 2px; }
-            .btn-danger { font-size: 10px; padding: 3px 6px; }
-            .calculated, .atraso, .adiantado { font-size: 10px; }
+            body { margin: 0; padding: 8px; } .container { width: 100%; padding: 10px; border-radius: 8px; } .title-row { gap: 8px; margin-bottom: 10px; } .logo-img { height: 35px; } h1 { font-size: 19px; line-height: 1.2; }
+            .tabs-container { display: block; } .tabs-bar { display: flex; flex-direction: column; width: 100%; gap: 5px; margin-bottom: 8px; } .tab-btn { width: 100%; justify-content: space-between; padding: 7px 10px; font-size: 13px; } .tabs-container > .btn-success { width: auto; padding: 7px 12px; }
+            .toolbar { display: grid; grid-template-columns: 1fr; gap: 7px; padding: 10px; margin-bottom: 10px; } .toolbar label { font-size: 14px; } .toolbar input[type="time"] { width: 100%; height: 38px; } .toolbar .btn { width: 100%; min-height: 36px; }
+            table { width: 100%; table-layout: fixed; font-size: 11px; } th, td { padding: 5px 3px; } .col-index { width: 25px; } .col-event { width: 25%; } .col-duration { width: 14%; } .col-start { width: 15%; } .col-end { width: 16%; } .col-delay { width: 16%; } .col-actions { width: 45px; }
+            .event-cell { line-height: 1.2; } .event-input { font-size: 11px; padding: 2px; } .editable.time { width: 100%; font-size: 10px; padding: 2px; } .editable.duration { width: 100%; font-size: 10px; padding: 2px; } .btn-danger { font-size: 10px; padding: 3px 6px; } .calculated, .atraso, .adiantado { font-size: 10px; }
         }
-
         @media (max-width: 420px) {
-            body { padding: 4px; }
-            .container { padding: 7px; }
-            h1 { font-size: 17px; }
-            table { font-size: 10px; }
-            th, td { padding: 4px 2px; }
-            .col-index { width: 22px; }
-            .col-event { width: 24%; }
-            .col-duration { width: 14%; }
-            .col-start { width: 16%; }
-            .col-end { width: 16%; }
-            .col-delay { width: 16%; }
-            .col-actions { width: 38px; }
-            .editable.time, .editable.duration, .event-input { font-size: 9px; }
-            .btn-danger { font-size: 9px; padding: 2px 5px; }
+            body { padding: 4px; } .container { padding: 7px; } h1 { font-size: 17px; } table { font-size: 10px; } th, td { padding: 4px 2px; } .col-index { width: 22px; } .col-event { width: 24%; } .col-duration { width: 14%; } .col-start { width: 16%; } .col-end { width: 16%; } .col-delay { width: 16%; } .col-actions { width: 38px; } .editable.time, .editable.duration, .event-input { font-size: 9px; } .btn-danger { font-size: 9px; padding: 2px 5px; }
         }
-
     </style>
 </head>
-
 <body>
 
 <div class="container">
@@ -363,7 +83,6 @@
                 <img src="images/logo_fgh.png" alt="Logo FGH" class="logo-img">
                 <h1 id="dynamic-title">Programação de Eventos FGH</h1>
             </div>
-
             <div class="tabs-container">
                 <div id="tabsBar" class="tabs-bar"></div>
                 <button class="btn btn-success" onclick="addTab()">+ Nova aba</button>
@@ -468,7 +187,6 @@ const GITHUB_OWNER = 'caiomalbuquerque';
 const GITHUB_REPO = 'programacao_de_eventos';
 const GITHUB_BRANCH = 'main';
 const GITHUB_FILE_PATH = 'dados.json';
-
 const CACHE_KEY = 'programacao_eventos_fgh';
 const CACHE_TIME_KEY = 'programacao_eventos_fgh_cache_time';
 const CACHE_DURATION = 5 * 60 * 1000;
@@ -488,10 +206,8 @@ async function loadDataFromGitHub() {
 async function saveDataToGitHub() {
     const token = prompt('Cole seu token de acesso do GitHub para salvar:');
     if (!token) return;
-
     const apiUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${GITHUB_FILE_PATH}`;
     let sha = undefined;
-
     try {
         const getResp = await fetch(apiUrl + `?ref=${GITHUB_BRANCH}`, { headers: { Authorization: `Bearer ${token}` } });
         if (getResp.ok) {
@@ -501,70 +217,37 @@ async function saveDataToGitHub() {
     } catch (e) {}
 
     const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
-    const body = {
-        message: `Atualiza dados - ${new Date().toLocaleString('pt-BR')}`,
-        content: content,
-        branch: GITHUB_BRANCH
-    };
+    const body = { message: `Atualiza dados - ${new Date().toLocaleString('pt-BR')}`, content: content, branch: GITHUB_BRANCH };
     if (sha) body.sha = sha;
-
     try {
-        const putResp = await fetch(apiUrl, {
-            method: 'PUT',
-            headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-            body: JSON.stringify(body)
-        });
-
-        if (!putResp.ok) {
-            const err = await putResp.json();
-            throw new Error(err.message || 'Erro desconhecido');
-        }
-
-        cacheDataLocally();
-        localStorage.setItem(CACHE_TIME_KEY, String(Date.now()));
+        const putResp = await fetch(apiUrl, { method: 'PUT', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+        if (!putResp.ok) { const err = await putResp.json(); throw new Error(err.message || 'Erro desconhecido'); }
+        cacheDataLocally(); localStorage.setItem(CACHE_TIME_KEY, String(Date.now()));
         alert('Salvo no GitHub com sucesso!');
-    } catch (e) {
-        alert('Erro ao salvar no GitHub: ' + e.message);
-    }
+    } catch (e) { alert('Erro ao salvar no GitHub: ' + e.message); }
 }
 
-function cacheDataLocally() {
-    localStorage.setItem('programacao_eventos_fgh', JSON.stringify(data));
-}
-
+function cacheDataLocally() { localStorage.setItem('programacao_eventos_fgh', JSON.stringify(data)); }
 function saveData() { cacheDataLocally(); }
 
 async function loadData() {
     const raw = localStorage.getItem(CACHE_KEY);
     const cacheTime = Number(localStorage.getItem(CACHE_TIME_KEY) || 0);
-
     if (raw && cacheTime && (Date.now() - cacheTime < CACHE_DURATION)) {
-        try { data = JSON.parse(raw); prepararDadosCarregados(); return; } catch (e) { console.warn('Cache local inválido.'); }
+        try { data = JSON.parse(raw); prepararDadosCarregados(); return; } catch (e) {}
     }
-
     const remote = await loadDataFromGitHub();
-    if (remote) {
-        data = remote;
-        prepararDadosCarregados();
-        localStorage.setItem(CACHE_TIME_KEY, String(Date.now()));
-        cacheDataLocally();
-        return;
-    }
-
-    if (raw) {
-        try { data = JSON.parse(raw); prepararDadosCarregados(); console.warn('GitHub indisponível. Usando cache local antigo.'); return; } catch (e) {}
-    }
+    if (remote) { data = remote; prepararDadosCarregados(); localStorage.setItem(CACHE_TIME_KEY, String(Date.now())); cacheDataLocally(); return; }
+    if (raw) { try { data = JSON.parse(raw); prepararDadosCarregados(); return; } catch (e) {} }
 
     nextId = 1;
     data = { abas: [
         { nome: 'Colegiado - Hospitais (26/08)', startTime: '08:00', eventos: getHospitalDefaultEvents() },
         { nome: 'Colegiado - UPA e UPAEs (28/08)', startTime: '08:00', eventos: getUPADefaultEvents() }
     ], currentTab: 0 };
-
     const savedTab = localStorage.getItem('programacao_eventos_current_tab');
     if (savedTab !== null && data.abas[Number(savedTab)]) data.currentTab = Number(savedTab);
     else data.currentTab = 1;
-    
     cacheDataLocally();
 }
 
@@ -572,15 +255,13 @@ function prepararDadosCarregados() {
     let maxId = 0;
     data.abas.forEach(aba => { aba.eventos.forEach(e => { if (e.id > maxId) maxId = e.id; }); });
     nextId = maxId + 1;
-
     const savedTab = localStorage.getItem('programacao_eventos_current_tab');
     if (savedTab !== null && data.abas[Number(savedTab)]) data.currentTab = Number(savedTab);
 }
 
 /* ============================================================
-   CÁLCULO DOS EVENTOS (CORRIGIDO: CASCATA DE ATRASO)
+   CÁLCULO DOS EVENTOS (LÓGICA ATUALIZADA)
 ============================================================ */
-
 function computeEvents(eventos, startSec) {
     const results = [];
 
@@ -588,36 +269,48 @@ function computeEvents(eventos, startSec) {
         const item = eventos[i];
         const dur = item.duration || 0;
 
+        /* 1. Horário Programado (baseado apenas nas durações) */
+        let startProg;
+        if (i === 0) {
+            startProg = startSec;
+        } else {
+            startProg = results[i - 1].endProg; // Herda o término programado da linha anterior
+        }
+        const endProg = startProg + dur;
+
+        /* 2. Horário Real Digitado */
+        const realEndVal = toSeconds(item.realEnd);
+
+        /* 3. Horário de Início Real (em cascata, "puxando" o atraso da linha anterior) */
         let startReal;
+        let actualEnd; // Termino real desta linha
+
         if (i === 0) {
             startReal = startSec;
         } else {
             const previous = results[i - 1];
-            
-            // Se a linha anterior tem término real digitado, usa ele. 
-            // Se não, usa o término programado (que já carrega os atrasos anteriores).
-            if (previous.realEndVal !== null) {
-                startReal = previous.realEndVal;
+            if (previous.actualEnd !== undefined) {
+                startReal = previous.actualEnd;
             } else {
                 startReal = previous.endProg;
             }
         }
 
-        // O término programado é calculado a partir do INÍCIO REAL, 
-        // fazendo com que o atraso da linha anterior seja somado à duração atual.
-        const endProg = startReal + dur;
+        // Se o usuário não digitou o término real, o término real é startReal + duração
+        actualEnd = (realEndVal !== null) ? realEndVal : (startReal + dur);
 
-        const realEndVal = toSeconds(item.realEnd);
-
+        /* 4. Cálculo do Saldo de Tempo (Término Real - Término Programado) */
         let delay = null;
         if (realEndVal !== null) {
-            delay = realEndVal - endProg;
+            delay = realEndVal - endProg; 
         }
 
         results.push({
             ...item,
-            startReal,
+            startProg,
             endProg,
+            startReal,
+            actualEnd,
             realEndVal,
             delay
         });
@@ -629,7 +322,6 @@ function computeEvents(eventos, startSec) {
 /* ============================================================
    RENDERIZAÇÃO
 ============================================================ */
-
 function render() {
     const tabsBar = document.getElementById('tabsBar');
     const container = document.getElementById('tableContainer');
@@ -707,128 +399,61 @@ function render() {
 
 function escapeHtml(text) {
     if (text == null) return '';
-    return String(text)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#039;');
+    return String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
 }
-
 function escapeAttribute(text) { return escapeHtml(text); }
 
 function getCurrentAba() { return data.abas[data.currentTab]; }
 
 function updateEvent(index, field, value) {
     const aba = getCurrentAba();
-
     if (field === 'duration') {
         const sec = toSeconds(value);
-        if (sec !== null && sec > 0) {
-            aba.eventos[index].duration = sec;
-        } else {
-            alert('Duração inválida. Use HH:MM ou HH:MM:SS');
-            render(); return;
-        }
+        if (sec !== null && sec > 0) { aba.eventos[index].duration = sec; }
+        else { alert('Duração inválida. Use HH:MM ou HH:MM:SS'); render(); return; }
     } else if (field === 'realEnd') {
-        if (value.trim() === '') {
-            aba.eventos[index].realEnd = '';
-        } else {
+        if (value.trim() === '') { aba.eventos[index].realEnd = ''; }
+        else {
             const sec = toSeconds(value);
-            if (sec !== null) {
-                aba.eventos[index].realEnd = toHHMMSS(sec);
-            } else {
-                alert('Hora inválida. Use HH:MM:SS');
-                render(); return;
-            }
+            if (sec !== null) { aba.eventos[index].realEnd = toHHMMSS(sec); }
+            else { alert('Hora inválida. Use HH:MM:SS'); render(); return; }
         }
-    } else {
-        aba.eventos[index][field] = value;
-    }
-
+    } else { aba.eventos[index][field] = value; }
     render();
 }
 
-function addEvent() {
-    getCurrentAba().eventos.push({ id: nextId++, name: 'Novo evento', duration: 1800, realEnd: '' });
-    render();
-}
+function addEvent() { getCurrentAba().eventos.push({ id: nextId++, name: 'Novo evento', duration: 1800, realEnd: '' }); render(); }
 
 function removeEvent(index) {
     const aba = getCurrentAba();
     if (aba.eventos.length <= 1) { alert('É necessário pelo menos um evento.'); return; }
     if (!confirm('Remover este evento?')) return;
-    aba.eventos.splice(index, 1);
-    render();
+    aba.eventos.splice(index, 1); render();
 }
 
-let draggedRow = null;
-let draggedIndex = null;
-
-function autoResizeTextarea(textarea) {
-    textarea.style.height = 'auto';
-    textarea.style.height = textarea.scrollHeight + 'px';
-}
-
-function dragStart(event, index) {
-    draggedRow = event.currentTarget;
-    draggedIndex = index;
-    event.dataTransfer.effectAllowed = 'move';
-    event.dataTransfer.setData('text/plain', index);
-    draggedRow.classList.add('dragging');
-}
-
+let draggedRow = null; let draggedIndex = null;
+function autoResizeTextarea(textarea) { textarea.style.height = 'auto'; textarea.style.height = textarea.scrollHeight + 'px'; }
+function dragStart(event, index) { draggedRow = event.currentTarget; draggedIndex = index; event.dataTransfer.effectAllowed = 'move'; event.dataTransfer.setData('text/plain', index); draggedRow.classList.add('dragging'); }
 function dragOver(event) { event.preventDefault(); event.dataTransfer.dropEffect = 'move'; }
+function drop(event, index) { event.preventDefault(); if (draggedIndex !== null && draggedIndex !== index) { const aba = getCurrentAba(); const [movedItem] = aba.eventos.splice(draggedIndex, 1); aba.eventos.splice(index, 0, movedItem); render(); } }
+function dragEnd(event) { draggedRow.classList.remove('dragging'); draggedRow = null; draggedIndex = null; }
 
-function drop(event, index) {
-    event.preventDefault();
-    if (draggedIndex !== null && draggedIndex !== index) {
-        const aba = getCurrentAba();
-        const [movedItem] = aba.eventos.splice(draggedIndex, 1);
-        aba.eventos.splice(index, 0, movedItem);
-        render();
-    }
-}
-
-function dragEnd(event) {
-    draggedRow.classList.remove('dragging');
-    draggedRow = null; draggedIndex = null;
-}
-
-let draggedTabIndex = null;
-let draggedTabRow = null;
-
-function tabDragStart(event, index) {
-    draggedTabRow = event.currentTarget;
-    draggedTabIndex = index;
-    event.dataTransfer.effectAllowed = 'move';
-    event.dataTransfer.setData('text/plain', index);
-    draggedTabRow.classList.add('dragging');
-}
-
+let draggedTabIndex = null; let draggedTabRow = null;
+function tabDragStart(event, index) { draggedTabRow = event.currentTarget; draggedTabIndex = index; event.dataTransfer.effectAllowed = 'move'; event.dataTransfer.setData('text/plain', index); draggedTabRow.classList.add('dragging'); }
 function tabDragOver(event) { event.preventDefault(); event.dataTransfer.dropEffect = 'move'; }
-
 function tabDrop(event, index) {
     event.preventDefault();
     if (draggedTabIndex !== null && draggedTabIndex !== index) {
         const activeTabIndex = data.currentTab;
         const [movedTab] = data.abas.splice(draggedTabIndex, 1);
         data.abas.splice(index, 0, movedTab);
-        
         if (draggedTabIndex === activeTabIndex) data.currentTab = index;
         else if (draggedTabIndex < activeTabIndex && index >= activeTabIndex) data.currentTab = activeTabIndex - 1;
         else if (draggedTabIndex > activeTabIndex && index <= activeTabIndex) data.currentTab = activeTabIndex + 1;
-
-        saveData();
-        localStorage.setItem('programacao_eventos_current_tab', String(data.currentTab));
-        render();
+        saveData(); localStorage.setItem('programacao_eventos_current_tab', String(data.currentTab)); render();
     }
 }
-
-function tabDragEnd(event) {
-    draggedTabRow.classList.remove('dragging');
-    draggedTabRow = null; draggedTabIndex = null;
-}
+function tabDragEnd(event) { draggedTabRow.classList.remove('dragging'); draggedTabRow = null; draggedTabIndex = null; }
 
 function resetCurrentTab() {
     const aba = getCurrentAba();
@@ -838,13 +463,7 @@ function resetCurrentTab() {
     aba.eventos.forEach(e => { e.id = nextId++; });
     render();
 }
-
-function switchTab(index) {
-    data.currentTab = index;
-    localStorage.setItem('programacao_eventos_current_tab', String(index));
-    render();
-}
-
+function switchTab(index) { data.currentTab = index; localStorage.setItem('programacao_eventos_current_tab', String(index)); render(); }
 function addTab() {
     const name = prompt('Nome da nova aba:', 'Novo cronograma');
     if (!name) return;
@@ -856,42 +475,16 @@ function addTab() {
     localStorage.setItem('programacao_eventos_current_tab', String(data.currentTab));
     render();
 }
-
-function renameTab(index) {
-    const newName = prompt('Novo nome da aba:', data.abas[index].nome);
-    if (newName !== null && newName.trim() !== '') {
-        data.abas[index].nome = newName.trim();
-        render();
-    }
-}
-
-function deleteTab(index) {
-    if (data.abas.length <= 1) { alert('Não é possível deletar a única aba.'); return; }
-    if (!confirm(`Remover a aba "${data.abas[index].nome}"?`)) return;
-    data.abas.splice(index, 1);
-    if (data.currentTab >= data.abas.length) data.currentTab = data.abas.length - 1;
-    localStorage.setItem('programacao_eventos_current_tab', String(data.currentTab));
-    render();
-}
-
-function resetAllData() {
-    if (!confirm('Isso vai apagar TODOS os seus cronogramas e recarregar os exemplos originais. Continuar?')) return;
-    localStorage.removeItem('programacao_eventos_fgh');
-    localStorage.removeItem('programacao_eventos_fgh_export_cols');
-    localStorage.removeItem('programacao_eventos_current_tab');
-    location.reload();
-}
+function renameTab(index) { const newName = prompt('Novo nome da aba:', data.abas[index].nome); if (newName !== null && newName.trim() !== '') { data.abas[index].nome = newName.trim(); render(); } }
+function deleteTab(index) { if (data.abas.length <= 1) { alert('Não é possível deletar a única aba.'); return; } if (!confirm(`Remover a aba "${data.abas[index].nome}"?`)) return; data.abas.splice(index, 1); if (data.currentTab >= data.abas.length) data.currentTab = data.abas.length - 1; localStorage.setItem('programacao_eventos_current_tab', String(data.currentTab)); render(); }
+function resetAllData() { if (!confirm('Isso vai apagar TODOS os seus cronogramas e recarregar os exemplos originais. Continuar?')) return; localStorage.removeItem('programacao_eventos_fgh'); localStorage.removeItem('programacao_eventos_fgh_export_cols'); localStorage.removeItem('programacao_eventos_current_tab'); location.reload(); }
 
 document.addEventListener('DOMContentLoaded', async () => {
     await loadData();
     render();
-    document.getElementById('startTime').addEventListener('change', function () {
-        getCurrentAba().startTime = this.value;
-        render();
-    });
+    document.getElementById('startTime').addEventListener('change', function () { getCurrentAba().startTime = this.value; render(); });
 });
 
 </script>
-
 </body>
 </html>
