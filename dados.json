@@ -44,7 +44,7 @@
           "id": 62,
           "name": "Hospital Eduardo Campos da Pessoa Idosa",
           "duration": 2400,
-          "realEnd": ""
+          "realEnd": "11:40:00"
         },
         {
           "id": 65,
@@ -53,15 +53,15 @@
           "realEnd": ""
         },
         {
-          "id": 68,
-          "name": "Hospital Dom Helder Câmara",
-          "duration": 2400,
-          "realEnd": ""
-        },
-        {
           "id": 66,
           "name": "Almoço",
           "duration": 2700,
+          "realEnd": ""
+        },
+        {
+          "id": 68,
+          "name": "Hospital Dom Helder Câmara",
+          "duration": 2400,
           "realEnd": ""
         },
         {
