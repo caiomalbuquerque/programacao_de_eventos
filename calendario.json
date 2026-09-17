@@ -65,6 +65,17 @@
       "descricao": "",
       "tipo": "tarefa",
       "ordem": 70
+    },
+    {
+      "id": 7,
+      "dataInicio": "2026-09-18",
+      "dataFim": "2026-09-18",
+      "titulo": "Avisar sobre a extensão do prazo do swot",
+      "responsavel": "Caio Albuquerque",
+      "area": "OKR",
+      "descricao": "",
+      "tipo": "tarefa",
+      "ordem": 80
     }
   ],
   "config": {
