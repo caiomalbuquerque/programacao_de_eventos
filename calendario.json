@@ -1,40 +1,32 @@
 {
-  "eventos": [
-    {
-      "id": 4,
-      "titulo": "Prazo final para revisão dos OKRs. A planilha será bloqueada às 23:59",
-      "descricao": "",
-      "tipo": "prazo",
-      "dataInicio": "2026-09-24",
-      "dataFim": "2026-09-24",
-      "responsavel": "Equipes de OKR - NGC e Unidades"
-    },
-    {
-      "id": 5,
-      "titulo": "Montagem da planilha de tarefas de cada Unidade",
-      "descricao": "",
-      "tipo": "tarefa",
-      "dataInicio": "2026-09-25",
-      "dataFim": "2026-09-25",
-      "responsavel": "NIO"
-    },
-    {
-      "id": 6,
-      "dataInicio": "2026-09-17",
-      "dataFim": "2026-09-24",
-      "titulo": "Montagem dos OKRs para o 4º Ciclo",
-      "responsavel": "Equipes de OKR - NGC e Unidades",
-      "descricao": "",
-      "tipo": "tarefa"
-    },
-    {
-      "id": 7,
-      "dataInicio": "2026-09-28",
-      "dataFim": "2026-09-28",
-      "titulo": "Disponibilização das Planilhas de Tarefas para as Unidades",
-      "responsavel": "NIO",
-      "descricao": "",
-      "tipo": "comunicado"
-    }
-  ]
+  "eventos": [],
+  "config": {
+    "tipos": [
+      {
+        "id": "prazo",
+        "label": "Prazo",
+        "cor": "#c72323"
+      },
+      {
+        "id": "tarefa",
+        "label": "Tarefa",
+        "cor": "#1f86db"
+      },
+      {
+        "id": "lembrete",
+        "label": "Lembrete",
+        "cor": "#feed2f"
+      }
+    ],
+    "responsaveis": [
+      "Caio Albuquerque"
+    ],
+    "areas": [
+      "Diretoria de Atendimento",
+      "OKR",
+      "Planejamento Estratégico",
+      "SAS",
+      "SG"
+    ]
+  }
 }
